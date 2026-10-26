@@ -1,0 +1,76 @@
+/* ==========================================================================
+   South Cairns Dental — WordPress and Elementor layer.
+   site.css is the static site's design system, unchanged. This file only adapts it to
+   WordPress markup and Elementor's containers, so pages look the same as the static site.
+   ========================================================================== */
+
+/* ---------- Elementor: section containers add no space of their own ---------- */
+.e-con.scd-sec {
+  --container-default-padding-top: 0; --container-default-padding-right: 0;
+  --container-default-padding-bottom: 0; --container-default-padding-left: 0;
+  --padding-top: 0; --padding-right: 0; --padding-bottom: 0; --padding-left: 0;
+  --gap: 0; --row-gap: 0; --column-gap: 0; --widgets-spacing: 0; --widgets-spacing-row: 0; --widgets-spacing-column: 0;
+  --margin-top: 0; --margin-bottom: 0;
+}
+.e-con.scd-sec > .elementor-widget { width: 100%; margin: 0; }
+/* Elementor removes underlines from every link in its content (.elementor a). Restore them on links
+   in running text, which the design system leaves underlined; card and button links stay as designed. */
+.elementor :is(p, span, dd, td, strong, em, b, .faq__body, .prose li, .weigh__col li, .info-card li, .ticks li, .crumbs li, .infostrip__item div) > a:not([class]),
+.elementor .textlink { text-decoration: underline; }
+/* Elementor zeroes every figure's margin inside widgets; restore the design system's figure margins */
+.elementor .elementor-widget[class*="elementor-widget-scd-"] .team--support .member .frame { margin-bottom: var(--s-4); }
+.elementor .elementor-widget[class*="elementor-widget-scd-"] .offer__media .frame { margin-inline: auto; }
+.elementor-widget[class*="elementor-widget-scd-"] { width: 100%; }
+.elementor-widget[class*="elementor-widget-scd-"] > section { margin: 0; }
+/* Containers editors add between sections keep the site's width and rhythm */
+.elementor .e-con:not(.scd-sec):not(.e-child) { --content-width: min(100% - 2 * var(--gutter), var(--wrap)); }
+
+/* Elementor's own widgets in the site's style */
+.elementor-widget-heading .elementor-heading-title { font-family: var(--f-display); font-stretch: var(--wdth-display); color: var(--forest); }
+.elementor-widget-text-editor { color: var(--ink); }
+.elementor-widget-text-editor p:last-child { margin-bottom: 0; }
+.elementor-widget-button .elementor-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6em;
+  min-height: 3.1rem; padding: .8rem 1.45rem; border-radius: 999px;
+  font: 650 1rem/1.15 var(--f-text); background: var(--forest); color: #fff; border: 1.5px solid var(--forest);
+}
+.elementor-widget-button .elementor-button:hover { background: var(--fern); border-color: var(--fern); color: #fff; }
+
+/* ---------- Additions used by the WordPress templates ---------- */
+.sec--fade { background: var(--mist); background: linear-gradient(180deg, #fff 0%, var(--mist) 18%); }
+.wrap-text { width: min(100% - 2 * var(--gutter), var(--wrap-text)); margin-inline: auto; }
+.wrap.wrap-text { width: min(100% - 2 * var(--gutter), var(--wrap-text)); }
+.wrap--article { max-width: 60rem; }
+.phero__aside > :last-child, .panel > div > :last-child { margin-bottom: 0; }
+.cost-card > p:last-child { margin-bottom: 0; }
+.sec .wrap.mt-7 > :last-child, .mt-7.small > :last-child { margin-bottom: 0; }
+.footer-legal a { color: #B9CCBF; }
+
+/* Blog pagination from WordPress */
+.pager .page-numbers { display: grid; place-items: center; min-width: 2.6rem; height: 2.6rem; padding: 0 .8rem; border-radius: 999px; border: 1.5px solid var(--line); text-decoration: none; font-weight: 650; }
+.pager .page-numbers.current { background: var(--forest); border-color: var(--forest); color: #fff; }
+.pager .page-numbers.dots { border: 0; }
+.pager ol { flex-wrap: wrap; justify-content: center; }
+
+/* ---------- WordPress core ---------- */
+.screen-reader-text {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+.screen-reader-text:focus { position: static !important; width: auto; height: auto; clip: auto; clip-path: none; }
+.alignleft { float: left; margin: .3rem var(--s-5) var(--s-4) 0; }
+.alignright { float: right; margin: .3rem 0 var(--s-4) var(--s-5); }
+.aligncenter { display: block; margin-inline: auto; }
+.wp-caption, .wp-block-image { margin: 0 0 var(--s-5); }
+.wp-caption-text, .wp-element-caption, .wp-block-image figcaption { font-size: var(--t-small); color: var(--stone); margin-top: .5rem; }
+.entry-content img { border-radius: var(--r-sm); }
+.entry-content > * + h2 { margin-top: 1.4em; }
+.wp-block-button__link { border-radius: 999px; background: var(--forest); color: #fff; padding: .8rem 1.45rem; font-weight: 650; text-decoration: none; }
+.sticky, .bypostauthor, .gallery-caption { }
+
+/* Sticky header below the WordPress toolbar when logged in */
+@media screen and (min-width: 601px) { .admin-bar .site-header { top: 32px; } }
+@media screen and (min-width: 601px) and (max-width: 782px) { .admin-bar .site-header { top: 46px; } }
+
+/* Editor preview: widgets show their content straight away */
+.elementor-editor-active .reveal { opacity: 1 !important; transform: none !important; }

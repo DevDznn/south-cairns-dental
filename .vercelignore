@@ -2,3 +2,6 @@
 _build/
 *.md
 assets/images/brand/source/
+
+# The WordPress theme (source, tools and installable ZIP) is not part of the static website.
+wordpress-theme/

@@ -1,0 +1,5 @@
+/* Block editor (posts and plain pages): the site's prose width and type. site.css is loaded first. */
+.editor-styles-wrapper { font-family: var(--f-text); color: var(--ink); }
+.editor-styles-wrapper .wp-block { max-width: var(--wrap-text); }
+.editor-styles-wrapper .wp-block[data-align="wide"] { max-width: var(--wrap); }
+.editor-styles-wrapper .wp-block[data-align="full"] { max-width: none; }

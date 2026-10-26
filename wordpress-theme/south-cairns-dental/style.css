@@ -1,0 +1,17 @@
+/*
+Theme Name: South Cairns Dental
+Theme URI: https://www.southcairnsdental.com.au/
+Author: South Cairns Dental
+Description: Custom theme for South Cairns Dental, Edmonton. Converted from the practice's static website with the same design system, header, footer and interactions. Every page is built from editable South Cairns Dental Elementor widgets; menus, logo and practice details are managed in Appearance. SEO is left to the ThinkRank plugin.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 7.1
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: south-cairns-dental
+Tags: custom-logo, custom-menu, featured-images, editor-style, accessibility-ready
+*/
+
+/* The design system lives in assets/css/site.css (shared with the static site) and
+   WordPress/Elementor adaptations in assets/css/wp.css. Both are enqueued in inc/assets.php. */

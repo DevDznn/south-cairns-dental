@@ -1004,15 +1004,17 @@ img[src$="root-canal-diagram.jpg"].is-photo { object-fit: contain; background: #
 .profiles { display: grid; gap: 0; }
 .profile { display: grid; gap: clamp(1.5rem, 4vw, 4rem); grid-template-columns: minmax(0, 1fr); padding-block: clamp(2.5rem, 5vw, 4.5rem); border-top: 1px solid var(--line); scroll-margin-top: calc(var(--header-h) + 1rem); }
 .profile:first-child { border-top: 0; padding-top: 0; }
+/* Every profile uses the same fixed image column, so portraits are identical in size whatever the bio length */
+:root { --profile-photo: clamp(17rem, 12rem + 9vw, 22rem); }
 @media (min-width: 860px) {
-  .profile { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
+  .profile { grid-template-columns: var(--profile-photo) minmax(0, 1fr); align-items: start; }
+  .profile:nth-child(even) { grid-template-columns: minmax(0, 1fr) var(--profile-photo); }
   .profile:nth-child(even) .profile__media { order: 2; }
-  .profile:not(.profile--full) { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); align-items: center; }
-  .profile:not(.profile--full):nth-child(even) { grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); }
-  .profile--full .profile__media { position: sticky; top: calc(var(--header-h) + 1.5rem); }
 }
-.profile__media .frame { max-width: 30rem; box-shadow: var(--shadow); }
-.profile:not(.profile--full) .profile__media .frame { max-width: 20rem; }
+.profile__media .frame { --ratio: 4 / 5 !important; width: 100%; max-width: var(--profile-photo); box-shadow: var(--shadow); }
+.profile__media .frame > img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+.profile__body { padding-top: .25rem; }
+@media (max-width: 859px) { .profile__media .frame { max-width: 22rem; } }
 .profile__role { font-weight: 700; color: var(--fern); font-size: var(--t-small); margin-bottom: .4rem; }
 .profile h2 { margin-bottom: .3rem; }
 .profile__aka { font-family: var(--f-text); font-stretch: 100%; font-weight: 500; font-size: .55em; color: var(--stone); letter-spacing: 0; }
@@ -1285,3 +1287,38 @@ img[src$="root-canal-diagram.jpg"].is-photo { object-fit: contain; background: #
   .svc-card--urgent .svc-card__body { justify-content: center; }
   .svc-card--urgent .svc-card__more { margin-top: .75rem; }
 }
+
+/* ==========================================================================
+   v6: compact dropdowns, homepage FAQ accordion, consistent team portraits
+   ========================================================================== */
+/* Dropdowns: one line per link, compact and aligned to the menu button */
+@media (min-width: 1021px) {
+  .drop { width: auto; min-width: 15rem; padding: .4rem; left: 0; transform: translateY(-6px); border-radius: var(--r-md); }
+  .drop.is-open { transform: none; }
+  .drop a { display: block; padding: .6rem .85rem; font-weight: 600; font-size: .95rem; color: var(--forest); white-space: nowrap; }
+}
+.drop a[aria-current="page"] { font-weight: 700; }
+
+/* Homepage FAQ: card accordion */
+@media (min-width: 900px) { .home-faq__intro { position: sticky; top: calc(var(--header-h) + 2rem); } }
+.home-faq__intro h2 { margin-bottom: .5em; }
+.faq--cards { border-top: 0; display: grid; gap: .75rem; }
+.faq--cards details { background: #fff; border: var(--card-border); border-radius: var(--radius-card); transition: border-color .2s ease, box-shadow .2s ease; }
+.faq--cards details:hover { border-color: var(--mist-2); }
+.faq--cards details[open] { border-color: var(--lime); box-shadow: 0 18px 40px -30px rgba(18, 48, 42, .45); }
+.faq--cards summary { padding: 1.1rem 1.25rem 1.1rem 1.4rem; font-size: 1.08rem; line-height: 1.35; border-radius: var(--radius-card); }
+.faq--cards summary:focus-visible { outline-offset: -3px; }
+.faq--cards summary::after {
+  width: 2.1rem; height: 2.1rem; border: 0; background-color: var(--lime-wash);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%231E4A3F' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 50%; transition: transform .25s ease, background-color .2s ease;
+}
+.faq--cards details[open] summary::after { transform: rotate(180deg); background-color: var(--lime); }
+.faq--cards .faq__body { padding: 0 1.4rem 1.3rem; max-width: none; color: var(--stone); }
+.faq--cards .faq__body p { margin-bottom: 0; }
+@media (prefers-reduced-motion: reduce) { .faq--cards details, .faq--cards summary::after { transition: none; } }
+
+/* Support staff: same portrait size for everyone */
+.team--support { grid-template-columns: repeat(auto-fill, minmax(12rem, 15rem)); }
+.team--support .portrait > img { width: 100%; height: 100%; object-fit: cover; }
+a[href^="tel:"] { white-space: nowrap; }

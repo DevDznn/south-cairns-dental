@@ -16,7 +16,7 @@ Each portrait sits directly above that person's name and qualifications on the o
 | Dr Louis Fernandez, Dentist | `assets/images/team/louis-fernandez.jpg` | https://www.southcairnsdental.com.au/thumbnaillarge/IMG_07913.jpg | about.html, index.html, team.html |
 | Dr Hannah Dominique Gaza, Dentist | `assets/images/team/hannah-dominique-gaza.jpg` | https://www.southcairnsdental.com.au/thumbnaillarge/IMG_730628229.jpg | about.html, index.html, team.html |
 | Dr Casey Almond, Dentist | `assets/images/team/casey-almond.jpg` | https://www.southcairnsdental.com.au/thumbnaillarge/IMG_727628329.jpg | about.html, index.html, team.html |
-| Ashlee, Practice Manager | none (lettered tile) | No photo published on the official site | team.html |
+| Ashlee, Practice Manager | `assets/images/team/portrait-placeholder.svg` (placeholder) | No photo published on the official site; branded placeholder until one is supplied | team.html |
 | Carol, Dental Assistant | `assets/images/team/carol.jpg` | https://www.southcairnsdental.com.au/thumbnaillarge/IMG_699728229.jpg | about.html, team.html |
 
 ## Page images

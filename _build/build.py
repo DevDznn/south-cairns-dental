@@ -324,13 +324,15 @@ def urgent():
             '</div></div></section>')
 
 def portrait(m, cls="", eager=False):
-    """A team member's portrait. Ashlee has no published photo, so she gets a lettered tile rather than someone else's picture."""
+    """A team member's portrait. Ashlee has no published photo, so she gets a branded placeholder rather than someone else's picture."""
     loading = 'fetchpriority="high"' if eager else 'loading="lazy"'
     if m.get("photo"):
         return (f'<figure class="frame portrait {cls}" style="--ratio:4 / 5" data-image-id="team-{m["slug"]}">'
                 f'<img src="{m["photo"]}" alt="{esc(m["name"])}, {esc(m["role"])}" width="900" height="900" {loading} decoding="async"></figure>')
-    return (f'<figure class="frame portrait portrait--initials {cls}" style="--ratio:4 / 5" data-image-id="team-{m["slug"]}">'
-            f'<span class="monogram" aria-hidden="true">{m["initials"]}</span></figure>')
+    return (f'<figure class="frame portrait portrait--placeholder {cls}" style="--ratio:4 / 5" data-image-id="team-{m["slug"]}">'
+            f'<img src="{PORTRAIT_PLACEHOLDER}" alt="" width="800" height="1000" {loading} decoding="async"></figure>')
+
+PORTRAIT_PLACEHOLDER = "assets/images/team/portrait-placeholder.svg"
 
 def team_cards():
     """Homepage: the four dentists, each linking to their profile on team.html."""
@@ -360,7 +362,7 @@ def team_profiles():
             f'<p>{m["name"].split()[1]} is one of our dentists at South Cairns Dental and holds a {m["quals_long"]}. '
             'Like every dentist here, they aim to see the same patients from visit to visit, so you have a familiar face each time.</p>'
             f'<p>If you&rsquo;d like to see Dr {m["name"].split()[1]}, mention it when you call to book.</p>')
-        corner = ["frame--corner", "frame--corner-tr", "frame--corner-bl", "frame--corner-br"][i % 4]
+        corner = "frame--corner"   # same portrait shape for every dentist
         out.append(f'<article class="profile{" profile--full" if has_bio else ""} reveal" id="{m["slug"]}" aria-labelledby="{m["slug"]}-h">'
                    f'<div class="profile__media">{portrait(m, corner, eager=(i == 0))}</div>'
                    f'<div class="profile__body"><p class="profile__role">{m["role"]}</p><h2 id="{m["slug"]}-h">{m["name"]}{known}</h2>'
@@ -441,18 +443,15 @@ def mega(current):
 NAV_GROUP = {"about": "about", "team": "about", "new": "about", "services": "services", "emergency": "services",
              "faq": "patients", "offers": "patients", "privacy": "patients", "blog": "blog", "contact": "contact", "home": "home"}
 MENUS = {
-  "about": ("About us", [("about.html", "About South Cairns Dental", "Our practice, our approach and where to find us"),
-                         ("team.html", "Meet our dentists", "Dr Alex, Dr Louie, Dr Hannah, Dr Casey and the team"),
-                         ("new-patients.html", "New patients", "Booking, your first visit and our new patient offer")]),
-  "patients": ("Patient information", [("faq.html", "Frequently asked questions", "Appointments, costs, children, emergencies and more"),
-                                       ("special-offers.html", "Special offers", "Our current new patient offer"),
-                                       ("emergency-dentist.html", "Emergency dental care", "What to do and how to reach us today")]),
+  "about": ("About us", [("about.html", "About South Cairns Dental"), ("team.html", "Meet our dentists"), ("new-patients.html", "New patients")]),
+  "patients": ("Patient information", [("faq.html", "Frequently asked questions"), ("special-offers.html", "Special offers"),
+                                       ("emergency-dentist.html", "Emergency dental care")]),
 }
 
 def dropdown(key, current, nav):
     label, links = MENUS[key]
     cur = " is-current" if NAV_GROUP.get(nav) == key else ""
-    lis = "".join(f'<li><a href="{h}"{AC if h == current else ""}><strong>{t}</strong><span>{d}</span></a></li>' for h, t, d in links)
+    lis = "".join(f'<li><a href="{h}"{AC if h == current else ""}>{t}</a></li>' for h, t in links)
     return (f'<li class="has-drop"><button class="nav__toggle{cur}" type="button" aria-expanded="false" aria-controls="menu-{key}" data-panel-toggle>{label} {ICON["chev"]}</button>'
             f'<div class="drop" id="menu-{key}"><ul>{lis}</ul></div></li>')
 
@@ -712,7 +711,7 @@ def write_manifest(built_names):
         if m.get("photo"):
             L.append(row(f'{m["name"]}, {m["role"]}', f'`{m["photo"]}`', f'https://www.southcairnsdental.com.au/thumbnaillarge/{srcmap[m["slug"]]}', where(m["photo"])))
         else:
-            L.append(row(f'{m["name"]}, {m["role"]}', "none (lettered tile)", "No photo published on the official site", "team.html"))
+            L.append(row(f'{m["name"]}, {m["role"]}', f"`{PORTRAIT_PLACEHOLDER}` (placeholder)", "No photo published on the official site; branded placeholder until one is supplied", where(PORTRAIT_PLACEHOLDER)))
     L += ["", "## Page images", "", row("Slot", "Status", "Subject", "Local file", "Source", "Used on", "Notes"), row(*["---"] * 7)]
     for iid, im in IMAGES.items():
         L.append(row(iid, im["status"], im["subject"], f'`{im["src"]}`', im.get("source_url") or "original artwork", where(im["src"]), im.get("notes", "")))

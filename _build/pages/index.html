@@ -202,13 +202,15 @@
   </div>
 </section>
 
-<!-- 13. FAQ + booking -->
+<!-- 13. FAQ -->
 <section class="sec sec--mist" aria-labelledby="hfaq-h">
-  <div class="wrap split split--7-5 split--top">
-    <div>
+  <div class="wrap split split--4-8 split--top home-faq">
+    <div class="home-faq__intro">
       <h2 id="hfaq-h">Questions patients ask us</h2>
-      <p class="muted">Can&rsquo;t see your question? <a href="faq.html">Read all patient FAQs</a> or call reception.</p>
-      <div class="faq">
+      <p class="section-head__intro">Quick answers to the questions we hear most. Can&rsquo;t see yours? Call reception on <a href="tel:{{tel}}">{{phone}}</a>.</p>
+      <a class="btn btn--ghost mt-6" href="faq.html">All patient FAQs</a>
+    </div>
+    <div class="faq faq--cards">
       <details><summary>How do I book an appointment?</summary><div class="faq__body"><p>Call us on {{phone}} during opening hours or <a href="{{booking_url}}" rel="noopener">book online</a>. You can also email <a href="mailto:{{email}}">{{email}}</a> and we&rsquo;ll get back to you.</p></div></details>
       <details><summary>What should I bring to my first visit?</summary><div class="faq__body"><p>We suggest your health fund card if you have private health insurance, and a list of any medicines you take. Let us know about any health conditions, and any worries you have about treatment.</p></div></details>
       <details><summary>How often should I have a check-up?</summary><div class="faq__body"><p>It varies from person to person. Your dentist will recommend an interval based on your teeth, gums and risk of decay.</p></div></details>
@@ -216,35 +218,7 @@
       <details><summary>What should I do in a dental emergency?</summary><div class="faq__body"><p>Call us straight away. We reserve appointments every day for emergencies. If there is difficulty breathing or swallowing, or swelling spreading to the eye or neck, call 000. <a href="emergency-dentist.html">Emergency information</a></p></div></details>
       <details><summary>Does Medicare cover dental treatment?</summary><div class="faq__body"><p>Medicare doesn&rsquo;t cover most dental care. Some children may be eligible for the Child Dental Benefits Schedule, which has its own rules. Private health insurance with extras cover may help with some costs.</p></div></details>
       <details><summary>Can I ask about a treatment before committing?</summary><div class="faq__body"><p>Of course. Book a consultation and your dentist will explain whether a treatment suits you, the alternatives, and the likely costs.</p></div></details>
-    
     </div>
-    <div class="book-panel reveal">
-      <h2 id="book-h">Book your next visit</h2>
-      <p>The quickest way to book is to call our Edmonton reception team. Tell us if you&rsquo;re in pain and we&rsquo;ll try to see you sooner.</p>
-      <ul class="contact-list mt-5">
-        <li><span class="label">Phone</span><a href="tel:{{tel}}">{{phone}}</a></li>
-        <li><span class="label">Email</span><a href="mailto:{{email}}">{{email}}</a></li>
-        <li><span class="label">Today</span><span class="value" data-hours-status="text">Mon to Thu 8 am to 5 pm</span></li>
-      </ul>
-      <div class="mt-6 btn-stack">{{call_btn}}<a class="btn btn--ghost-light" href="{{booking_url}}" rel="noopener">Book online</a></div>
-    </div>
-  </div>
-</section>
-
-<!-- 14. Location -->
-<section class="sec sec--canopy" aria-labelledby="visit-h">
-  <div class="wrap split split--5-7 split--top">
-    <div>
-      <h2 id="visit-h">Visit us in Edmonton</h2>
-      <p>We&rsquo;re on Stokes Street, next to Edmonton Family Medical Centre and close to Piccones IGA. It&rsquo;s an easy drive from Bentley Park, Mount Sheridan and Gordonvale, and parking is free and on site.</p>
-      <ul class="contact-list mt-6">
-        <li><span class="label">Phone</span><a href="tel:{{tel}}">{{phone}}</a></li>
-        <li><span class="label">Email</span><a href="mailto:{{email}}">{{email}}</a></li>
-        <li><span class="label">Address</span><span class="value">{{address_line1}}<br>{{address_locality}}</span></li>
-      </ul>
-      <div class="mt-7">{{hours_table}}</div>
-    </div>
-    <div>{{map}}</div>
   </div>
 </section>
 

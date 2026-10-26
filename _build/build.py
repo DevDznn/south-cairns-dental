@@ -23,12 +23,16 @@ BLOG = json.loads((BUILD / "blog.json").read_text(encoding="utf-8"))
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--site-url", default=P.get("site_url", ""))
+ap.add_argument("--noindex", action="store_true", help="keep every page out of search engines even with --site-url (staging or preview domain)")
 ap.add_argument("--drafts", action="store_true", help="include draft blog posts (local preview only; marked as drafts and noindex)")
 args = ap.parse_args()
 SITE = args.site_url.rstrip("/")
+INDEXABLE = bool(SITE) and not args.noindex   # production = a confirmed domain and no --noindex
 
 ADDRESS_ONE_LINE = f'{P["address_line1"]}, {P["suburb"]} {P["state"]} {P["postcode"]}'
 MAPS_LINK = "https://www.google.com/maps/search/?api=1&query=" + quote_plus(P["maps_query"])
+# Directions to the coordinates of the practice's own Google Maps listing (linked from the official site)
+MAPS_DIR = f'https://www.google.com/maps/dir/?api=1&destination={P["geo"]["lat"]},{P["geo"]["lng"]}' 
 MAPS_EMBED = "https://maps.google.com/maps?q=" + quote_plus(P["maps_query"]) + "&z=16&output=embed"
 ALL_SERVICES = [s for g in P["service_groups"] for s in g["items"]]
 
@@ -84,12 +88,11 @@ def call_btn(cls="btn--lime", label=None, size=""):
     return f'<a class="btn {cls} {size}" href="tel:{P["phone_tel"]}">{ICON["phone"]}<span>{label}</span></a>'
 
 def book_buttons(cls_primary="btn--lime", cls_secondary="btn--ghost"):
-    """Booking is by phone (verified on the official Contact page).
-    If practice.json gets a confirmed booking_url, an online booking button is added."""
-    out = call_btn(cls_primary, f'Call to book {P["phone_display"]}')
-    if P.get("booking_url"):
-        out += f'<a class="btn {cls_secondary}" href="{esc(P["booking_url"])}" rel="noopener">Book online</a>'
-    return f'<div class="btn-row">{out}</div>'
+    """Online booking (the practice's Centaur Portal link, from the official site) first, then phone."""
+    if not P.get("booking_url"):
+        return f'<div class="btn-row">{call_btn(cls_primary, "Call to book " + P["phone_display"])}</div>'
+    return (f'<div class="btn-row"><a class="btn {cls_primary}" href="{esc(P["booking_url"])}" rel="noopener">{ICONS["calendar"]}<span>Book online</span></a>'
+            f'{call_btn(cls_secondary, "Call " + P["phone_display"])}</div>')
 
 def img(spec):
     """{{img:id|extra-classes|caption}} renders a frame from images.json.
@@ -148,40 +151,118 @@ def faq_html(items, open_first=False):
         out.append(f'<details{" open" if open_first and n == 0 else ""}><summary>{q}</summary><div class="faq__body">{a}</div></details>')
     return "".join(out) + "</div>"
 
-def detail(slug):
-    """Treatment detail sections from _build/content/<slug>.json. Keys are optional, so each page gets only what suits it."""
-    d = json.loads((BUILD / "content" / f"{slug}.json").read_text(encoding="utf-8"))
-    out = []
-    if "understand" in d and "when" not in d:
-        # No side panel: heading left, text right, so the section doesn't leave an empty column
-        out.append(f'<section class="sec"><div class="wrap split split--5-7 split--top"><h2>{d.get("understand_h", "Understanding the treatment")}</h2>'
-                   f'<div class="prose">{d["understand"]}</div></div></section>')
-    elif "understand" in d or "when" in d:
-        left = f'<div class="prose"><h2>{d.get("understand_h", "Understanding the treatment")}</h2>{d.get("understand", "")}</div>' if "understand" in d else ""
-        right = ""
-        if "when" in d:
-            right = (f'<div class="panel panel--white reveal"><h3>{d.get("when_h", "When it may be considered")}</h3><ul class="ticks">'
-                     + "".join(f"<li>{x}</li>" for x in d["when"]) + '</ul><p class="small muted mb-0">Whether it suits you depends on an examination by your dentist.</p></div>')
-        out.append(f'<section class="sec"><div class="wrap split split--7-5 split--top">{left}{right}</div></section>')
-    if "weigh" in d:
+# ---------- Service page template ----------
+# Every treatment page is rendered by service_page() from _build/services/<slug>.json.
+# The section order is fixed; sections without content are skipped, and backgrounds alternate automatically.
+#   1 breadcrumbs + hero   2 introduction (+ "when" panel)   3 callout band   4 treatment explained
+#   5 process steps        6 benefits / considerations       7 care          8 FAQs + cost
+#   9 blog link           10 booking CTA                    11 related services
+SERVICES = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted((BUILD / "services").glob("*.json"))}
+
+def svc_hero(s):
+    h = s["hero"]; urgent = s.get("tone") == "urgent"
+    if urgent:
+        buttons = f'<div class="btn-row" data-sticky-anchor>{call_btn("btn--alert btn--lg", "Call " + P["phone_display"])}'
+    else:
+        buttons = (f'<div class="btn-row"><a class="btn btn--lime btn--lg" href="{esc(P["booking_url"])}" rel="noopener">{ICONS["calendar"]}<span>Book online</span></a>'
+                   f'{call_btn("btn--ghost btn--lg", "Call " + P["phone_display"])}')
+    if h.get("secondary"):
+        buttons += f'<a class="textlink" href="{h["secondary"][1]}">{h["secondary"][0]}</a>'
+    buttons += "</div>"
+    return (f'<section class="phero svc-hero{" svc-hero--urgent er-hero" if urgent else ""}"><div class="wrap">'
+            f'{crumbs({"crumbs": [["Services", "services.html"], [s["name"], s["file"]]]})}'
+            f'<div class="svc-hero__grid"><div class="svc-hero__text"><p class="svc-hero__kicker">{s["group"]}</p><h1>{h["title"]}</h1>'
+            f'<p class="lead">{h["lead"]}</p>{buttons}'
+            f'<p class="svc-hero__status"><span class="status-dot" data-hours-dot aria-hidden="true"></span><span data-hours-status="text">Mon to Thu 8 am to 5 pm, Fri 8 am to 4:30 pm</span></p></div>'
+            f'<div class="svc-hero__media">{img(h["image"] + "|frame--corner")}</div></div></div></section>')
+
+def svc_card(it, i):
+    label = f'<span class="tag">{it["label"]}</span>' if it.get("label") else ""
+    lst = "<ul>" + "".join(f"<li>{x}</li>" for x in it["list"]) + "</ul>" if it.get("list") else ""
+    flag = f'<p class="info-card__flag">{it["flag"]}</p>' if it.get("flag") else ""
+    call = f'<div class="mt-auto">{call_btn("btn--lime")}</div>' if it.get("call") else ""
+    return (f'<li class="info-card{" info-card--ask" if it.get("call") else ""} reveal" style="--i:{i % 3}">{label}<h3>{it["title"]}</h3>'
+            f'<p>{it["text"]}</p>{lst}{flag}{call}</li>')
+
+def service_page(slug):
+    s = SERVICES[slug]
+    sections = []   # (id, inner html) pairs; wrapped with alternating backgrounds below
+    intro = s["intro"]
+    if intro.get("aside"):
+        aside = (f'<div class="panel panel--white svc-aside reveal"><h3>{intro["aside_heading"]}</h3><ul class="ticks">'
+                 + "".join(f"<li>{x}</li>" for x in intro["aside"]) + "</ul></div>")
+        sections.append(("intro", f'<div class="wrap split split--7-5 split--top"><div class="prose"><h2 id="intro-h">{intro["heading"]}</h2>{intro["html"]}</div>{aside}</div>'))
+    else:
+        sections.append(("intro", f'<div class="wrap split split--5-7 split--top"><h2 id="intro-h">{intro["heading"]}</h2><div class="prose">{intro["html"]}</div></div>'))
+    callout = ""
+    if s.get("callout"):
+        c = s["callout"]
+        badge = f'<p class="callout__badge" aria-hidden="true">{c["badge"]}</p>' if c.get("badge") else ""
+        btn = call_btn("btn--alert" if c["tone"] == "alert" else "btn--lime" if c["tone"] == "brand" else "btn--forest") if c.get("call") else ""
+        callout = (f'<section class="callout callout--{c["tone"]}" aria-labelledby="callout-h"><div class="wrap callout__inner">{badge}'
+                   f'<div><h2 id="callout-h" class="callout__title">{c["title"]}</h2>{c["html"]}</div>{btn}</div></section>')
+    if s.get("explain"):
+        e = s["explain"]
+        body = ""
+        if e.get("items"):
+            n = len(e["items"]); cols = 4 if n == 4 else 2 if n == 2 else 3
+            body += f'<ul class="info-cards info-cards--{cols}">' + "".join(svc_card(it, i) for i, it in enumerate(e["items"])) + "</ul>"
+        if e.get("ticks"):
+            body += '<ul class="ticks ticks--cols ticks--cards">' + "".join(f"<li>{x}</li>" for x in e["ticks"]) + "</ul>"
+        media = "".join(img(m + "|frame--corner-br") for m in e.get("images", []))
+        intro_p = f'<p class="section-head__intro">{e["intro"]}</p>' if e.get("intro") else ""
+        if media and not body:
+            sections.append(("explain", f'<div class="wrap split split--6-6"><div><h2 id="explain-h">{e["heading"]}</h2>{intro_p}</div>{media}</div>'))
+        elif media:
+            sections.append(("explain", f'<div class="wrap"><div class="split split--7-5"><div class="section-head"><h2 id="explain-h">{e["heading"]}</h2>{intro_p}</div>{media}</div><div class="mt-7">{body}</div></div>'))
+        else:
+            sections.append(("explain", f'<div class="wrap"><div class="section-head"><h2 id="explain-h">{e["heading"]}</h2>{intro_p}</div>{body}</div>'))
+    if s.get("process"):
+        pr = s["process"]
+        steps = "".join(f'<li class="reveal" style="--i:{i % 4}"><h3>{st[0]}</h3><p>{st[1]}</p>' + (f'<span class="process__note">{st[2]}</span>' if len(st) > 2 else "") + "</li>"
+                        for i, st in enumerate(pr["steps"]))
+        intro_p = f'<p class="section-head__intro">{pr["intro"]}</p>' if pr.get("intro") else ""
+        sections.append(("process", f'<div class="wrap"><div class="section-head"><h2 id="process-h">{pr["heading"]}</h2>{intro_p}</div><ol class="process">{steps}</ol></div>'))
+    if s.get("weigh"):
+        w = s["weigh"]
         cols = "".join(f'<div class="weigh__col reveal" style="--i:{n}"><h3>{ICONS[ic]}{h}</h3><ul>' + "".join(f"<li>{x}</li>" for x in items) + "</ul></div>"
-                       for n, (ic, h, items) in enumerate([("heart", "Possible benefits", d["weigh"].get("benefits", [])),
-                                                            ("question", "Things to consider", d["weigh"].get("consider", [])),
-                                                            ("clipboard", "Alternatives to ask about", d["weigh"].get("alternatives", []))]) if items)
-        out.append(f'<section class="sec sec--mist"><div class="wrap"><div class="section-head"><h2>{d.get("weigh_h", "Weighing up your options")}</h2>'
-                   '<p class="muted mb-0">General information only. Your dentist will explain the benefits, risks and alternatives that apply to you.</p></div>'
-                   f'<div class="weigh">{cols}</div></div></section>')
-    if "care" in d:
-        out.append(f'<section class="sec"><div class="wrap split split--5-7 split--top"><div><h2>{d.get("care_h", "Before and after your appointment")}</h2>'
-                   '<p class="muted">Follow the specific instructions your dentist gives you. They take priority over this general guidance.</p></div>'
-                   '<ul class="care-list">' + "".join(f'<li class="reveal" style="--i:{n % 3}"><strong>{h}</strong><span>{t}</span></li>' for n, (h, t) in enumerate(d["care"])) + '</ul></div></section>')
-    cost = d.get("cost", "The cost depends on what your mouth needs, so it can only be worked out after an examination.")
-    faqs = d.get("faqs", [])
-    out.append('<section class="sec sec--tight"><div class="wrap split split--5-7 split--top">'
-               f'<aside class="cost-card reveal">{ICONS["wallet"]}<h2 class="h3-size">Cost and payment</h2><p>{cost} Your dentist will explain the fees before treatment begins, and your printed plan lists what is recommended.</p>'
-               '<p class="mb-0">If you have private health insurance with extras cover, ask your fund what it will contribute. <a href="new-patients.html#fees">Fees and payment</a></p></aside>'
-               + (f'<div><h2>Questions about {d["short"]}</h2>{faq_html(faqs)}</div>' if faqs else "<div></div>") + '</div></section>')
-    return "".join(out)
+                       for n, (ic, h, items) in enumerate([("heart", "Possible benefits", w.get("benefits", [])),
+                                                            ("question", "Things to consider", w.get("consider", [])),
+                                                            ("clipboard", "Alternatives to ask about", w.get("alternatives", []))]) if items)
+        sections.append(("weigh", f'<div class="wrap"><div class="section-head"><h2 id="weigh-h">Benefits and things to consider</h2>'
+                                  f'<p class="section-head__intro">Your dentist will explain the benefits, risks and alternatives that apply to you.</p></div><div class="weigh">{cols}</div></div>'))
+    if s.get("care"):
+        c = s["care"]
+        items = "".join(f'<li class="reveal" style="--i:{n % 3}"><strong>{h}</strong><span>{t}</span></li>' for n, (h, t) in enumerate(c["items"]))
+        note = '' if s.get("tone") == "urgent" else '<p class="muted">Always follow the instructions your dentist gives you for your own treatment.</p>'
+        sections.append(("care", f'<div class="wrap split split--5-7 split--top"><div><h2 id="care-h">{c["heading"]}</h2>{note}</div><ul class="care-list">{items}</ul></div>'))
+    faqs = faq_html(s["faqs"]) if s.get("faqs") else ""
+    cost = ""
+    if s.get("cost"):
+        cost = (f'<div class="cost-card reveal">{ICONS["wallet"]}<h3>Cost and payment</h3><p>{s["cost"]} Fees are always explained before treatment begins.</p>'
+                '<p class="mb-0">With private health insurance extras cover, your fund may contribute. <a href="faq.html#costs">Costs and payment</a></p></div>')
+    if faqs or cost:
+        left = f'<div><h2 id="faq-h">Questions about {s["short"]}</h2>{faqs}</div>' if faqs else f'<div><h2 id="faq-h">Cost and payment</h2></div>'
+        sections.append(("faq", f'<div class="wrap split split--7-5 split--top">{left}{cost}</div>' if faqs else f'<div class="wrap split split--5-7 split--top">{left}{cost}</div>'))
+    out = [svc_hero(s)]
+    bg = ["", " sec--mist"]
+    for n, (sid, inner) in enumerate(sections):
+        if n == 1 and callout: out.append(callout)
+        out.append(f'<section class="sec{bg[n % 2]}" id="{sid}" aria-labelledby="{sid}-h">{inner}</section>')
+    if callout and len(sections) < 2: out.append(callout)
+    if s.get("blog"):
+        b = s["blog"]
+        out.append(f'<section class="sec sec--tight" aria-label="From our blog"><div class="wrap"><a class="blog-teaser" href="{b[0]}"><span class="kicker">From our blog</span>'
+                   f'<strong>{b[1]}</strong><span>{b[2]}</span>{ICON["arrow"]}</a></div></section>')
+    out.append(cta(s))
+    out.append(related(",".join(s["related"])))
+    if s.get("sticky_call"):
+        out.append(f'<div class="er-sticky">{call_btn("btn--alert btn--lg")}</div>')
+    meta = {"title": s["title"], "description": s["description"], "nav": "emergency" if s.get("tone") == "urgent" else "services",
+            "body_class": "page-service" + (" page-emergency" if s.get("tone") == "urgent" else ""),
+            "ld": {"@context": "https://schema.org", "@type": "MedicalWebPage", "name": s["title"].split(" | ")[0], "about": {"@type": "MedicalProcedure", "name": html.unescape(s["name"])},
+                   "provider": {"@type": "Dentist", "name": P["name"], "telephone": P["phone_tel"]}}}
+    return render(meta, expand("".join(out)), s["file"])
 
 def directory():
     out = ['<div class="directory">']
@@ -209,18 +290,30 @@ def related(files):
     for f in files:
         s = next((s for s in ALL_SERVICES if s["file"] == f), None)
         if s:
-            items.append(f'<li class="svc-item"><a href="{s["file"]}"><strong>{s["name"]}</strong><span>{s["blurb"]}</span><span class="arrow">{ICON["arrow"]}</span></a></li>')
-    return ('<section class="sec sec--tight" aria-labelledby="related-h"><div class="wrap split split--4-8 split--top">'
-            '<div><h2 id="related-h">Related treatments</h2><p class="muted">Not sure which one you need? '
-            'Your dentist will talk you through the options at your appointment.</p>'
-            '<a class="textlink" href="services.html">See all services</a></div>'
-            f'<ul class="svc-list">{"".join(items)}</ul></div></section>')
+            items.append(f'<li class="related-card reveal" style="--i:{len(items)}"><a href="{s["file"]}"><span class="related-card__media">{thumb(s)}</span>'
+                         f'<span class="related-card__body"><strong>{s["name"]}</strong><span>{s["blurb"]}</span></span></a></li>')
+    return ('<section class="sec sec--tight sec--related" aria-labelledby="related-h"><div class="wrap">'
+            '<div class="section-head section-head--row"><div><h2 id="related-h">Related treatments</h2>'
+            '<p class="section-head__intro">Not sure which one you need? Your dentist will talk you through the options at your appointment.</p></div>'
+            '<a class="btn btn--ghost" href="services.html">All services</a></div>'
+            f'<ul class="related-cards">{"".join(items)}</ul></div></section>')
 
-def cta(variant=""):
+def cta(service=None):
+    """Booking band. On a service page it names the treatment and links an enquiry form pre-filled with that treatment."""
+    if service:
+        urgent = service.get("tone") == "urgent"
+        title = "In pain? Call us now" if urgent else "Ready to book?"
+        topic = re.sub(r"&[a-z]+;", "'", service["name"])
+        ask = f'<a class="textlink textlink--light" href="contact.html?topic={quote_plus(topic)}#message-form">Ask a question about {service["short"]}</a>'
+        text = ("We reserve appointments every day for dental emergencies. Call as early as you can." if urgent else
+                "Book online or call our Edmonton reception team. Not sure what you need? Book a consultation and your dentist will talk you through the options.")
+        buttons = (f'<div class="btn-row">{call_btn("btn--lime btn--lg")}</div>' if urgent else book_buttons("btn--lime", "btn--ghost-light"))
+        return (f'<section class="sec sec--tight" aria-labelledby="cta-h"><div class="wrap"><div class="cta-band">'
+                f'<div><h2 id="cta-h">{title}</h2><p>{text}</p>{"" if urgent else ask}</div>{buttons}</div></div></section>')
     return (f'<section class="sec sec--tight" aria-labelledby="cta-h"><div class="wrap"><div class="cta-band">'
             '<div><h2 id="cta-h">Ready to book?</h2>'
-            f'<p>Call our Edmonton reception team and we&rsquo;ll find a time that suits you. '
-            f'You can also email <a href="mailto:{P["email"]}" style="color:#fff">{P["email"]}</a>.</p></div>'
+            f'<p>Book online or call our Edmonton reception team and we&rsquo;ll find a time that suits you. '
+            f'You can also email <a href="mailto:{P["email"]}">{P["email"]}</a>.</p></div>'
             f'{book_buttons("btn--lime", "btn--ghost-light")}</div></div></section>')
 
 def urgent():
@@ -292,15 +385,19 @@ def offer():
             f'<div class="offer__media">{img("offer-flyer|frame--corner-tr")}</div></div>')
 
 def map_block():
-    return (f'<div class="map"><div class="map__fallback">{ICONS["map"]}'
-            f'<p><strong>{ADDRESS_ONE_LINE}</strong></p><p><a class="btn btn--forest" href="{MAPS_LINK}" rel="noopener">Open in Google Maps</a></p></div>'
-            f'<iframe title="Map showing South Cairns Dental at {esc(ADDRESS_ONE_LINE)}" src="{MAPS_EMBED}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>')
+    """One map component: a keyless Google Maps embed, with the address and directions always visible beneath it,
+    so nothing depends on the embed loading (the fallback tile underneath shows if the iframe is blank)."""
+    return (f'<figure class="mapcard"><div class="map"><div class="map__fallback" aria-hidden="true">{ICONS["map"]}<p><strong>{ADDRESS_ONE_LINE}</strong></p></div>'
+            f'<iframe title="Map showing South Cairns Dental at {esc(ADDRESS_ONE_LINE)}" src="{MAPS_EMBED}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>'
+            f'<figcaption class="mapcard__bar"><span class="mapcard__addr">{ICON["pin"]}<span><strong>South Cairns Dental</strong><br>{P["address_line1"]}, {P["suburb"]} {P["state"]} {P["postcode"]}</span></span>'
+            f'<span class="btn-row"><a class="btn btn--forest btn--sm" href="{MAPS_DIR}" rel="noopener">Get directions</a>'
+            f'<a class="btn btn--ghost btn--sm" href="{MAPS_LINK}" rel="noopener">Open in Google Maps</a></span></figcaption></figure>')
 
 TOKENS = {
   "phone": P["phone_display"], "tel": P["phone_tel"], "email": P["email"],
   "address": ADDRESS_ONE_LINE, "address_line1": P["address_line1"],
   "address_locality": f'{P["suburb"]} {P["state"]} {P["postcode"]}',
-  "maps_link": MAPS_LINK, "official_url": P["official_url"],
+  "maps_link": MAPS_LINK, "maps_dir": MAPS_DIR, "official_url": P["official_url"],
   "hours_table": hours_table, "hours_compact": hours_compact,
   "directory": directory, "cta": cta, "urgent": urgent, "map": map_block,
   "team_cards": team_cards, "team_profiles": team_profiles, "support_team": support_team, "portrait_strip": portrait_strip,
@@ -319,7 +416,7 @@ def expand(text):
         key = m.group(1).strip()
         if ":" in key:
             name, arg = key.split(":", 1)
-            fn = {"img": img, "svc_list": svc_list, "related": related, "illus": illus, "detail": detail,
+            fn = {"img": img, "svc_list": svc_list, "related": related, "illus": illus,
                   "icon": lambda n: ICONS[n]}.get(name)
             if not fn: sys.exit(f"Unknown token {key}")
             return fn(arg)
@@ -371,11 +468,11 @@ def header(meta, current):
     book_mobile = f'<a class="btn btn--lime btn--lg" href="{esc(book)}" rel="noopener">{ICONS["calendar"]}<span>Book online</span></a>' if book else ""
     blog_cur = " is-current" if group == "blog" and current != "blog.html" else ""
     return f'''<a class="skip-link" href="#main">Skip to content</a>
-<div class="utility"><div class="wrap">
+<aside class="utility" aria-label="Opening hours and contact details"><div class="wrap">
   <div class="utility__group"><span class="utility__item"><span class="status-dot" data-hours-dot aria-hidden="true"></span><span data-hours-status="text">Mon to Thu 8 am to 5 pm, Fri 8 am to 4:30 pm</span></span>
   <a class="utility__hide-sm utility__item" href="{MAPS_LINK}" rel="noopener">{ICONS["map"]}{P["address_line1"]}, {P["suburb"]}</a></div>
   <div class="utility__group"><a class="utility__urgent" href="emergency-dentist.html">{ICONS["alert"]}<span>Dental emergency?</span></a><a class="utility__hide-sm utility__email" href="mailto:{P["email"]}">{P["email"]}</a><a href="tel:{P["phone_tel"]}">{P["phone_display"]}</a></div>
-</div></div>
+</div></aside>
 <header class="site-header">
   <div class="wrap header-bar">
     <a class="brand" href="index.html"><img src="assets/images/brand/scd-logo.png" width="640" height="116" alt="South Cairns Dental home"></a>
@@ -406,7 +503,7 @@ def footer():
         <div class="btn-row mt-5">{call_btn("btn--lime")}{f'<a class="btn btn--ghost-light" href="{esc(P["booking_url"])}" rel="noopener">Book online</a>' if P.get("booking_url") else ""}</div>
       </div>
       <div class="footer-cols">
-        <div><h2>Visit</h2><address>{P["address_line1"]}<br>{P["suburb"]} {P["state"]} {P["postcode"]}</address><p class="mt-5 mb-0"><a href="{MAPS_LINK}" rel="noopener">Get directions</a></p>
+        <div><h2>Visit</h2><address>{P["address_line1"]}<br>{P["suburb"]} {P["state"]} {P["postcode"]}</address><p class="mt-5 mb-0"><a href="{MAPS_DIR}" rel="noopener">Get directions</a></p>
           <h2 class="mt-6">Hours</h2><p class="mb-0">{hours_compact()}</p></div>
         <div class="footer-services"><h2>Services</h2><ul><li><a href="services.html">Services overview</a></li>{svc}<li><a href="emergency-dentist.html">Emergency dental care</a></li></ul></div>
         <div><h2>About us</h2><ul><li><a href="about.html">About South Cairns Dental</a></li><li><a href="team.html">Meet our dentists</a></li><li><a href="new-patients.html">New patients</a></li></ul>
@@ -415,7 +512,7 @@ def footer():
     </div>
     <div class="footer-bottom">
       <p class="mb-0">&copy; <span data-year>2026</span> South Cairns Dental. {ADDRESS_ONE_LINE}.</p>
-      <p class="mb-0"><a href="privacy.html">Privacy policy</a> &nbsp; Information on this site is general and is not a substitute for advice from your dentist.</p>
+      <p class="mb-0"><a href="privacy.html">Privacy policy</a> &nbsp; The information on this website doesn&rsquo;t replace advice from your dentist.</p>
     </div>
   </div>
 </footer>'''
@@ -431,6 +528,9 @@ def schema():
         "logo": (SITE + "/assets/images/brand/scd-logo.png") if SITE else None,
         "address": {"@type": "PostalAddress", "streetAddress": P["address_line1"], "addressLocality": P["suburb"],
                     "addressRegion": P["state"], "postalCode": P["postcode"], "addressCountry": "AU"},
+        "geo": {"@type": "GeoCoordinates", "latitude": P["geo"]["lat"], "longitude": P["geo"]["lng"]},
+        "hasMap": MAPS_LINK,
+        "sameAs": [P["facebook_url"]] if P.get("facebook_url") else None,
         "areaServed": ["Edmonton", "Bentley Park", "Mount Sheridan", "Gordonvale", "Cairns"],
         "openingHoursSpecification": spec,
     }
@@ -505,11 +605,11 @@ def article(p):
             f'<h1>{p["title"]}</h1><p class="lead">{p["excerpt"]}</p></div></section>'
             f'<section class="sec sec--article"><div class="wrap article-layout"><article class="article">{banner}{img(p["image"] + "|frame--corner")}'
             f'<div class="prose article__body">{p["body"]}</div>{sources}'
-            f'<p class="article__note small muted">{p.get("note", "General information only. Your dentist can tell you which options suit your situation.")}</p></article>'
-            f'<aside class="article-aside" aria-label="Book and related treatments"><div class="book-panel"><h2 class="h3-size">Talk to us about it</h2>'
+            f'<p class="article__note small muted">{p.get("note", "Your dentist can tell you which options suit your situation.")}</p></article>'
+            f'<div class="article-aside"><div class="book-panel"><h2 class="h3-size">Talk to us about it</h2>'
             f'<p>Have a question about this topic? Book a consultation and your dentist will talk you through your options.</p>{book_buttons("btn--lime", "btn--ghost-light")}</div>'
             + (f'<div class="aside-list"><h2 class="h4-size">Related treatments</h2><ul>{rel}</ul></div>' if rel else "") +
-            f'<a class="textlink" href="blog.html">All articles</a></aside></div></section>{more}{{{{cta}}}}')
+            f'<a class="textlink" href="blog.html">All articles</a></div></div></section>{more}{{{{cta}}}}')
     meta = {"title": f'{p["title"]} | South Cairns Dental blog', "description": p["description"], "nav": "blog",
             "og_type": "article", "noindex": p["status"] == "draft",
             "ld": {"@context": "https://schema.org", "@type": "BlogPosting", "headline": p["title"], "datePublished": p["date"],
@@ -543,8 +643,8 @@ def render(meta, body, out_name):
     canonical = f'<link rel="canonical" href="{SITE}/{"" if out_name == "index.html" else out_name}">' if SITE and out_name != "404.html" else ""
     og_url = f'<meta property="og:url" content="{SITE}/{"" if out_name == "index.html" else out_name}">' if SITE else ""
     og_img = f'{SITE}/assets/images/brand/og-image.jpg' if SITE else "assets/images/brand/og-image.jpg"
-    # Staging (no --site-url): every page is noindex. Production: only 404 is noindex.
-    robots = '<meta name="robots" content="noindex, nofollow">' if (not SITE or out_name == "404.html" or meta.get("noindex")) else ""
+    # Staging (no --site-url, or --noindex): every page is noindex. Production: only the 404 and drafts are noindex.
+    robots = '<meta name="robots" content="noindex, nofollow">' if (not INDEXABLE or out_name == "404.html" or meta.get("noindex")) else ""
     base = '<base href="/">' if out_name == "404.html" else ""
     ld = schema() if meta.get("schema") else ""
     if meta.get("ld"):
@@ -601,7 +701,7 @@ def write_manifest(built_names):
          f"Images were downloaded from https://www.southcairnsdental.com.au on 26 October 2026, optimised (progressive JPEG, quality 82, metadata removed) and saved locally. "
          "No page links to images on the official site.", "",
          "**Status key:** *authentic* is the practice's own photograph or artwork. *official-stock* is a stock photo or illustration the practice already publishes on its website; "
-         "it is not a photo of the practice or its patients, and the stock licence must be confirmed for the new site. *illustration* is original artwork, used where no suitable image exists.", "",
+         "it is not a photo of the practice or its patients, and the stock licence must be confirmed for the new site. *licensed-stock* is a photo licensed for this website (Unsplash License), used where the practice has no suitable image; it is not a photo of the practice. *illustration* is original artwork.", "",
          "## Team portraits (authentic)", "",
          "Each portrait sits directly above that person's name and qualifications on the official About Us page. The man in Dr Alex Bornsztejn's portrait also appears in the "
          "official group photo named `maddyalexgood1.jpg`. Ask each person to confirm their photo before launch.", "",
@@ -642,14 +742,17 @@ def write_manifest(built_names):
     L.append("None. No page uses placeholder artwork or a \"Photo to come\" label." if not leftovers else "Still in use: " + ", ".join(leftovers))
     L += ["", "## Photos worth commissioning", "",
           "The official site has no photos of the building, reception, waiting room or treatment rooms. New photography of these would strengthen the "
-          "About, Contact and New Patients pages and could replace the stock images. Extractions, Fillings and Whitening would also benefit from real photos.", ""]
+          "About, Contact and New Patients pages, and could replace the stock images on the treatment pages.", ""]
     (ROOT / "IMAGE-MANIFEST.md").write_text("\n".join(L), encoding="utf-8")
 
 def main():
     built = []
     for src in sorted((BUILD / "pages").glob("*.html")):
+        if src.name in {f"{k}.html" for k in SERVICES}: sys.exit(f"{src.name} is a service page: edit _build/services/{src.stem}.json instead")
         if src.name == "blog.html": built += blog_listing(src)
         else: built.append(page(src))
+    for slug in SERVICES:
+        built.append(service_page(slug))
     for p in POSTS:
         built.append(article(p))
     (ROOT / "assets/js/practice-data.js").write_text(
@@ -661,10 +764,10 @@ def main():
         if old.name not in names: old.unlink()
     write_manifest([n for n, _ in built])
     # Sitemap / robots only when the deployment URL is known
-    if not SITE:
-        (ROOT / "robots.txt").write_text("# Staging build: keep out of search engines. Rebuild with --site-url for production.\nUser-agent: *\nDisallow: /\n", encoding="utf-8")
+    if not INDEXABLE:
+        (ROOT / "robots.txt").write_text("# Staging build: keep out of search engines. Rebuild with --site-url (and without --noindex) for production.\nUser-agent: *\nDisallow: /\n", encoding="utf-8")
         (ROOT / "sitemap.xml").unlink(missing_ok=True)
-    if SITE:
+    if INDEXABLE:
         urls = "".join(f"<url><loc>{SITE}/{'' if n == 'index.html' else n}</loc></url>" for n, m in built if n != "404.html" and not m.get("noindex"))
         (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n', encoding="utf-8")
         (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")

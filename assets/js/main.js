@@ -169,6 +169,16 @@
 
   /* ---------- Contact form: opens the visitor's email app, sends nothing itself ---------- */
   var form = document.querySelector("[data-mailto-form]");
+  // Service pages link here with ?topic=<treatment>, so the enquiry keeps its context
+  if (form) {
+    try {
+      var topic = new URLSearchParams(window.location.search).get("topic");
+      if (topic && topic.length < 60) {
+        form.elements.topic.value = "Treatment question";
+        if (!form.elements.message.value) form.elements.message.value = "I have a question about " + topic + ": ";
+      }
+    } catch (e) { /* older browsers: the form still works without the prefill */ }
+  }
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -195,14 +205,15 @@
       var status = form.querySelector(".form__status");
       if (status) {
         status.hidden = false;
-        status.textContent = "Your email app should now open with your message filled in. Press send in your email app to send it. Nothing has been sent from this website.";
+        status.textContent = "Your email app should now open with your message ready. Press send there to send it to reception. If it doesn't open, email " +
+          form.getAttribute("data-mailto-form") + " or call (07) 4055 4214.";
       }
       window.location.href = href;
     });
   }
 
   /* ---------- Emergency page: sticky call bar once the main call card is off screen ---------- */
-  var sticky = document.querySelector(".er-sticky"), card = document.querySelector(".er-call");
+  var sticky = document.querySelector(".er-sticky"), card = document.querySelector("[data-sticky-anchor]");
   if (sticky && card && "IntersectionObserver" in window) {
     new IntersectionObserver(function (entries) {
       sticky.classList.toggle("is-visible", !entries[0].isIntersecting);

@@ -1,0 +1,145 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/about-us",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/services.html",
+      "permanent": true
+    },
+    {
+      "source": "/special-offers",
+      "destination": "/special-offers.html",
+      "permanent": true
+    },
+    {
+      "source": "/emergency-dental-care",
+      "destination": "/emergency-dentist.html",
+      "permanent": true
+    },
+    {
+      "source": "/payment-plans",
+      "destination": "/faq.html#costs",
+      "permanent": true
+    },
+    {
+      "source": "/thank-you",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/",
+      "destination": "/blog.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-choose-dental-implants",
+      "destination": "/blog-why-choose-dental-implants.html",
+      "permanent": true
+    },
+    {
+      "source": "/check-ups-and-dental-cleans",
+      "destination": "/check-ups-and-dental-cleans.html",
+      "permanent": true
+    },
+    {
+      "source": "/childrens-dentistry",
+      "destination": "/childrens-dentistry.html",
+      "permanent": true
+    },
+    {
+      "source": "/cosmetic-veneers",
+      "destination": "/cosmetic-veneers.html",
+      "permanent": true
+    },
+    {
+      "source": "/crowns-and-bridge-work",
+      "destination": "/crowns-and-bridge-work.html",
+      "permanent": true
+    },
+    {
+      "source": "/dental-implants",
+      "destination": "/dental-implants.html",
+      "permanent": true
+    },
+    {
+      "source": "/dentures",
+      "destination": "/dentures.html",
+      "permanent": true
+    },
+    {
+      "source": "/extractions",
+      "destination": "/extractions.html",
+      "permanent": true
+    },
+    {
+      "source": "/fillings",
+      "destination": "/fillings.html",
+      "permanent": true
+    },
+    {
+      "source": "/invisalign",
+      "destination": "/invisalign.html",
+      "permanent": true
+    },
+    {
+      "source": "/mouthguards",
+      "destination": "/mouthguards.html",
+      "permanent": true
+    },
+    {
+      "source": "/root-canal-therapy",
+      "destination": "/root-canal-therapy.html",
+      "permanent": true
+    },
+    {
+      "source": "/whitening",
+      "destination": "/whitening.html",
+      "permanent": true
+    },
+    {
+      "source": "/wisdom-teeth",
+      "destination": "/wisdom-teeth.html",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/team",
+      "destination": "/team.html",
+      "permanent": true
+    },
+    {
+      "source": "/new-patients",
+      "destination": "/new-patients.html",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/faq.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html",
+      "permanent": true
+    }
+  ]
+}

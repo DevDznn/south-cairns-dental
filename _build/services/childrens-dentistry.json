@@ -1,0 +1,94 @@
+{
+  "file": "childrens-dentistry.html",
+  "name": "Children&rsquo;s dentistry",
+  "group": "Everyday care",
+  "title": "Children's dentist in Edmonton, Cairns | South Cairns Dental",
+  "description": "Gentle, positive dental visits for children at South Cairns Dental in Edmonton. Free kids dentistry for eligible children. Call (07) 4055 4214 to check eligibility.",
+  "hero": {
+    "title": "Children&rsquo;s dentistry",
+    "image": "kids",
+    "lead": "A good experience early on shapes how children feel about the dentist for life. We keep visits calm, friendly and unhurried."
+  },
+  "short": "children&rsquo;s dentistry",
+  "intro": {
+    "heading": "Why baby teeth matter",
+    "html": "<p>Baby teeth help children chew, speak clearly and hold space for adult teeth. Decay in baby teeth can cause pain and infection, and can affect the adult teeth developing underneath.</p><p>Regular visits let your dentist check how teeth and jaws are developing, apply preventive care where it helps, and give you practical advice for brushing and diet at each age.</p>",
+    "aside_heading": "Signs to book a visit",
+    "aside": [
+      "White, brown or dark spots on the teeth",
+      "Your child complains of toothache or avoids chewing on one side",
+      "Swollen or bleeding gums",
+      "A knock to the mouth, even if the tooth looks fine",
+      "Questions about thumb sucking, dummies or teeth coming through"
+    ]
+  },
+  "callout": {
+    "tone": "brand",
+    "title": "Free kids dentistry for eligible children",
+    "html": "<p>Eligibility conditions apply, so call reception before the visit and we&rsquo;ll check for you.</p>",
+    "call": true
+  },
+  "explain": {
+    "heading": "Helping your child feel ready",
+    "intro": "A few simple things that make the first visit easier.",
+    "items": [
+      {
+        "title": "Keep it low-key",
+        "text": "Talk about the visit in a matter-of-fact way. Words like &ldquo;hurt&rdquo; or &ldquo;needle&rdquo; can plant worries that weren&rsquo;t there."
+      },
+      {
+        "title": "Pick a good time",
+        "text": "Morning appointments often suit younger children, when they&rsquo;re rested and fed."
+      },
+      {
+        "title": "Come along together",
+        "text": "Children can watch a parent or sibling have a check-up first, so they know what to expect."
+      },
+      {
+        "title": "Tell us about worries",
+        "text": "Let reception know if your child is nervous or has had a tough experience before."
+      }
+    ]
+  },
+  "care": {
+    "heading": "Caring for your child&rsquo;s teeth at home",
+    "items": [
+      [
+        "Brushing",
+        "Brush twice a day with a soft, small-headed brush. Supervise brushing until your child can do it well, usually around 7 or 8."
+      ],
+      [
+        "Toothpaste",
+        "Water only from the first tooth to 18 months unless advised otherwise; low-fluoride children&rsquo;s toothpaste from 18 months to 6 years; standard fluoride toothpaste from 6 years. Use a pea-sized amount."
+      ],
+      [
+        "Drinks and snacks",
+        "Water is the best drink. Avoid putting children to bed with a bottle of milk or juice, and keep sweet snacks to mealtimes."
+      ],
+      [
+        "Sport",
+        "If your child plays contact sport, ask about a custom <a href=\"mouthguards.html\">mouthguard</a>."
+      ]
+    ]
+  },
+  "faqs": [
+    [
+      "When should my child first visit?",
+      "<p>Australian guidance suggests when the first teeth come through, or by around 12 months of age.</p>"
+    ],
+    [
+      "What is the Child Dental Benefits Schedule?",
+      "<p>An Australian Government program that helps eligible families with the cost of some basic dental services for children. Eligibility depends on age and on certain government payments, and benefits are capped. Check with <a href=\"https://www.servicesaustralia.gov.au/child-dental-benefits-schedule\" rel=\"noopener\">Services Australia</a>.</p>"
+    ],
+    [
+      "My child is scared. What should I do?",
+      "<p>Let us know when you book. Keep your own language calm and matter-of-fact, and let your child watch someone else in the family have a check-up first if that helps.</p>"
+    ]
+  ],
+  "cost": "Eligibility for free kids dentistry and for the Child Dental Benefits Schedule depends on current rules, so call reception and we&rsquo;ll explain what applies.",
+  "related": [
+    "check-ups-and-dental-cleans.html",
+    "fillings.html",
+    "mouthguards.html"
+  ]
+}

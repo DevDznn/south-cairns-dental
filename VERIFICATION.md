@@ -2,6 +2,20 @@
 
 In version 4 the official website (https://www.southcairnsdental.com.au) was reachable. On 26 October 2026 every page in its sitemap was downloaded and read: home, About Us, Services, all 14 treatment pages, Emergency, Special Offers, Payment Plans, Contact, Blog and the one blog article. Everything marked *verified* below was checked against that copy. Items still need the practice's sign-off, because a website can be out of date.
 
+## New in version 5 (confirm or decide)
+
+- [ ] **Three Unsplash photos.** These are on the Fillings, Extractions and Whitening pages, and their service cards:
+  - `dental-exam-close-up.jpg` by Caroline LM
+  - `relaxed-patient-in-chair.jpg` by D Dental Office (the dentist wears another practice's name badge, which isn't legible at display size)
+  - `natural-smile.jpg` by Lesly Juarez
+
+  All three are free for commercial use under the Unsplash License, checked on each photo page on 26 October 2026. None shows South Cairns Dental, so replace them with practice photography when it's available.
+- [ ] **Search indexing on vercel.app.** The deployment is deliberately `noindex`, because the official site is still live and a second indexed copy could compete with it. When the practice's domain points at the new site, rebuild without `--noindex` (see the README).
+- [ ] **Map pin and directions.** Both use the coordinates from the practice's own Google Maps listing (-17.0195683, 145.7439008). Confirm the pin and directions bring patients to the right entrance.
+- [ ] **Mouthguards.** The earlier claim that a mouthguard reduces concussion risk was removed, because the evidence doesn't support it. Ask a dentist before reinstating it.
+- [ ] **Contact form.** It opens the patient's email app; nothing is sent from the website. Decide whether to connect a form service (for example, the official site's enquiry form provider).
+- [ ] **Online booking.** The booking link can't pre-select a treatment. Service pages offer "Ask a question about …", which pre-fills the contact form with the treatment instead. Ask Centaur whether the practice's portal supports deep links per appointment type.
+
 ## Resolved in version 4
 
 - [x] **Online booking link.** The official "Book Now" link is `https://www.centaurportal.com/d4w/org-1595/search?practiceID=1800`. It is now in `practice.json` and appears as "Book online" in the header, mobile menu, footer and every booking panel. Confirm it is still the correct link.
@@ -61,7 +75,7 @@ These items carry over from version 3:
 - [ ] **New and non-registered patients and children** being seen for emergencies.
 - [ ] **Implant healing of "about 3 months"** and **Invisalign taking "as little as 7 weeks; around 12 to 18 months is typical"**, both from the official pages.
 - [ ] **Root canal steps, filling FAQs and children's tips.**
-- [ ] **Treatment detail sections** (`_build/content/*.json`). These are general clinical information.
+- [ ] **Treatment page content** (`_build/services/*.json`): clinical wording on every treatment page.
 - [ ] **New Patients "what you may like to bring" list.** It is marked on the page as general guidance, not a requirement.
 - [ ] **Privacy policy** (`privacy.html`). This is a general draft and needs the practice's review, contact details and a "last updated" date.
 - [ ] **The Invisalign trademark.** The site uses the word only; no Align Technology logo is used.
@@ -69,7 +83,7 @@ These items carry over from version 3:
 ## Going live
 
 - [ ] **Production domain,** for canonical URLs, the sitemap and structured data. See the README.
-- [ ] **Redirects from the old URLs:**
+- [x] **Redirects from the old URLs** are now set up in `vercel.json` (Vercel applies them after a push; test them once deployed):
   - `/about-us` → `/about.html`
   - `/contact` → `/contact.html`
   - `/services` → `/services.html`

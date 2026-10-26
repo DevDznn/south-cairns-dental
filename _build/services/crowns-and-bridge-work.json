@@ -1,0 +1,95 @@
+{
+  "file": "crowns-and-bridge-work.html",
+  "name": "Crowns and bridges",
+  "group": "Repairing teeth",
+  "title": "Dental crowns and bridges in Edmonton | South Cairns Dental",
+  "description": "Crowns to strengthen damaged, decayed or heavily filled teeth, and bridges to replace missing teeth. Talk to South Cairns Dental in Edmonton about your options.",
+  "hero": {
+    "title": "Crowns and bridges",
+    "image": "crowns",
+    "lead": "Two ways to restore strength and appearance: a crown protects a tooth you still have, while a bridge fills the gap where a tooth is missing."
+  },
+  "short": "crowns and bridges",
+  "intro": {
+    "heading": "How crowns and bridges are made",
+    "html": "<p>For a crown, the tooth is shaped to make room, an impression or scan is taken, and a temporary crown protects the tooth while the permanent one is made. At a later appointment the permanent crown is fitted and adjusted so your bite feels right.</p><p>A bridge works in a similar way, with the teeth either side of a gap prepared to support a replacement tooth joined between them. Crowns and bridges can be made from different materials, and your dentist will explain which suits the position of the tooth.</p>"
+  },
+  "explain": {
+    "heading": "Crown or bridge?",
+    "intro": "The right choice depends on your teeth, so it starts with an examination. Your dentist will look at the tooth, the teeth around it and your bite, then explain the options, including <a href=\"dental-implants.html\">dental implants</a> where they may be suitable.",
+    "items": [
+      {
+        "title": "Crown",
+        "text": "A cap that covers the whole visible part of a tooth, reinforcing it.",
+        "list": [
+          "<strong>Often considered for:</strong> a tooth that is cracked, badly decayed or has a large filling.",
+          "<strong>What it does:</strong> holds the tooth together and protects it from further damage.",
+          "<strong>Your own tooth:</strong> stays in place underneath the crown."
+        ]
+      },
+      {
+        "title": "Bridge",
+        "text": "An artificial tooth joined to the natural teeth on either side of a gap.",
+        "list": [
+          "<strong>Often considered for:</strong> replacing one or more missing teeth.",
+          "<strong>What it does:</strong> closes the gap so you can chew and smile with confidence.",
+          "<strong>Neighbouring teeth:</strong> support the bridge, so their health matters."
+        ]
+      }
+    ],
+    "images": [
+      "bridge"
+    ]
+  },
+  "weigh": {
+    "heading": "Benefits and things to consider",
+    "benefits": [
+      "Protects a weakened tooth from breaking",
+      "Restores chewing and appearance",
+      "A bridge is fixed in place, so there&rsquo;s nothing to remove"
+    ],
+    "consider": [
+      "Preparing a tooth removes some tooth structure, and this can&rsquo;t be undone",
+      "Bridges rely on healthy neighbouring teeth",
+      "Crowns and bridges can need repair or replacement over time"
+    ],
+    "alternatives": [
+      "A large <a href=\"fillings.html\">filling</a> in some cases",
+      "A <a href=\"dental-implants.html\">dental implant</a> to replace a missing tooth",
+      "<a href=\"dentures.html\">Partial dentures</a>"
+    ]
+  },
+  "care": {
+    "heading": "Looking after a crown or bridge",
+    "items": [
+      [
+        "With a temporary",
+        "Avoid sticky and very hard foods, and take care flossing around it."
+      ],
+      [
+        "Cleaning a bridge",
+        "Clean under the replacement tooth every day. Your dentist can show you how, using floss threaders or small brushes."
+      ],
+      [
+        "Ongoing",
+        "Regular check-ups let your dentist check the edges of the crown or bridge and the health of the teeth supporting it."
+      ]
+    ]
+  },
+  "faqs": [
+    [
+      "How long does a crown last?",
+      "<p>It varies with the material, your bite and how well the tooth and gums are looked after. Your dentist can give you a sense of what to expect for your tooth.</p>"
+    ],
+    [
+      "Does getting a crown hurt?",
+      "<p>The tooth is numbed with local anaesthetic before it&rsquo;s prepared. Some sensitivity afterwards is common and usually settles.</p>"
+    ]
+  ],
+  "cost": "The cost depends on what your mouth needs, so it can only be worked out after an examination.",
+  "related": [
+    "dental-implants.html",
+    "root-canal-therapy.html",
+    "fillings.html"
+  ]
+}

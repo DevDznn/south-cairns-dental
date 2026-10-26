@@ -1,0 +1,112 @@
+{
+  "file": "dental-implants.html",
+  "name": "Dental implants",
+  "group": "Replacing teeth",
+  "title": "Dental implants in Edmonton, Cairns | South Cairns Dental",
+  "description": "Dental implants as a fixed replacement for missing teeth. Complimentary consultation, implant placement under local anaesthetic, then your permanent tooth after healing.",
+  "hero": {
+    "title": "Dental implants",
+    "image": "implants",
+    "lead": "An implant replaces the root of a missing tooth and supports a new tooth on top. It&rsquo;s fixed in place, so there&rsquo;s nothing to take out at night."
+  },
+  "short": "dental implants",
+  "intro": {
+    "heading": "How an implant replaces a tooth",
+    "html": "<p>A dental implant has three parts: a post placed in the jawbone that acts as the root, a connector called an abutment, and a crown that looks like a natural tooth. Over the healing period, the bone bonds to the implant, giving it a strong foundation.</p><p>Implants can replace a single tooth, several teeth, or support a bridge or denture.</p>",
+    "aside_heading": "People often ask about implants when",
+    "aside": [
+      "A tooth has been lost or needs to come out",
+      "A bridge would mean preparing healthy neighbouring teeth",
+      "Dentures feel loose and they want more security",
+      "They want a fixed replacement that doesn&rsquo;t come out"
+    ]
+  },
+  "callout": {
+    "tone": "brand",
+    "title": "Start with a complimentary implant consultation",
+    "html": "<p>Your dentist checks whether implants suit you and talks you through your plan and costs. Dr Alex and Dr Louie both have a particular interest in implant dentistry. <a href=\"team.html\">Meet our dentists</a></p>"
+  },
+  "explain": {
+    "heading": "Is an implant right for you?",
+    "intro": "Implants aren&rsquo;t suitable for everyone. Your general health, the bone in your jaw and the condition of your other teeth all play a part. If an implant isn&rsquo;t the best fit, your dentist will talk you through alternatives such as a <a href=\"crowns-and-bridge-work.html\">bridge</a> or <a href=\"dentures.html\">dentures</a>, including implant-retained dentures.",
+    "images": [
+      "implant-section"
+    ]
+  },
+  "process": {
+    "heading": "Three stages, planned around you",
+    "intro": "Timing differs between patients. Your dentist will give you a plan for your own treatment.",
+    "steps": [
+      [
+        "Consultation and plan",
+        "Your dentist checks whether implants suit you and talks you through a treatment plan and costs. A mould of your teeth and a special 3D X-ray are taken before the next stage."
+      ],
+      [
+        "Placing the implant",
+        "The implant is placed into the jawbone under local anaesthetic.",
+        "Healing, often around 3 months"
+      ],
+      [
+        "Your permanent tooth",
+        "Once the implant has healed into the bone, your new tooth is fitted on top."
+      ]
+    ]
+  },
+  "weigh": {
+    "heading": "Benefits and things to consider",
+    "benefits": [
+      "Fixed in place, without relying on neighbouring teeth",
+      "Looks and functions much like a natural tooth",
+      "Can help support dentures"
+    ],
+    "consider": [
+      "Involves minor surgery and a healing period of months",
+      "Enough healthy bone is needed, and some people need extra procedures",
+      "Smoking, gum disease and some health conditions can affect success",
+      "Implants need daily cleaning and regular reviews, just like teeth"
+    ],
+    "alternatives": [
+      "A <a href=\"crowns-and-bridge-work.html\">bridge</a>",
+      "Partial or full <a href=\"dentures.html\">dentures</a>",
+      "Leaving the gap, after discussing the effect on your bite"
+    ]
+  },
+  "care": {
+    "heading": "Looking after your implant",
+    "items": [
+      [
+        "After placement",
+        "Follow your dentist&rsquo;s instructions on eating, cleaning and pain relief while the area heals."
+      ],
+      [
+        "Every day",
+        "Brush and clean around the implant as carefully as your natural teeth."
+      ],
+      [
+        "Reviews",
+        "Regular check-ups help keep the gum and bone around the implant healthy."
+      ]
+    ]
+  },
+  "faqs": [
+    [
+      "Am I too old for implants?",
+      "<p>Age alone isn&rsquo;t usually the deciding factor. Your general health, bone and gums matter more. Your dentist will assess this at a consultation.</p>"
+    ],
+    [
+      "How long does treatment take?",
+      "<p>It varies. After the implant is placed, healing often takes around three months before the permanent tooth is fitted, and some cases take longer.</p>"
+    ]
+  ],
+  "cost": "Implant costs vary with the number of implants, the type of crown and any extra procedures. Your dentist will give you a written plan with costs after your consultation.",
+  "blog": [
+    "blog-why-choose-dental-implants.html",
+    "Why choose dental implants?",
+    "The main advantages of implants, and how to find out whether one suits you."
+  ],
+  "related": [
+    "crowns-and-bridge-work.html",
+    "dentures.html",
+    "extractions.html"
+  ]
+}

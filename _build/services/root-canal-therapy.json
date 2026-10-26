@@ -1,0 +1,124 @@
+{
+  "file": "root-canal-therapy.html",
+  "name": "Root canal therapy",
+  "group": "Repairing teeth",
+  "title": "Root canal treatment in Edmonton, Cairns | South Cairns Dental",
+  "description": "Root canal therapy treats a tooth whose nerve is irreversibly inflamed or has died, with the aim of keeping your natural tooth. South Cairns Dental, Edmonton.",
+  "hero": {
+    "title": "Root canal therapy",
+    "image": "rootcanal",
+    "secondary": [
+      "In pain right now?",
+      "emergency-dentist.html"
+    ],
+    "lead": "When the nerve inside a tooth is badly inflamed or has died, root canal treatment can often save the tooth rather than removing it."
+  },
+  "short": "root canal therapy",
+  "intro": {
+    "heading": "Saving your natural tooth",
+    "html": "<p>Root canal treatment removes the inflamed or infected tissue from inside the tooth, cleans the canals and seals them. The aim is to relieve pain and infection and keep your own tooth in place.</p><p>Not every tooth can be saved, and your dentist will explain the likely outcome for yours, along with the alternatives.</p>",
+    "aside_heading": "Signs a tooth may need assessment",
+    "aside": [
+      "Severe or lingering toothache",
+      "Pain that lingers after hot or cold food",
+      "Pain when biting or touching the tooth",
+      "Swelling or a pimple on the gum near a tooth",
+      "A tooth that has darkened after an injury"
+    ]
+  },
+  "callout": {
+    "tone": "info",
+    "title": "Worried about discomfort?",
+    "html": "<p>Treatment is carried out under local anaesthetic. Tell your dentist how you&rsquo;re feeling at any point; you can ask to stop for a break.</p>"
+  },
+  "explain": {
+    "heading": "Why a tooth might need it",
+    "intro": "Inside every tooth is soft tissue containing the nerve. Two common causes of damage:",
+    "items": [
+      {
+        "title": "Deep decay",
+        "text": "Decay that reaches the centre of the tooth can inflame or infect the nerve."
+      },
+      {
+        "title": "Injury",
+        "text": "A knock or crack can damage the nerve, sometimes long before you notice symptoms."
+      }
+    ]
+  },
+  "process": {
+    "heading": "What treatment involves",
+    "intro": "The number of appointments varies from tooth to tooth. Your dentist will explain the plan for yours.",
+    "steps": [
+      [
+        "Assessment",
+        "Your dentist examines the tooth and takes X-rays to see the roots."
+      ],
+      [
+        "Cleaning the canals",
+        "The damaged nerve tissue is removed and the canals inside the root are cleaned."
+      ],
+      [
+        "Sealing the tooth",
+        "The space is filled and sealed to help keep bacteria out."
+      ],
+      [
+        "Restoring the tooth",
+        "Your dentist will advise whether the tooth needs a filling or a <a href=\"crowns-and-bridge-work.html\">crown</a> to protect it."
+      ]
+    ]
+  },
+  "weigh": {
+    "heading": "Benefits and things to consider",
+    "benefits": [
+      "Can relieve pain caused by an inflamed or infected nerve",
+      "Keeps your natural tooth, which helps your bite",
+      "Avoids the gap left by an extraction"
+    ],
+    "consider": [
+      "Treatment may need more than one appointment",
+      "The tooth may need a crown afterwards to protect it",
+      "Some teeth don&rsquo;t respond and may need further treatment or removal"
+    ],
+    "alternatives": [
+      "<a href=\"extractions.html\">Extraction</a>, then replacing the tooth with an implant, bridge or denture",
+      "Referral to a specialist endodontist for complex cases"
+    ]
+  },
+  "care": {
+    "heading": "Before and after your appointment",
+    "items": [
+      [
+        "Between appointments",
+        "Avoid chewing hard food on the tooth until it&rsquo;s fully restored."
+      ],
+      [
+        "Afterwards",
+        "Tenderness for a few days is common. Call us if you have swelling or pain that gets worse."
+      ],
+      [
+        "Protect the tooth",
+        "Have the final filling or crown placed as recommended, so the tooth doesn&rsquo;t crack."
+      ]
+    ]
+  },
+  "faqs": [
+    [
+      "Is root canal treatment painful?",
+      "<p>It&rsquo;s carried out under local anaesthetic, and most people feel pressure rather than pain. The treatment is often what relieves the toothache.</p>"
+    ],
+    [
+      "Will I need a crown?",
+      "<p>Back teeth in particular are often crowned after root canal treatment to protect them. Your dentist will advise on your tooth.</p>"
+    ],
+    [
+      "Can I just take painkillers and wait?",
+      "<p>Pain relief may ease symptoms but doesn&rsquo;t treat the cause. An untreated infection can spread, so please book an assessment.</p>"
+    ]
+  ],
+  "cost": "The cost depends on what your mouth needs, so it can only be worked out after an examination.",
+  "related": [
+    "crowns-and-bridge-work.html",
+    "fillings.html",
+    "extractions.html"
+  ]
+}

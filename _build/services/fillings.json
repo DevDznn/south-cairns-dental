@@ -1,0 +1,97 @@
+{
+  "file": "fillings.html",
+  "name": "Fillings",
+  "group": "Everyday care",
+  "title": "Tooth-coloured fillings in Edmonton | South Cairns Dental",
+  "description": "Early tooth decay treated with white, tooth-coloured fillings at South Cairns Dental, Edmonton. Treating decay early can help avoid root canal treatment or extraction.",
+  "hero": {
+    "title": "Fillings",
+    "image": "fillings",
+    "lead": "When decay is found early, your dentist removes the damaged part of the tooth and restores it with a white, tooth-coloured filling. It&rsquo;s usually one straightforward appointment."
+  },
+  "short": "fillings",
+  "intro": {
+    "heading": "How a filling works",
+    "html": "<p>Decay is caused by bacteria that produce acid and soften the tooth. Once a cavity forms, the tooth can&rsquo;t repair itself. Your dentist removes the softened, decayed part and fills the space to restore the tooth&rsquo;s shape and seal it.</p><p>Fillings can also repair small chips and worn areas. The best material depends on the size and position of the filling and the forces on that tooth, and your dentist will explain the options.</p>"
+  },
+  "explain": {
+    "heading": "Why it&rsquo;s worth treating decay early",
+    "intro": "Decay doesn&rsquo;t heal on its own. Left alone, it tends to move deeper into the tooth.",
+    "items": [
+      {
+        "label": "Stage 1",
+        "title": "Early decay",
+        "text": "Often no pain at all. Found at a check-up or on an X-ray."
+      },
+      {
+        "label": "Stage 2",
+        "title": "A filling",
+        "text": "Decayed material is removed and the tooth is restored with white filling material."
+      },
+      {
+        "label": "If left untreated",
+        "title": "Deeper damage",
+        "text": "Decay can reach the nerve, and the tooth may then need <a href=\"root-canal-therapy.html\">root canal therapy</a>."
+      },
+      {
+        "label": "At worst",
+        "title": "Losing the tooth",
+        "text": "Some teeth become too damaged to save and need to be removed."
+      }
+    ]
+  },
+  "weigh": {
+    "heading": "Benefits and things to consider",
+    "benefits": [
+      "Stops decay spreading further into the tooth",
+      "Usually completed in one appointment",
+      "Tooth-coloured material blends in with your teeth"
+    ],
+    "consider": [
+      "Fillings can wear, chip or need replacing over time",
+      "Large cavities may be better suited to a crown",
+      "Teeth can be sensitive for a short time afterwards"
+    ],
+    "alternatives": [
+      "A <a href=\"crowns-and-bridge-work.html\">crown</a> for heavily damaged teeth",
+      "Monitoring very early decay with extra prevention, where suitable"
+    ]
+  },
+  "care": {
+    "heading": "Before and after your appointment",
+    "items": [
+      [
+        "Straight after",
+        "If you&rsquo;ve had local anaesthetic, avoid hot drinks and chewing until the numbness wears off, so you don&rsquo;t bite your lip or cheek."
+      ],
+      [
+        "The next few days",
+        "Mild sensitivity is common and usually settles. Call us if your bite feels high or pain gets worse."
+      ],
+      [
+        "Long term",
+        "Brush twice daily with fluoride toothpaste, clean between teeth and keep up regular check-ups."
+      ]
+    ]
+  },
+  "faqs": [
+    [
+      "Will I need an injection?",
+      "<p>Many fillings are done with local anaesthetic so you stay comfortable. Your dentist will talk this through with you before starting.</p>"
+    ],
+    [
+      "Can my old silver fillings be replaced?",
+      "<p>Ask your dentist at your check-up. They can tell you whether replacing an existing filling makes sense for that tooth.</p>"
+    ],
+    [
+      "How do I know if I need a filling?",
+      "<p>Early decay often has no symptoms, which is why regular check-ups matter. Sensitivity to sweet, hot or cold food can be a sign, so mention it if you notice it.</p>"
+    ]
+  ],
+  "cost": "The cost depends on what your mouth needs, so it can only be worked out after an examination.",
+  "related": [
+    "check-ups-and-dental-cleans.html",
+    "root-canal-therapy.html",
+    "crowns-and-bridge-work.html"
+  ]
+}

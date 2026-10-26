@@ -1,0 +1,101 @@
+{
+  "file": "check-ups-and-dental-cleans.html",
+  "name": "Check-ups and cleans",
+  "group": "Everyday care",
+  "title": "Check-ups and dental cleans in Edmonton | South Cairns Dental",
+  "description": "A thorough consultation and clean for patients of all ages: exam, X-rays where needed, scale and polish, fluoride and a printed treatment plan. Book on (07) 4055 4214.",
+  "hero": {
+    "title": "Check-ups and cleans",
+    "image": "checkups",
+    "lead": "New patients of every age are welcome. For a first visit we recommend a thorough consultation and clean, so your dentist can see the whole picture and find small problems before they become big ones."
+  },
+  "short": "check-ups",
+  "intro": {
+    "heading": "Why regular check-ups matter",
+    "html": "<p>Tooth decay and gum disease often develop without pain. By the time a tooth aches, the problem is usually larger and treatment more involved. A check-up gives your dentist the chance to spot early changes and deal with them simply.</p><p>A professional scale and clean removes calculus (hardened plaque) that a toothbrush can&rsquo;t shift. Left in place, it irritates the gums and makes gum disease more likely.</p>",
+    "aside_heading": "Book a check-up sooner if you notice",
+    "aside": [
+      "Gums that bleed when you brush or floss",
+      "Sensitivity to hot, cold or sweet food",
+      "A chipped tooth or a filling that feels rough",
+      "Persistent bad breath or a bad taste",
+      "A sore spot in your mouth that hasn&rsquo;t healed after two weeks"
+    ]
+  },
+  "callout": {
+    "tone": "brand",
+    "title": "Prevention costs less, and hurts less, than repair.",
+    "html": "<p>Regular check-ups let your dentist find decay, gum disease and wear early, when treatment is simpler. Ask your dentist how often you should come in; it depends on your own teeth and history.</p>"
+  },
+  "process": {
+    "heading": "What happens at your visit",
+    "intro": "We take sufficient time at each visit. Not every step is needed every time, and your dentist will explain what they&rsquo;re doing and why.",
+    "steps": [
+      [
+        "Teeth and gums examined",
+        "A careful look at every tooth, your gums and the soft tissues of your mouth."
+      ],
+      [
+        "Jaw joints checked",
+        "Your dentist assesses how your jaw moves and whether there are signs of strain or grinding."
+      ],
+      [
+        "X-rays, if needed",
+        "Close-up and full-face X-rays show what can&rsquo;t be seen by eye, such as decay between teeth or below the gum line."
+      ],
+      [
+        "Photos of anything to watch",
+        "Intraoral photos let you see exactly what your dentist sees."
+      ],
+      [
+        "Scale, clean and polish",
+        "Plaque and hardened tartar are removed and teeth are polished smooth."
+      ],
+      [
+        "Topical fluoride",
+        "Applied to help strengthen tooth enamel."
+      ],
+      [
+        "A printed treatment plan",
+        "If anything needs attention, you take home the most accurate estimate we can give of the time and cost involved."
+      ]
+    ]
+  },
+  "care": {
+    "heading": "Before and after your appointment",
+    "items": [
+      [
+        "Before your visit",
+        "Note any medicines you take and changes to your health, and any teeth that have been bothering you."
+      ],
+      [
+        "At the appointment",
+        "Tell your dentist if anything feels uncomfortable. They can pause or adjust what they&rsquo;re doing."
+      ],
+      [
+        "Afterwards",
+        "Keep brushing twice a day with fluoride toothpaste and cleaning between your teeth. Your dentist will suggest when to come back."
+      ]
+    ]
+  },
+  "faqs": [
+    [
+      "Do I need X-rays every visit?",
+      "<p>No. Your dentist decides when X-rays are useful, based on your history and what they see. They show decay between teeth and problems below the gum line that can&rsquo;t be seen by eye.</p>"
+    ],
+    [
+      "Will the clean hurt?",
+      "<p>Most people find a scale and clean comfortable. If your gums are inflamed or your teeth are sensitive, it can feel a little uncomfortable. Tell your dentist and they can go more gently.</p>"
+    ],
+    [
+      "Why do you give me a printed plan?",
+      "<p>So you can see exactly what has been recommended and think it over in your own time. Nothing goes ahead until you&rsquo;re ready.</p>"
+    ]
+  ],
+  "cost": "A check-up and clean is a standard appointment, but the final cost depends on what is needed on the day, such as X-rays.",
+  "related": [
+    "childrens-dentistry.html",
+    "fillings.html",
+    "whitening.html"
+  ]
+}

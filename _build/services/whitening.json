@@ -1,0 +1,78 @@
+{
+  "file": "whitening.html",
+  "name": "Teeth whitening",
+  "group": "Changing your smile",
+  "title": "Professional teeth whitening in Edmonton | South Cairns Dental",
+  "description": "Professional teeth whitening supervised by your dentist at South Cairns Dental, Edmonton. Answers on safety, sensitivity, how often to whiten and fillings or crowns.",
+  "hero": {
+    "title": "Teeth whitening",
+    "image": "whitening",
+    "lead": "Professional whitening is a safe and effective way to brighten your smile. A specially designed whitening gel lifts discolouration that has built up over time."
+  },
+  "short": "whitening",
+  "intro": {
+    "heading": "What whitening can and can&rsquo;t do",
+    "html": "<p>Professional whitening uses a bleaching gel to lighten the natural colour of tooth enamel. Results vary from person to person, depending on the cause of discolouration and your natural tooth shade.</p><p>Whitening doesn&rsquo;t change the colour of fillings, crowns or veneers, and some types of staining respond better than others. Your dentist will check your teeth first and give you realistic expectations.</p>"
+  },
+  "weigh": {
+    "heading": "Benefits and things to consider",
+    "benefits": [
+      "Can noticeably brighten natural teeth",
+      "Supervised by your dentist, who checks your teeth and gums first"
+    ],
+    "consider": [
+      "Temporary sensitivity is common",
+      "Results fade over time, especially with coffee, tea, red wine or smoking",
+      "Not suitable for everyone, for example with untreated decay or gum problems"
+    ],
+    "alternatives": [
+      "A professional clean to remove surface staining",
+      "<a href=\"cosmetic-veneers.html\">Veneers</a> for teeth that don&rsquo;t respond to whitening"
+    ]
+  },
+  "care": {
+    "heading": "Before and after your appointment",
+    "items": [
+      [
+        "Before",
+        "Your dentist may recommend treating decay or gum problems and having a clean first."
+      ],
+      [
+        "Afterwards",
+        "Your dentist may suggest avoiding strongly coloured food and drinks for a short time."
+      ],
+      [
+        "Sensitivity",
+        "If your teeth feel sensitive, tell your dentist. A toothpaste for sensitive teeth may help."
+      ]
+    ]
+  },
+  "faqs": [
+    [
+      "Does whitening damage your teeth?",
+      "<p>When you use a whitening product recommended and supervised by your dental professional, whitening is considered safe and doesn&rsquo;t cause permanent damage to your teeth. Some systems sold online contain very high concentrations of bleaching agent that can damage teeth, and your dentist won&rsquo;t recommend those. Your dentist also checks your teeth and gums first, so problems like decay or gum disease are dealt with before you start.</p>"
+    ],
+    [
+      "Will my teeth be sensitive?",
+      "<p>Some patients notice mild sensitivity during whitening. It is temporary and returns to your normal level once you stop. If whitening trays are overfilled, the gums can briefly feel a slight burning and look white; this also settles quickly once the gel is rinsed away. Tell your dentist if your teeth are already sensitive.</p>"
+    ],
+    [
+      "How often will I need to whiten?",
+      "<p>It varies from person to person, and depends a lot on diet and lifestyle. If you drink a lot of tea, coffee or red wine, or smoke, you&rsquo;ll generally need to whiten more often. On average, a touch-up may be needed about every 6 months. Your dentist can suggest a schedule for you.</p>"
+    ],
+    [
+      "I have fillings or crowns on my front teeth. Can I still whiten?",
+      "<p>Whitening works on natural tooth enamel. It doesn&rsquo;t change the colour of fillings, crowns or veneers. Your dentist will discuss how this affects your result, and whether those restorations may need updating afterwards to match. Sometimes <a href=\"cosmetic-veneers.html\">veneers</a> are a better option.</p>"
+    ],
+    [
+      "Which whitening system do you use?",
+      "<p>We use the Philips Zoom whitening system, which we believe is among the best available. Ask your dentist which option suits you.</p>"
+    ]
+  ],
+  "cost": "The cost depends on what your mouth needs, so it can only be worked out after an examination.",
+  "related": [
+    "cosmetic-veneers.html",
+    "invisalign.html",
+    "check-ups-and-dental-cleans.html"
+  ]
+}

@@ -21,7 +21,7 @@
     </div>
     <div class="hero-photo">
       {{img:home-hero|frame--corner}}
-      <aside class="bookcard" data-tilt aria-labelledby="bookcard-h">
+      <div class="bookcard" data-tilt>
         <span class="open-pill"><span class="status-dot" data-hours-dot aria-hidden="true"></span><span data-hours-status="text">Mon to Thu 8 am to 5 pm, Fri 8 am to 4:30 pm</span></span>
         <h2 id="bookcard-h">Book today</h2>
         <dl>
@@ -32,7 +32,7 @@
         </dl>
         {{call_btn}}
         <p class="bookcard__alt"><a href="{{booking_url}}" rel="noopener">Or book online</a></p>
-      </aside>
+      </div>
     </div>
   </div>
 </section>
@@ -166,31 +166,6 @@
   </div>
 </section>
 
-<!-- 10. Preventive and family care -->
-<section class="sec" aria-labelledby="prevent-h">
-  <div class="wrap">
-    <div class="split split--5-7 split--top">
-      <div>
-        <h2 id="prevent-h">Healthy teeth start at home</h2>
-        <p>Most tooth decay and gum disease can be prevented. Regular check-ups find problems early, when treatment is simpler, and a professional clean removes the hardened tartar that brushing can&rsquo;t.</p>
-        <p>How often you need a check-up depends on your own teeth, so your dentist will recommend an interval that suits you.</p>
-        <div class="btn-row mt-5"><a class="btn" href="check-ups-and-dental-cleans.html">Check-ups and cleans</a><a class="btn btn--ghost" href="childrens-dentistry.html">Children&rsquo;s dentistry</a></div>
-      </div>
-      <div class="guide">
-        <div class="guide__card reveal" style="--i:0"><h3>{{icon:tooth}}Everyday habits</h3><ul><li>Brush twice a day with a fluoride toothpaste.</li><li>Clean between your teeth every day with floss or interdental brushes.</li><li>After brushing, spit out the toothpaste but don&rsquo;t rinse.</li><li>Keep sugary food and drinks to a minimum, and choose water.</li></ul></div>
-        <div class="guide__card reveal" style="--i:1"><h3>{{icon:family}}Children&rsquo;s teeth</h3>
-          <table class="age-table"><caption class="visually-hidden">General toothpaste guidance by age</caption><tbody>
-            <tr><th scope="row">First teeth to 18 months</th><td>Clean teeth with a soft brush and water, unless your dental professional advises otherwise.</td></tr>
-            <tr><th scope="row">18 months to 6 years</th><td>A pea-sized amount of low-fluoride children&rsquo;s toothpaste.</td></tr>
-            <tr><th scope="row">6 years and older</th><td>A pea-sized amount of standard fluoride toothpaste.</td></tr>
-          </tbody></table>
-          <p class="small mb-0 mt-5">Book a first dental visit when the first teeth appear, or by their first birthday.</p></div>
-      </div>
-    </div>
-    <p class="source">General guidance based on Australian oral-health advice from the <a href="https://www.teeth.org.au/" rel="noopener">Australian Dental Association</a> and <a href="https://www.healthdirect.gov.au/" rel="noopener">healthdirect</a>. It is not a substitute for advice from your dentist.</p>
-  </div>
-</section>
-
 <!-- 11. Emergency -->
 <section class="sec sec--tight" aria-labelledby="er-h">
   <div class="wrap">
@@ -243,7 +218,7 @@
       <details><summary>Can I ask about a treatment before committing?</summary><div class="faq__body"><p>Of course. Book a consultation and your dentist will explain whether a treatment suits you, the alternatives, and the likely costs.</p></div></details>
     
     </div>
-    <aside class="book-panel reveal" aria-labelledby="book-h">
+    <div class="book-panel reveal">
       <h2 id="book-h">Book your next visit</h2>
       <p>The quickest way to book is to call our Edmonton reception team. Tell us if you&rsquo;re in pain and we&rsquo;ll try to see you sooner.</p>
       <ul class="contact-list mt-5">
@@ -252,7 +227,7 @@
         <li><span class="label">Today</span><span class="value" data-hours-status="text">Mon to Thu 8 am to 5 pm</span></li>
       </ul>
       <div class="mt-6 btn-stack">{{call_btn}}<a class="btn btn--ghost-light" href="{{booking_url}}" rel="noopener">Book online</a></div>
-    </aside>
+    </div>
   </div>
 </section>
 
@@ -269,20 +244,9 @@
       </ul>
       <div class="mt-7">{{hours_table}}</div>
     </div>
-    <div>{{map}}<div class="btn-row mt-5"><a class="btn btn--lime" href="{{maps_link}}" rel="noopener">{{icon_pin}}Get directions</a><a class="btn btn--ghost-light" href="contact.html">Contact page</a></div></div>
+    <div>{{map}}</div>
   </div>
 </section>
 
-<!-- 15. Final CTA -->
-<section class="sec" aria-labelledby="final-h">
-  <div class="wrap">
-    <div class="final-cta reveal">
-      <div>
-        <h2 id="final-h">We&rsquo;d love to look after your smile</h2>
-        <p class="lead">Whether it&rsquo;s been six months or six years since your last visit, give us a call. Our Edmonton team will find a time that suits you and your family.</p>
-        <div class="btn-row mt-5">{{call_btn_forest}}<a class="btn btn--ghost" href="mailto:{{email}}">{{icon_mail}}Email reception</a></div>
-      </div>
-      {{illus:check-ups|frame--corner-br}}
-    </div>
-  </div>
-</section>
+<!-- 15. Booking -->
+{{cta}}

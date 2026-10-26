@@ -1,0 +1,155 @@
+{
+  "file": "emergency-dentist.html",
+  "name": "Emergency dental care",
+  "group": "Urgent care",
+  "tone": "urgent",
+  "title": "Emergency dentist in Edmonton, Cairns | South Cairns Dental",
+  "description": "Toothache, broken tooth, swelling or a knocked-out tooth? South Cairns Dental reserves appointments every day for dental emergencies. Call (07) 4055 4214.",
+  "hero": {
+    "title": "Emergency dental care",
+    "image": "emergency",
+    "secondary": [
+      "First aid while you wait",
+      "#explain-h"
+    ],
+    "lead": "We reserve appointments every day for dental emergencies. Call as early in the day as you can, tell us what&rsquo;s happened, and we&rsquo;ll do our best to fit you in. Please call rather than walking in."
+  },
+  "short": "an emergency appointment",
+  "intro": {
+    "heading": "Don&rsquo;t wait with a dental emergency",
+    "html": "<p>Dental emergencies can be painful and distressing, and if left untreated they can get worse quickly. That&rsquo;s why we reserve specific appointments every day for them. If you have a dental emergency, call us straight away. We&rsquo;ll always try to see you as soon as possible.</p><p>You don&rsquo;t need to be an existing patient, and we see children and adults.</p>",
+    "aside_heading": "A dental emergency may include",
+    "aside": [
+      "A painful tooth or gums",
+      "Broken teeth or fillings",
+      "Facial swelling",
+      "Trauma to your face, teeth or gums",
+      "A broken or lost denture"
+    ]
+  },
+  "callout": {
+    "tone": "alert",
+    "title": "Call 000 or go to your nearest hospital emergency department",
+    "html": "<p>If there is difficulty breathing or swallowing, swelling spreading to the eye or neck, heavy bleeding that won&rsquo;t stop, or a head injury such as loss of consciousness. Don&rsquo;t wait for a dental appointment.</p>",
+    "badge": "000"
+  },
+  "explain": {
+    "heading": "First aid while you wait",
+    "intro": "Simple steps that may help until you can see us. Your dentist&rsquo;s advice always comes first.",
+    "items": [
+      {
+        "title": "Painful teeth or gums",
+        "text": "Toothache, throbbing, or pain when biting or with hot and cold.",
+        "list": [
+          "Rinse gently with warm water.",
+          "Floss carefully in case food is trapped.",
+          "Pain relief from your pharmacy may help. Follow the label and check with your pharmacist that it suits you.",
+          "Don&rsquo;t put tablets directly on your gum."
+        ]
+      },
+      {
+        "title": "Broken teeth or fillings",
+        "text": "A chipped, cracked or broken tooth, or a filling that has fallen out.",
+        "list": [
+          "Keep any broken pieces and bring them with you.",
+          "Rinse gently with warm water.",
+          "Chew on the other side and avoid very hot, cold or hard food."
+        ]
+      },
+      {
+        "title": "Facial swelling",
+        "text": "Swelling of the gum, cheek or jaw, which can be a sign of infection.",
+        "list": [
+          "Call us promptly. Swelling shouldn&rsquo;t be left to see if it settles.",
+          "A cold compress on the outside of the cheek may ease discomfort."
+        ],
+        "flag": "If swelling affects your breathing, swallowing or eye, or you feel very unwell with a fever, call 000 or go to hospital."
+      },
+      {
+        "title": "A knocked-out adult tooth",
+        "text": "A knock from sport, a fall or an accident.",
+        "list": [
+          "Act quickly. Pick it up by the crown (the white part), not the root.",
+          "If it&rsquo;s dirty, rinse it briefly in milk or water. Don&rsquo;t scrub it.",
+          "If you can, gently put it back in its socket and bite on a clean cloth. Otherwise keep it in milk.",
+          "Call us straight away."
+        ],
+        "flag": "Don&rsquo;t try to put a baby tooth back in. Call us for advice. Any head injury needs medical assessment first."
+      },
+      {
+        "title": "Broken or lost dentures",
+        "text": "Dentures that have cracked, snapped or been lost.",
+        "list": [
+          "Don&rsquo;t glue or repair them yourself.",
+          "Keep all the pieces and bring them with you.",
+          "If a sharp edge is rubbing, leave the denture out."
+        ]
+      },
+      {
+        "title": "Not sure if it&rsquo;s urgent?",
+        "text": "If something doesn&rsquo;t feel right, call and describe it. Reception can help you work out how soon you need to be seen.",
+        "call": true
+      }
+    ]
+  },
+  "process": {
+    "heading": "What happens when you call",
+    "intro": "Have a pen handy. Reception may give you a time and some instructions.",
+    "steps": [
+      [
+        "Tell us what&rsquo;s happened",
+        "When it started, where it hurts, and whether there&rsquo;s swelling, bleeding or a broken tooth."
+      ],
+      [
+        "We look for the soonest time",
+        "We reserve emergency appointments each day and will try to see you as soon as we can."
+      ],
+      [
+        "Your dentist relieves the problem",
+        "The first goal is to treat pain or infection. If more treatment is needed, your dentist will explain the options for a later visit."
+      ]
+    ]
+  },
+  "care": {
+    "heading": "If we&rsquo;re closed",
+    "items": [
+      [
+        "After hours and weekends",
+        "After-hours and weekend appointments are available on request. Ask reception when you call during opening hours: Mon to Thu 8 am to 5 pm, Fri 8 am to 4:30 pm."
+      ],
+      [
+        "Health advice any time",
+        "Queensland&rsquo;s 13 HEALTH line is on <a href=\"tel:134325584\">13 43 25 84</a>, 24 hours a day."
+      ],
+      [
+        "Life-threatening",
+        "Call <a href=\"tel:000\">000</a>."
+      ]
+    ]
+  },
+  "faqs": [
+    [
+      "Can you guarantee to see me today?",
+      "<p>We can&rsquo;t promise a same-day appointment, but we keep time free every day for emergencies and will do everything we can. Calling early in the day gives you the best chance.</p>"
+    ],
+    [
+      "Do you see children for emergencies?",
+      "<p>Yes. We treat children and adults. Call us and tell reception your child&rsquo;s age and what has happened.</p>"
+    ],
+    [
+      "I&rsquo;m not a patient yet. Can I still call?",
+      "<p>Yes. You don&rsquo;t need to be an existing patient to call us about a dental emergency.</p>"
+    ],
+    [
+      "Where are you?",
+      "<p>Shop 6, 7 Stokes Street, Edmonton QLD 4869, next to Edmonton Family Medical Centre, with free onsite parking. <a href=\"{{maps_dir}}\" rel=\"noopener\">Get directions</a>.</p>"
+    ]
+  ],
+  "cost": "",
+  "sticky_call": true,
+  "related": [
+    "root-canal-therapy.html",
+    "extractions.html",
+    "dentures.html"
+  ]
+}

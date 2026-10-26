@@ -1,38 +1,43 @@
 <!--meta {
   "title": "Contact South Cairns Dental | 7 Stokes Street, Edmonton",
-  "description": "Call South Cairns Dental on (07) 4055 4214 or email reception@southcairnsdental.com.au. Shop 6, 7 Stokes Street, Edmonton QLD 4869. Opening hours and directions.",
+  "description": "Book online or call South Cairns Dental on (07) 4055 4214. Email reception@southcairnsdental.com.au. Shop 6, 7 Stokes Street, Edmonton QLD 4869. Hours and directions.",
   "nav": "contact",
   "schema": true,
   "crumbs": [["Contact us", "contact.html"]]
 } -->
 <section class="phero">
-  <div class="wrap">
-    [[crumbs]]
-    <h1>Call, email or visit</h1>
-    <p class="lead">Call our reception team or book online. If you have a question, send us a message and we&rsquo;ll get back to you as soon as possible.</p>
-    <div class="btn-row mt-5">{{book_online}}<a class="btn btn--ghost" href="tel:{{tel}}">{{icon_phone}}<span>Call {{phone}}</span></a></div>
+  <div class="wrap split split--7-5">
+    <div>
+      [[crumbs]]
+      <h1>Contact us</h1>
+      <p class="lead">Book online or call our reception team to make an appointment. If you have a question, send us a message and we&rsquo;ll get back to you as soon as we can.</p>
+      {{book_buttons}}
+    </div>
+    <div class="panel panel--white">
+      <p class="mb-3"><strong>In pain?</strong> We reserve appointments every day for dental emergencies.</p>
+      <a class="textlink" href="emergency-dentist.html">Emergency dental care</a>
+    </div>
   </div>
 </section>
 
-<section class="sec sec--flush" aria-labelledby="details-h">
+<section class="sec" aria-labelledby="details-h">
   <div class="wrap split split--5-7 split--top">
     <div>
-      <h2 id="details-h" class="visually-hidden">Contact details</h2>
+      <h2 id="details-h" class="h3-size">Contact details</h2>
       <ul class="contact-list">
-        <li><span class="label">Phone, for bookings</span><a href="tel:{{tel}}">{{phone}}</a></li>
+        <li><span class="label">Phone</span><a href="tel:{{tel}}">{{phone}}</a></li>
         <li><span class="label">Email</span><a href="mailto:{{email}}">{{email}}</a></li>
+        <li><span class="label">Book online</span><a href="{{booking_url}}" rel="noopener">Choose an appointment time</a></li>
         <li><span class="label">Address</span><span class="value">{{address_line1}}<br>{{address_locality}}</span></li>
-        <li><span class="label">Book online</span><a href="{{booking_url}}" rel="noopener">Online booking</a></li>
-        <li><span class="label">Parking</span><span class="value">Free, on site, in the yellow building next to Edmonton Family Medical Centre</span></li>
+        <li><span class="label">Parking</span><span class="value">Free, on site. We&rsquo;re in the yellow building next to Edmonton Family Medical Centre.</span></li>
       </ul>
-      <div class="btn-row mt-6">{{call_btn}}<a class="btn btn--ghost" href="{{maps_link}}" rel="noopener">{{icon_pin}}Get directions</a></div>
       <h2 class="mt-7 h3-size">Opening hours</h2>
       {{hours_table}}
-      <div class="note note--alert mt-6"><p><strong>In pain?</strong> We reserve emergency appointments every day. Call {{phone}} or see our <a href="emergency-dentist.html">emergency page</a>.</p></div>
+      <p class="small muted mt-5 mb-0">After-hours and weekend appointments are available on request.</p>
     </div>
-    <div class="panel panel--corner">
-      <h2 id="form-h">Send us a message</h2>
-      <p class="muted">For general questions. This form opens your own email app with your message ready to send; nothing is sent from this website. To book or for anything urgent, please call.</p>
+    <div class="panel panel--corner" id="message-form">
+      <h2 id="form-h">Send us a question</h2>
+      <p class="muted">When you press send, your email app opens with your message ready to go to reception. For appointments, please book online or call.</p>
       <form class="form mt-5" data-mailto-form="{{email}}" novalidate aria-labelledby="form-h">
         <div class="form__row">
           <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-error"><p class="error" id="f-name-error" hidden>Enter your name.</p></div>
@@ -42,17 +47,19 @@
         <div class="field"><label for="f-topic">What is it about?</label>
           <select id="f-topic" name="topic"><option>General question</option><option>New patient enquiry</option><option>Existing appointment</option><option>Treatment question</option><option>Something else</option></select></div>
         <div class="field"><label for="f-message">Message <span class="hint">Please don&rsquo;t include detailed medical information.</span></label><textarea id="f-message" name="message" required aria-describedby="f-message-error"></textarea><p class="error" id="f-message-error" hidden>Enter a message.</p></div>
-        <div><button class="btn" type="submit">{{icon_mail}}<span>Open in my email app</span></button></div>
+        <div><button class="btn" type="submit">{{icon_mail}}<span>Send by email</span></button></div>
         <p class="form__status" role="status" hidden></p>
       </form>
     </div>
   </div>
 </section>
 
-<section class="sec" aria-labelledby="map-h">
+<section class="sec sec--mist" aria-labelledby="map-h">
   <div class="wrap">
-    <h2 id="map-h">Find us on Stokes Street</h2>
-    <p class="muted">Next to Edmonton Family Medical Centre, close to Piccones IGA.</p>
-    <div class="mt-5">{{map}}</div>
+    <div class="section-head">
+      <h2 id="map-h">Find us on Stokes Street</h2>
+      <p class="section-head__intro">Next to Edmonton Family Medical Centre and a short walk from Piccones IGA, with plenty of free parking.</p>
+    </div>
+    {{map}}
   </div>
 </section>

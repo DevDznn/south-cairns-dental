@@ -1,0 +1,4 @@
+# Keep build sources and internal documents in the repository, but out of the public website.
+_build/
+*.md
+assets/images/brand/source/

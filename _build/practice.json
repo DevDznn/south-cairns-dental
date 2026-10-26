@@ -11,7 +11,7 @@
   "official_url": "https://www.southcairnsdental.com.au/",
   "site_url": "",
   "booking_url": "https://www.centaurportal.com/d4w/org-1595/search?practiceID=1800",
-  "maps_query": "Shop 6, 7 Stokes Street, Edmonton QLD 4869",
+  "maps_query": "7 Stokes St, Edmonton QLD 4869",
   "hours": [
     {
       "day": "Monday",
@@ -85,7 +85,8 @@
           "blurb": "Tooth-coloured fillings that stop early decay before it goes further.",
           "illus": "fillings",
           "category": "General",
-          "desc": "Early decay is removed and the tooth restored with white, tooth-coloured filling material, usually in a single visit."
+          "desc": "Early decay is removed and the tooth restored with white, tooth-coloured filling material, usually in a single visit.",
+          "photo": "assets/images/treatments/dental-exam-close-up.jpg"
         },
         {
           "name": "Mouthguards",
@@ -126,7 +127,8 @@
           "blurb": "When a tooth has to come out, we take it slowly and keep you comfortable.",
           "illus": "extractions",
           "category": "Restorative",
-          "desc": "When a tooth can't be saved, we explain why, talk through your worries and take it slowly so you stay comfortable."
+          "desc": "When a tooth can't be saved, we explain why, talk through your worries and take it slowly so you stay comfortable.",
+          "photo": "assets/images/treatments/relaxed-patient-in-chair.jpg"
         },
         {
           "name": "Wisdom teeth",
@@ -173,7 +175,8 @@
           "blurb": "Professional whitening, supervised by your dentist.",
           "illus": "whitening",
           "category": "Cosmetic",
-          "desc": "Professional whitening supervised by your dentist, starting with a check so you know what result to expect."
+          "desc": "Professional whitening supervised by your dentist, starting with a check so you know what result to expect.",
+          "photo": "assets/images/treatments/natural-smile.jpg"
         },
         {
           "name": "Cosmetic veneers",
@@ -288,5 +291,10 @@
       "dentist": false
     }
   ],
-  "facebook_url": "https://www.facebook.com/southcairnsdental"
+  "facebook_url": "https://www.facebook.com/southcairnsdental",
+  "geo": {
+    "lat": -17.0195683,
+    "lng": 145.7439008,
+    "_source": "Google Maps place linked from the official site (goo.gl/maps/d2BaBh8U93N9KZfp7): 7 Stokes St, Edmonton QLD 4869"
+  }
 }

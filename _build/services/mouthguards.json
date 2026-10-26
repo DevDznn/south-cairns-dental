@@ -1,0 +1,77 @@
+{
+  "file": "mouthguards.html",
+  "name": "Mouthguards",
+  "group": "Everyday care",
+  "title": "Custom sports mouthguards in Edmonton | South Cairns Dental",
+  "description": "Custom-fitted mouthguards for contact sport from South Cairns Dental in Edmonton. Help protect teeth, jaws, lips and cheeks. Call (07) 4055 4214.",
+  "hero": {
+    "title": "Mouthguards",
+    "image": "mouthguards",
+    "lead": "A mouthguard is worn over the upper teeth during contact sport. One made from impressions of your own teeth fits closely, stays put and is easier to talk and breathe in."
+  },
+  "short": "mouthguards",
+  "intro": {
+    "heading": "Custom-fitted or off the shelf?",
+    "html": "<p>Over-the-counter mouthguards come in standard sizes, or are softened in hot water and shaped by biting. A custom mouthguard is made from impressions of your own teeth, so it fits closely and is less likely to move during a hit.</p><p>A mouthguard that&rsquo;s comfortable is more likely to be worn, and a well-fitted guard makes it easier to breathe, speak and drink during play.</p>",
+    "aside_heading": "Worth considering for",
+    "aside": [
+      "Football codes, rugby and AFL",
+      "Hockey, cricket (when batting or keeping) and basketball",
+      "Boxing and martial arts",
+      "Skateboarding, BMX and other high-impact activities",
+      "Training sessions as well as games"
+    ]
+  },
+  "callout": {
+    "tone": "info",
+    "title": "Book before the season starts",
+    "html": "<p>A custom mouthguard needs an appointment to take impressions and time for it to be made. Children&rsquo;s mouths change as they grow, so ask your dentist when theirs should be replaced.</p>"
+  },
+  "explain": {
+    "heading": "What a well-fitted mouthguard helps protect against",
+    "intro": "No mouthguard prevents every injury, but a good one reduces the risk.",
+    "ticks": [
+      "Chipped, broken or knocked-out teeth",
+      "Jaw fractures",
+      "Damage to the jaw joints",
+      "Cuts to the lips and cheeks"
+    ]
+  },
+  "care": {
+    "heading": "Looking after your mouthguard",
+    "items": [
+      [
+        "After each use",
+        "Rinse in cool water, let it air-dry, and store it in a ventilated case."
+      ],
+      [
+        "Keep it cool",
+        "Heat can warp a mouthguard. Don&rsquo;t leave it in a hot car or in the sun."
+      ],
+      [
+        "Check it",
+        "Bring it to your check-ups. Replace it if it&rsquo;s damaged, loose or no longer fits, which happens often in growing children."
+      ]
+    ]
+  },
+  "faqs": [
+    [
+      "How long does a mouthguard last?",
+      "<p>It depends on how often it&rsquo;s used and how it&rsquo;s cared for. Children usually need new ones more often as their mouths grow. Your dentist can check the fit at each visit.</p>"
+    ],
+    [
+      "Can I wear a mouthguard with braces?",
+      "<p>Yes, but it needs to suit the braces. Talk to your dentist or orthodontist about the right option.</p>"
+    ],
+    [
+      "Is a mouthguard needed for training too?",
+      "<p>Injuries can happen at training as well as in games, so wearing it whenever there&rsquo;s a risk of contact is sensible.</p>"
+    ]
+  ],
+  "cost": "The cost depends on what your mouth needs, so it can only be worked out after an examination.",
+  "related": [
+    "childrens-dentistry.html",
+    "check-ups-and-dental-cleans.html",
+    "crowns-and-bridge-work.html"
+  ]
+}

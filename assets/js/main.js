@@ -250,9 +250,50 @@
           if (match) { shown++; card.classList.add("is-in"); }
         });
         if (live) live.textContent = "Showing " + shown + (shown === 1 ? " treatment" : " treatments");
+        // On phones the grid is a carousel: start the filtered set from the beginning
+        grid.scrollLeft = 0;
+        grid.dispatchEvent(new Event("scroll"));
       });
     });
   }
+
+  /* ---------- Homepage card carousels on phones: swipe, or use the previous/next buttons ---------- */
+  var chevron = function (d) { return '<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="' + d + '" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'; };
+  document.querySelectorAll(".page-home .concierge, .page-home .svc-grid, .page-home .team-cards, .page-home .pay").forEach(function (list, n) {
+    var heading = list.closest("section") && list.closest("section").querySelector("h2");
+    var label = heading ? heading.textContent.trim() : "cards";
+    if (!list.id) list.id = "carousel-" + n;
+    list.classList.add("is-carousel");
+    var nav = document.createElement("div");
+    nav.className = "carousel-nav";
+    nav.innerHTML = '<div class="carousel-nav__track" aria-hidden="true"><span></span></div>' +
+      '<button type="button" class="carousel-nav__btn" data-dir="-1" aria-controls="' + list.id + '" aria-label="Previous: ' + label + '">' + chevron("M10 3 5 8l5 5") + '</button>' +
+      '<button type="button" class="carousel-nav__btn" data-dir="1" aria-controls="' + list.id + '" aria-label="Next: ' + label + '">' + chevron("M6 3l5 5-5 5") + '</button>';
+    list.parentNode.insertBefore(nav, list.nextSibling);
+    var bar = nav.querySelector(".carousel-nav__track span"), btns = nav.querySelectorAll("button");
+    function update() {
+      var max = list.scrollWidth - list.clientWidth;
+      nav.hidden = max <= 2; // nothing to scroll, e.g. on tablet and desktop where the cards sit in a grid
+      if (nav.hidden) return;
+      btns[0].disabled = list.scrollLeft <= 2;
+      btns[1].disabled = list.scrollLeft >= max - 2;
+      // Keep keyboard focus on a usable button when one end is reached
+      if (btns[0].disabled && document.activeElement === btns[0]) btns[1].focus();
+      if (btns[1].disabled && document.activeElement === btns[1]) btns[0].focus();
+      bar.style.width = (list.clientWidth / list.scrollWidth * 100) + "%";
+      bar.style.left = (list.scrollLeft / list.scrollWidth * 100) + "%";
+    }
+    nav.addEventListener("click", function (e) {
+      var b = e.target.closest("button");
+      if (!b) return;
+      var card = Array.prototype.find.call(list.children, function (c) { return !c.hidden; });
+      var step = card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(list).columnGap || 0) : list.clientWidth;
+      list.scrollBy({ left: step * +b.getAttribute("data-dir"), behavior: reduce ? "auto" : "smooth" });
+    });
+    list.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
 
   /* ---------- Smooth accordion open/close (native <details> still works without JS) ---------- */
   if (!reduce) {

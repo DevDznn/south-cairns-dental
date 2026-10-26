@@ -1386,19 +1386,21 @@ a[href^="tel:"] { white-space: nowrap; }
   .stats dt { font-size: .82rem; line-height: 1.35; margin-top: .35rem; }
 }
 
-/* Services: cards become thumbnail rows below desktop (two columns on tablets), chips scroll sideways on phones */
+/* Services: a carousel on phones (below), thumbnail rows in two columns on tablets; chips scroll sideways on phones */
 @media (max-width: 639px) {
   .page-home .chips { flex-wrap: nowrap; overflow-x: auto; margin: 0 calc(-1 * var(--gutter)) var(--s-5); padding: 2px var(--gutter); scrollbar-width: none; scroll-snap-type: x proximity; }
   .page-home .chips::-webkit-scrollbar { display: none; }
   .page-home .chip { flex: none; scroll-snap-align: start; }
-  .page-home .svc-grid { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+  .page-home .svc-card__media { aspect-ratio: 16 / 10; }
 }
-@media (min-width: 640px) and (max-width: 1099px) { .page-home .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; } }
-@media (max-width: 1099px) {
+@media (min-width: 640px) and (max-width: 1099px) {
+  .page-home .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
   .page-home .svc-card a { flex-direction: row; }
+  .page-home .svc-card__media { flex: none; width: 32%; aspect-ratio: auto; }
+}
+@media (max-width: 1099px) {
   .page-home .svc-card:nth-child(4n+1) a { border-top-left-radius: var(--radius-card); }
   .page-home .svc-card:first-child a { border-top-left-radius: 32px; }
-  .page-home .svc-card__media { flex: none; width: 32%; aspect-ratio: auto; }
   .page-home .svc-card__body { padding: .85rem 1rem .95rem; gap: .2rem; }
   .page-home .svc-card strong { font-size: 1.05rem; }
   .page-home .svc-card__desc { font-size: .875rem; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
@@ -1419,9 +1421,9 @@ a[href^="tel:"] { white-space: nowrap; }
 @media (max-width: 959px) { .comfort > :first-child { width: min(100%, 20rem); } }
 @media (max-width: 639px) { .comfort > :first-child { width: min(62%, 14rem); } }
 
-/* Team: two portraits per row on phones, four from tablet up (no 3 + 1 orphan) */
+/* Team: a carousel on phones, two per row on small tablets, four from 760px (no 3 + 1 orphan) */
+@media (min-width: 640px) and (max-width: 759px) { .team-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem .9rem; } }
 @media (max-width: 759px) {
-  .team-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem .9rem; }
   .team-card h3 { font-size: 1rem; margin-top: .75rem; }
   .team-card p { font-size: .82rem; }
 }
@@ -1462,3 +1464,40 @@ a[href^="tel:"] { white-space: nowrap; }
   .page-home .site-footer { padding-bottom: 6.5rem; }
 }
 @media print { .mbar { display: none !important; } }
+
+/* Phone carousels (homepage card sections): swipe with scroll snap; main.js adds the
+   previous/next buttons and progress track. The next card peeks in to show there's more. */
+.carousel-nav { display: none; }
+@media (max-width: 639px) {
+  .is-carousel {
+    display: flex; gap: .85rem; overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter);
+    margin-inline: calc(-1 * var(--gutter)); padding: .25rem var(--gutter) .75rem;
+    scrollbar-width: none;
+  }
+  .is-carousel::-webkit-scrollbar { display: none; }
+  .is-carousel > * { flex: 0 0 82%; min-width: 0; scroll-snap-align: start; }
+  .is-carousel > [hidden] { display: none; }
+  .team-cards.is-carousel > * { flex-basis: 60%; }
+  .concierge.is-carousel a { display: flex; flex-direction: column; gap: .3rem; }
+  .concierge.is-carousel .concierge__icon { flex: none; margin-bottom: .4rem; }
+  .concierge.is-carousel span.more { margin-top: auto; padding-top: .3rem; }
+  .pay.is-carousel .pay__item { display: block; }
+  .pay.is-carousel .pay__item .icon { margin-bottom: .6rem; }
+  .pay.is-carousel .pay__item h3 { margin-bottom: .4rem; }
+  .js .is-carousel > .reveal { opacity: 1; transform: none; }
+  .is-carousel:focus-visible { outline-offset: -3px; }
+
+  .carousel-nav { display: flex; align-items: center; gap: .5rem; margin-top: .25rem; }
+  .carousel-nav[hidden] { display: none; }
+  .carousel-nav__track { position: relative; flex: 1; height: 3px; margin-right: .75rem; border-radius: 3px; background: var(--mist-2); overflow: hidden; }
+  .carousel-nav__track span { position: absolute; top: 0; bottom: 0; left: 0; border-radius: inherit; background: var(--forest); }
+  .carousel-nav__btn { display: grid; place-items: center; flex: none; width: 2.75rem; height: 2.75rem; padding: 0; border-radius: 50%; border: 1.5px solid var(--line); background: #fff; color: var(--forest); cursor: pointer; transition: background-color .18s ease, border-color .18s ease, opacity .18s ease; }
+  .carousel-nav__btn svg { width: 1rem; height: 1rem; }
+  .carousel-nav__btn:not(:disabled):active { background: var(--lime); border-color: var(--lime); }
+  .carousel-nav__btn:disabled { opacity: .35; cursor: default; }
+  .sec--forest .carousel-nav__track, .sec--canopy .carousel-nav__track { background: rgba(255,255,255,.18); }
+  .sec--forest .carousel-nav__track span, .sec--canopy .carousel-nav__track span { background: var(--lime); }
+  .sec--forest .carousel-nav__btn, .sec--canopy .carousel-nav__btn { background: transparent; border-color: rgba(255,255,255,.4); color: #fff; }
+}
+@media (max-width: 359px) { .is-carousel > * { flex-basis: 88%; } .team-cards.is-carousel > * { flex-basis: 66%; } }

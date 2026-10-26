@@ -65,6 +65,8 @@
   function setUtilityOffset() {
     var h = utility ? Math.max(0, utility.getBoundingClientRect().bottom) : 0;
     doc.style.setProperty("--utility-h", h + "px");
+    // The header compacts on scroll, so the mobile menu opens from its real bottom edge
+    if (header) doc.style.setProperty("--nav-top", Math.round(header.getBoundingClientRect().bottom) + "px");
   }
 
   /* ---------- Services panel ---------- */
@@ -212,8 +214,8 @@
     });
   }
 
-  /* ---------- Emergency page: sticky call bar once the main call card is off screen ---------- */
-  var sticky = document.querySelector(".er-sticky"), card = document.querySelector("[data-sticky-anchor]");
+  /* ---------- Sticky call bar (emergency page, homepage) once the main call buttons are off screen ---------- */
+  var sticky = document.querySelector(".er-sticky, .mbar"), card = document.querySelector("[data-sticky-anchor]");
   if (sticky && card && "IntersectionObserver" in window) {
     new IntersectionObserver(function (entries) {
       sticky.classList.toggle("is-visible", !entries[0].isIntersecting);

@@ -11,7 +11,7 @@
     <div>
       <h1 id="hero-h">Gentle, affordable dentistry <span class="hl">for South Cairns families.</span></h1>
       <p class="lead">A modern, family-owned practice in Edmonton, caring for children and adults from Bentley Park, Mount Sheridan, Gordonvale and nearby suburbs. You&rsquo;ll see the same dentist each visit, and we&rsquo;ll explain your options in plain language before anything goes ahead.</p>
-      <div class="btn-row">{{book_online}}<a class="btn btn--ghost" href="tel:{{tel}}">{{icon_phone}}<span>Call {{phone}}</span></a></div>
+      <div class="btn-row" data-sticky-anchor>{{book_online}}<a class="btn btn--ghost" href="tel:{{tel}}">{{icon_phone}}<span>Call {{phone}}</span></a></div>
       <div class="hero-trust">
         <span>{{icon:family}}<b>Family-owned</b> practice</span>
         <span>{{icon:tooth}}<b>Same dentist</b> each visit</span>
@@ -224,3 +224,6 @@
 
 <!-- 15. Booking -->
 {{cta}}
+
+<!-- 16. Phone action bar (shown once the hero buttons scroll away) -->
+<div class="mbar"><a class="btn btn--ghost-light" href="tel:{{tel}}">{{icon_phone}}<span>Call now</span></a><a class="btn btn--lime" href="{{booking_url}}" rel="noopener">Book online</a></div>

@@ -1322,3 +1322,143 @@ img[src$="root-canal-diagram.jpg"].is-photo { object-fit: contain; background: #
 .team--support { grid-template-columns: repeat(auto-fill, minmax(12rem, 15rem)); }
 .team--support .portrait > img { width: 100%; height: 100%; object-fit: cover; }
 a[href^="tel:"] { white-space: nowrap; }
+
+/* ==========================================================================
+   v7: homepage responsive polish. Phone and tablet layouts adapted from the
+   Coral Coast reference: tighter cards, full-width actions, a sticky call bar.
+   ========================================================================== */
+/* Shared fixes: menu opens flush under the (possibly compacted) header; CTA email link was forest on forest */
+@media (max-width: 1020px) {
+  .nav { top: var(--nav-top, calc(var(--header-h) + var(--utility-h, 0px))); }
+  .mega__col ul, .drop ul { padding-left: .75rem; }
+  .mega__col h3 { margin: .25rem 0 .35rem; }
+}
+.cta-band a:not(.btn) { color: #fff; text-decoration-color: var(--lime); overflow-wrap: anywhere; }
+
+/* Hero */
+@media (max-width: 979px) {
+  .hero-cc .wrap { gap: 2rem; padding-block: 2.5rem 3rem; }
+  .hero-photo .frame { aspect-ratio: 4 / 3; }
+}
+@media (min-width: 640px) and (max-width: 979px) {
+  .hero-photo { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 1rem; align-items: stretch; }
+  .hero-photo .frame { aspect-ratio: auto; height: 100%; min-height: 20rem; }
+  .bookcard { margin-top: 0; display: flex; flex-direction: column; justify-content: center; }
+}
+@media (max-width: 639px) {
+  .hero-cc h1 { font-size: clamp(2.15rem, 1.4rem + 3.6vw, 2.6rem); }
+  .hero-cc .lead { font-size: 1.05rem; margin-bottom: var(--s-5); }
+  .hero-cc .btn-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: .65rem; }
+  .hero-cc .btn-row .btn { width: 100%; min-height: 3.35rem; }
+  .hero-trust { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem 1rem; margin-top: var(--s-5); }
+  .hero-trust span { display: block; position: relative; padding-left: 1.6rem; line-height: 1.35; }
+  .hero-trust .icon { position: absolute; left: 0; top: .05rem; }
+  .hero-photo .frame { aspect-ratio: 5 / 4; }
+  .bookcard { padding: 1.15rem 1.2rem; }
+}
+
+/* Contact strip: two by two on phones instead of four stacked rows */
+@media (max-width: 560px) {
+  .infostrip .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .infostrip__item { flex-direction: column; align-items: flex-start; gap: .5rem; padding: 1.15rem .9rem 1.15rem 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .infostrip__item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.12); }
+  .infostrip__item:nth-child(even) { padding-left: .9rem; padding-right: 0; }
+  .infostrip__item:nth-child(n+3) { border-bottom: 0; }
+  .infostrip .icon { width: 1.5rem; height: 1.5rem; }
+  .infostrip a, .infostrip span { line-height: 1.4; }
+}
+
+/* "What brings you in": compact cards on phones */
+@media (max-width: 639px) {
+  .concierge a { grid-template-columns: 2.5rem minmax(0, 1fr); gap: .2rem .9rem; padding: 1.1rem 1.15rem; }
+  .concierge__icon { width: 2.5rem; height: 2.5rem; border-radius: 12px; }
+  .concierge__icon .icon { width: 1.25rem; height: 1.25rem; }
+  .concierge strong { font-size: 1.05rem; }
+  .concierge span.d { font-size: .9rem; line-height: 1.5; }
+}
+
+/* Introduction: landscape photo below desktop, badge tucked under it on phones */
+@media (max-width: 959px) { .editorial__media .frame:first-child { aspect-ratio: 16 / 10; } }
+@media (max-width: 639px) {
+  .editorial__media .frame:first-child { aspect-ratio: 4 / 3; }
+  .editorial__badge { position: relative; right: auto; bottom: auto; margin: -2.25rem .75rem 0 auto; max-width: 17rem; }
+  .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4); }
+  .stats dt { font-size: .82rem; line-height: 1.35; margin-top: .35rem; }
+}
+
+/* Services: cards become thumbnail rows below desktop (two columns on tablets), chips scroll sideways on phones */
+@media (max-width: 639px) {
+  .page-home .chips { flex-wrap: nowrap; overflow-x: auto; margin: 0 calc(-1 * var(--gutter)) var(--s-5); padding: 2px var(--gutter); scrollbar-width: none; scroll-snap-type: x proximity; }
+  .page-home .chips::-webkit-scrollbar { display: none; }
+  .page-home .chip { flex: none; scroll-snap-align: start; }
+  .page-home .svc-grid { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+}
+@media (min-width: 640px) and (max-width: 1099px) { .page-home .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; } }
+@media (max-width: 1099px) {
+  .page-home .svc-card a { flex-direction: row; }
+  .page-home .svc-card:nth-child(4n+1) a { border-top-left-radius: var(--radius-card); }
+  .page-home .svc-card:first-child a { border-top-left-radius: 32px; }
+  .page-home .svc-card__media { flex: none; width: 32%; aspect-ratio: auto; }
+  .page-home .svc-card__body { padding: .85rem 1rem .95rem; gap: .2rem; }
+  .page-home .svc-card strong { font-size: 1.05rem; }
+  .page-home .svc-card__desc { font-size: .875rem; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .page-home .svc-card__more { padding-top: .3rem; font-size: .875rem; }
+}
+
+/* How we look after you / payment: icon beside the text on phones */
+@media (max-width: 639px) {
+  .feature, .pay__item { display: grid; grid-template-columns: 1.75rem minmax(0, 1fr); gap: .3rem .9rem; align-content: start; }
+  .feature .icon, .pay__item .icon { grid-row: 1 / span 2; width: 1.75rem; height: 1.75rem; margin: .1rem 0 0; }
+  .feature h3, .pay__item h3 { margin: 0; font-size: 1.1rem; }
+  .pay__item { padding: 1.2rem; }
+}
+@media (min-width: 640px) and (max-width: 1099px) { .pay { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .pay { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* Nervous patients: the illustration doesn't need the full width once stacked */
+@media (max-width: 959px) { .comfort > :first-child { width: min(100%, 20rem); } }
+@media (max-width: 639px) { .comfort > :first-child { width: min(62%, 14rem); } }
+
+/* Team: two portraits per row on phones, four from tablet up (no 3 + 1 orphan) */
+@media (max-width: 759px) {
+  .team-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem .9rem; }
+  .team-card h3 { font-size: 1rem; margin-top: .75rem; }
+  .team-card p { font-size: .82rem; }
+}
+@media (min-width: 760px) { .team-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* New patient steps: a numbered timeline on phones, two by two on tablets */
+@media (max-width: 639px) {
+  .journey { gap: 0; }
+  .journey li { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: .15rem 1rem; padding: 1.1rem 0; background: none; border: 0; border-bottom: 1px solid var(--mist-2); border-radius: 0; box-shadow: none; }
+  .journey li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .journey li::before { grid-row: 1 / span 2; margin: 0; }
+  .journey h3 { margin: .4rem 0 .2rem; }
+}
+@media (min-width: 640px) and (max-width: 1099px) { .journey { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Booking band and section-head buttons: full width on phones */
+@media (max-width: 639px) {
+  .page-home .cta-band .btn-row { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .page-home .cta-band .btn { width: 100%; }
+  .page-home .section-head--row { gap: var(--s-4); }
+  .page-home .section-head--row > .btn { width: 100%; }
+}
+
+/* Sticky phone action bar */
+.mbar { display: none; }
+@media (max-width: 760px) {
+  .mbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem;
+    padding: .65rem var(--gutter) calc(.65rem + env(safe-area-inset-bottom, 0px));
+    background: rgba(18, 48, 42, .96); border-top: 1px solid rgba(255,255,255,.1);
+    box-shadow: 0 -12px 30px -20px rgba(0,0,0,.5);
+    visibility: hidden; transform: translateY(110%);
+    transition: transform .25s ease, visibility 0s linear .25s;
+  }
+  .mbar.is-visible { visibility: visible; transform: none; transition-delay: 0s; }
+  .mbar .btn { min-height: 3rem; padding-inline: .75rem; }
+  .page-home .site-footer { padding-bottom: 6.5rem; }
+}
+@media print { .mbar { display: none !important; } }

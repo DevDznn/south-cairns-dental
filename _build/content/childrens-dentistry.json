@@ -1,0 +1,46 @@
+{
+ "short": "children&rsquo;s dentistry",
+ "understand_h": "Why baby teeth matter",
+ "understand": "<p>Baby teeth help children chew, speak clearly and hold space for adult teeth. Decay in baby teeth can cause pain and infection, and can affect the adult teeth developing underneath.</p><p>Regular visits let your dentist check how teeth and jaws are developing, apply preventive care where it helps, and give you practical advice for brushing and diet at each age.</p>",
+ "when_h": "Signs to book a visit",
+ "when": [
+  "White, brown or dark spots on the teeth",
+  "Your child complains of toothache or avoids chewing on one side",
+  "Swollen or bleeding gums",
+  "A knock to the mouth, even if the tooth looks fine",
+  "Questions about thumb sucking, dummies or teeth coming through"
+ ],
+ "care": [
+  [
+   "Brushing",
+   "Brush twice a day with a soft, small-headed brush. Supervise brushing until your child can do it well, usually around 7 or 8."
+  ],
+  [
+   "Toothpaste",
+   "Water only from the first tooth to 18 months unless advised otherwise; low-fluoride children&rsquo;s toothpaste from 18 months to 6 years; standard fluoride toothpaste from 6 years. Use a pea-sized amount."
+  ],
+  [
+   "Drinks and snacks",
+   "Water is the best drink. Avoid putting children to bed with a bottle of milk or juice, and keep sweet snacks to mealtimes."
+  ],
+  [
+   "Sport",
+   "If your child plays contact sport, ask about a custom <a href=\"mouthguards.html\">mouthguard</a>."
+  ]
+ ],
+ "cost": "Eligibility for free kids dentistry and for the Child Dental Benefits Schedule depends on current rules, so call reception and we&rsquo;ll explain what applies.",
+ "faqs": [
+  [
+   "When should my child first visit?",
+   "<p>Australian guidance suggests when the first teeth come through, or by around 12 months of age.</p>"
+  ],
+  [
+   "What is the Child Dental Benefits Schedule?",
+   "<p>An Australian Government program that helps eligible families with the cost of some basic dental services for children. Eligibility depends on age and on certain government payments, and benefits are capped. Check with <a href=\"https://www.servicesaustralia.gov.au/child-dental-benefits-schedule\" rel=\"noopener\">Services Australia</a>.</p>"
+  ],
+  [
+   "My child is scared. What should I do?",
+   "<p>Let us know when you book. Keep your own language calm and matter-of-fact, and let your child watch someone else in the family have a check-up first if that helps.</p>"
+  ]
+ ]
+}

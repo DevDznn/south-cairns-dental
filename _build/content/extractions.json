@@ -1,0 +1,39 @@
+{
+ "short": "extractions",
+ "understand_h": "Why a tooth may need to come out",
+ "understand": "<p>Your dentist will always look at ways to keep a tooth first. Removal may be recommended when a tooth is too badly decayed or broken to repair, affected by advanced gum disease, causing repeated infection, or crowding other teeth.</p><p>Before an extraction your dentist will examine the tooth, usually take an X-ray, review your medical history and medicines, and explain what to expect and how the gap could be replaced if needed.</p>",
+ "weigh": {
+  "benefits": [
+   "Removes a source of pain or infection",
+   "Can be the most predictable option for a tooth that can&rsquo;t be saved"
+  ],
+  "consider": [
+   "A gap can affect chewing and allow teeth to drift",
+   "Healing takes time, and some people have swelling or discomfort",
+   "Let us know about blood thinners and other medicines beforehand"
+  ],
+  "alternatives": [
+   "<a href=\"root-canal-therapy.html\">Root canal therapy</a> where the tooth can be saved",
+   "Replacing the tooth with an <a href=\"dental-implants.html\">implant</a>, <a href=\"crowns-and-bridge-work.html\">bridge</a> or <a href=\"dentures.html\">denture</a>"
+  ]
+ },
+ "care_h": "Looking after the area afterwards",
+ "care": [
+  [
+   "First few hours",
+   "Bite firmly on the gauze as instructed. Rest, and avoid hot drinks until the numbness wears off."
+  ],
+  [
+   "First 24 hours",
+   "Avoid rinsing hard, spitting forcefully, using straws and smoking, which can disturb the blood clot."
+  ],
+  [
+   "Eating",
+   "Choose soft foods and chew on the other side for a few days."
+  ],
+  [
+   "Keeping it clean",
+   "Brush your other teeth as normal. Your dentist will tell you when and how to rinse the area."
+  ]
+ ]
+}

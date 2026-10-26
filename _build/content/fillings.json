@@ -1,0 +1,35 @@
+{
+ "short": "fillings",
+ "understand_h": "How a filling works",
+ "understand": "<p>Decay is caused by bacteria that produce acid and soften the tooth. Once a cavity forms, the tooth can&rsquo;t repair itself. Your dentist removes the softened, decayed part and fills the space to restore the tooth&rsquo;s shape and seal it.</p><p>Fillings can also repair small chips and worn areas. The best material depends on the size and position of the filling and the forces on that tooth, and your dentist will explain the options.</p>",
+ "weigh": {
+  "benefits": [
+   "Stops decay spreading further into the tooth",
+   "Usually completed in one appointment",
+   "Tooth-coloured material blends in with your teeth"
+  ],
+  "consider": [
+   "Fillings can wear, chip or need replacing over time",
+   "Large cavities may be better suited to a crown",
+   "Teeth can be sensitive for a short time afterwards"
+  ],
+  "alternatives": [
+   "A <a href=\"crowns-and-bridge-work.html\">crown</a> for heavily damaged teeth",
+   "Monitoring very early decay with extra prevention, where suitable"
+  ]
+ },
+ "care": [
+  [
+   "Straight after",
+   "If you&rsquo;ve had local anaesthetic, avoid hot drinks and chewing until the numbness wears off, so you don&rsquo;t bite your lip or cheek."
+  ],
+  [
+   "The next few days",
+   "Mild sensitivity is common and usually settles. Call us if your bite feels high or pain gets worse."
+  ],
+  [
+   "Long term",
+   "Brush twice daily with fluoride toothpaste, clean between teeth and keep up regular check-ups."
+  ]
+ ]
+}

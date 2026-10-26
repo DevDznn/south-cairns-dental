@@ -1,0 +1,57 @@
+{
+ "short": "root canal therapy",
+ "when_h": "Signs a tooth may need assessment",
+ "when": [
+  "Severe or lingering toothache",
+  "Pain that lingers after hot or cold food",
+  "Pain when biting or touching the tooth",
+  "Swelling or a pimple on the gum near a tooth",
+  "A tooth that has darkened after an injury"
+ ],
+ "understand_h": "Saving your natural tooth",
+ "understand": "<p>Root canal treatment removes the inflamed or infected tissue from inside the tooth, cleans the canals and seals them. The aim is to relieve pain and infection and keep your own tooth in place.</p><p>Not every tooth can be saved, and your dentist will explain the likely outcome for yours, along with the alternatives.</p>",
+ "weigh": {
+  "benefits": [
+   "Can relieve pain caused by an inflamed or infected nerve",
+   "Keeps your natural tooth, which helps your bite",
+   "Avoids the gap left by an extraction"
+  ],
+  "consider": [
+   "Treatment may need more than one appointment",
+   "The tooth may need a crown afterwards to protect it",
+   "Some teeth don&rsquo;t respond and may need further treatment or removal"
+  ],
+  "alternatives": [
+   "<a href=\"extractions.html\">Extraction</a>, then replacing the tooth with an implant, bridge or denture",
+   "Referral to a specialist endodontist for complex cases"
+  ]
+ },
+ "care": [
+  [
+   "Between appointments",
+   "Avoid chewing hard food on the tooth until it&rsquo;s fully restored."
+  ],
+  [
+   "Afterwards",
+   "Tenderness for a few days is common. Call us if you have swelling or pain that gets worse."
+  ],
+  [
+   "Protect the tooth",
+   "Have the final filling or crown placed as recommended, so the tooth doesn&rsquo;t crack."
+  ]
+ ],
+ "faqs": [
+  [
+   "Is root canal treatment painful?",
+   "<p>It&rsquo;s carried out under local anaesthetic, and most people feel pressure rather than pain. The treatment is often what relieves the toothache.</p>"
+  ],
+  [
+   "Will I need a crown?",
+   "<p>Back teeth in particular are often crowned after root canal treatment to protect them. Your dentist will advise on your tooth.</p>"
+  ],
+  [
+   "Can I just take painkillers and wait?",
+   "<p>Pain relief may ease symptoms but doesn&rsquo;t treat the cause. An untreated infection can spread, so please book an assessment.</p>"
+  ]
+ ]
+}

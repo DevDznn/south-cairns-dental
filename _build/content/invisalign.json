@@ -1,0 +1,49 @@
+{
+ "short": "Invisalign",
+ "understand_h": "How clear aligner treatment works",
+ "understand": "<p>After an assessment, your dentist takes scans or impressions and plans the movement of your teeth. A series of custom aligners is made, and you change to the next set as directed. You&rsquo;ll have regular reviews to check progress.</p><p>Aligners only work while they&rsquo;re in your mouth. They need to be worn for most of the day and night, taken out only to eat, drink anything other than water, and clean your teeth.</p>",
+ "weigh": {
+  "benefits": [
+   "Discreet and removable",
+   "No brackets or wires to irritate the mouth",
+   "Easier to brush and floss than with fixed braces"
+  ],
+  "consider": [
+   "Results depend on wearing the aligners as directed",
+   "Not suitable for every type of tooth movement",
+   "You&rsquo;ll need a retainer afterwards, possibly long term"
+  ],
+  "alternatives": [
+   "Fixed braces, through an orthodontist",
+   "<a href=\"cosmetic-veneers.html\">Veneers</a> for minor cosmetic changes"
+  ]
+ },
+ "care": [
+  [
+   "Cleaning",
+   "Rinse and gently clean your aligners when you take them out, and brush your teeth before putting them back in."
+  ],
+  [
+   "Eating and drinking",
+   "Take aligners out to eat and for drinks other than water."
+  ],
+  [
+   "Storage",
+   "Keep them in their case when they&rsquo;re out, so they aren&rsquo;t lost or damaged."
+  ]
+ ],
+ "faqs": [
+  [
+   "Am I suitable for Invisalign?",
+   "<p>Only an assessment can tell. Some people are better suited to fixed braces or an orthodontist, and your dentist will be upfront about it.</p>"
+  ],
+  [
+   "Does it hurt?",
+   "<p>Many people feel pressure or tightness for a day or two after changing to a new set. This usually settles.</p>"
+  ],
+  [
+   "How long will I need a retainer?",
+   "<p>Teeth tend to drift back after treatment. Your dentist will recommend a retainer plan to hold the result.</p>"
+  ]
+ ]
+}

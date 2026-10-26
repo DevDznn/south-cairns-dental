@@ -1,0 +1,41 @@
+{
+ "short": "mouthguards",
+ "understand_h": "Custom-fitted or off the shelf?",
+ "understand": "<p>Over-the-counter mouthguards come in standard sizes, or are softened in hot water and shaped by biting. A custom mouthguard is made from impressions of your own teeth, so it fits closely and is less likely to move during a hit.</p><p>A mouthguard that&rsquo;s comfortable is more likely to be worn, and a well-fitted guard makes it easier to breathe, speak and drink during play.</p>",
+ "when_h": "Worth considering for",
+ "when": [
+  "Football codes, rugby and AFL",
+  "Hockey, cricket (when batting or keeping) and basketball",
+  "Boxing and martial arts",
+  "Skateboarding, BMX and other high-impact activities",
+  "Training sessions as well as games"
+ ],
+ "care": [
+  [
+   "After each use",
+   "Rinse in cool water, let it air-dry, and store it in a ventilated case."
+  ],
+  [
+   "Keep it cool",
+   "Heat can warp a mouthguard. Don&rsquo;t leave it in a hot car or in the sun."
+  ],
+  [
+   "Check it",
+   "Bring it to your check-ups. Replace it if it&rsquo;s damaged, loose or no longer fits, which happens often in growing children."
+  ]
+ ],
+ "faqs": [
+  [
+   "How long does a mouthguard last?",
+   "<p>It depends on how often it&rsquo;s used and how it&rsquo;s cared for. Children usually need new ones more often as their mouths grow. Your dentist can check the fit at each visit.</p>"
+  ],
+  [
+   "Can I wear a mouthguard with braces?",
+   "<p>Yes, but it needs to suit the braces. Talk to your dentist or orthodontist about the right option.</p>"
+  ],
+  [
+   "Is a mouthguard needed for training too?",
+   "<p>Injuries can happen at training as well as in games, so wearing it whenever there&rsquo;s a risk of contact is sensible.</p>"
+  ]
+ ]
+}

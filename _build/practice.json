@@ -1,0 +1,292 @@
+{
+  "_note": "Single source of truth for practice facts. Edit here, then run: python3 _build/build.py. Items flagged in VERIFICATION.md must be confirmed with the practice before launch.",
+  "name": "South Cairns Dental",
+  "phone_display": "(07) 4055 4214",
+  "phone_tel": "+61740554214",
+  "email": "reception@southcairnsdental.com.au",
+  "address_line1": "Shop 6, 7 Stokes Street",
+  "suburb": "Edmonton",
+  "state": "QLD",
+  "postcode": "4869",
+  "official_url": "https://www.southcairnsdental.com.au/",
+  "site_url": "",
+  "booking_url": "https://www.centaurportal.com/d4w/org-1595/search?practiceID=1800",
+  "maps_query": "Shop 6, 7 Stokes Street, Edmonton QLD 4869",
+  "hours": [
+    {
+      "day": "Monday",
+      "short": "Mon",
+      "open": "08:00",
+      "close": "17:00"
+    },
+    {
+      "day": "Tuesday",
+      "short": "Tue",
+      "open": "08:00",
+      "close": "17:00"
+    },
+    {
+      "day": "Wednesday",
+      "short": "Wed",
+      "open": "08:00",
+      "close": "17:00"
+    },
+    {
+      "day": "Thursday",
+      "short": "Thu",
+      "open": "08:00",
+      "close": "17:00"
+    },
+    {
+      "day": "Friday",
+      "short": "Fri",
+      "open": "08:00",
+      "close": "16:30"
+    },
+    {
+      "day": "Saturday",
+      "short": "Sat",
+      "open": null,
+      "close": null
+    },
+    {
+      "day": "Sunday",
+      "short": "Sun",
+      "open": null,
+      "close": null
+    }
+  ],
+  "service_groups": [
+    {
+      "id": "everyday",
+      "label": "Everyday care",
+      "items": [
+        {
+          "name": "Check-ups and cleans",
+          "file": "check-ups-and-dental-cleans.html",
+          "blurb": "A thorough exam, clean and polish, with a written plan you can take home.",
+          "illus": "check-ups",
+          "category": "Preventive",
+          "desc": "An examination of your teeth, gums and jaw, X-rays where needed, then a scale, clean and polish. You leave with a printed plan if anything needs attention.",
+          "photo": "assets/images/treatments/check-up-smile.jpg"
+        },
+        {
+          "name": "Children’s dentistry",
+          "file": "childrens-dentistry.html",
+          "blurb": "Calm, positive visits that help kids grow up comfortable with the dentist.",
+          "illus": "childrens",
+          "category": "Preventive",
+          "desc": "Relaxed, positive visits that help children feel at home at the dentist, with problems found early. Free dentistry for eligible children.",
+          "photo": "assets/images/treatments/child-in-dental-chair.jpg"
+        },
+        {
+          "name": "Fillings",
+          "file": "fillings.html",
+          "blurb": "Tooth-coloured fillings that stop early decay before it goes further.",
+          "illus": "fillings",
+          "category": "General",
+          "desc": "Early decay is removed and the tooth restored with white, tooth-coloured filling material, usually in a single visit."
+        },
+        {
+          "name": "Mouthguards",
+          "file": "mouthguards.html",
+          "blurb": "Custom-fitted protection for contact sport.",
+          "illus": "mouthguards",
+          "category": "Preventive",
+          "desc": "Custom-fitted mouthguards made from impressions of your teeth, for a snug, comfortable fit during contact sport.",
+          "photo": "assets/images/treatments/sports-mouthguard.jpg"
+        }
+      ]
+    },
+    {
+      "id": "repair",
+      "label": "Repairing teeth",
+      "items": [
+        {
+          "name": "Crowns and bridges",
+          "file": "crowns-and-bridge-work.html",
+          "blurb": "Strengthen a damaged tooth or bridge a gap left by a missing one.",
+          "illus": "crowns",
+          "category": "Restorative",
+          "desc": "A crown reinforces a cracked or heavily filled tooth. A bridge fills a gap using the teeth on either side.",
+          "photo": "assets/images/treatments/dental-crown-illustration.jpg"
+        },
+        {
+          "name": "Root canal therapy",
+          "file": "root-canal-therapy.html",
+          "blurb": "Treat an inflamed or infected nerve and keep your natural tooth.",
+          "illus": "root-canal",
+          "category": "Restorative",
+          "desc": "When a tooth's nerve is badly inflamed or has died, root canal treatment can often save the tooth instead of removing it.",
+          "photo": "assets/images/treatments/root-canal-diagram.jpg"
+        },
+        {
+          "name": "Extractions",
+          "file": "extractions.html",
+          "blurb": "When a tooth has to come out, we take it slowly and keep you comfortable.",
+          "illus": "extractions",
+          "category": "Restorative",
+          "desc": "When a tooth can't be saved, we explain why, talk through your worries and take it slowly so you stay comfortable."
+        },
+        {
+          "name": "Wisdom teeth",
+          "file": "wisdom-teeth.html",
+          "blurb": "Assessment first. Removal only when it is actually needed.",
+          "illus": "wisdom",
+          "category": "Restorative",
+          "desc": "A consultation and X-ray show whether your wisdom teeth are a problem. Removal is only recommended when it's needed.",
+          "photo": "assets/images/treatments/wisdom-teeth-xray.jpg"
+        }
+      ]
+    },
+    {
+      "id": "replace",
+      "label": "Replacing teeth",
+      "items": [
+        {
+          "name": "Dental implants",
+          "file": "dental-implants.html",
+          "blurb": "A fixed, natural-looking replacement for a missing tooth.",
+          "illus": "implants",
+          "category": "Restorative",
+          "desc": "A titanium post replaces the root of a missing tooth and supports a natural-looking crown fixed in place.",
+          "photo": "assets/images/treatments/dental-implant-illustration.jpg"
+        },
+        {
+          "name": "Dentures",
+          "file": "dentures.html",
+          "blurb": "First dentures, replacements for loose ones, or implant-retained options.",
+          "illus": "dentures",
+          "category": "Restorative",
+          "desc": "First dentures, replacements for loose ones, or implant-retained dentures, planned around comfort and fit.",
+          "photo": "assets/images/treatments/full-dentures.jpg"
+        }
+      ]
+    },
+    {
+      "id": "smile",
+      "label": "Changing your smile",
+      "items": [
+        {
+          "name": "Teeth whitening",
+          "file": "whitening.html",
+          "blurb": "Professional whitening, supervised by your dentist.",
+          "illus": "whitening",
+          "category": "Cosmetic",
+          "desc": "Professional whitening supervised by your dentist, starting with a check so you know what result to expect."
+        },
+        {
+          "name": "Cosmetic veneers",
+          "file": "cosmetic-veneers.html",
+          "blurb": "Thin porcelain shells for gaps, stains, chips and worn edges.",
+          "illus": "veneers",
+          "category": "Cosmetic",
+          "desc": "Thin porcelain shells bonded to the front of teeth to improve gaps, stains, chips and worn or short edges.",
+          "photo": "assets/images/treatments/porcelain-veneers.jpg"
+        },
+        {
+          "name": "Invisalign",
+          "file": "invisalign.html",
+          "blurb": "Clear, removable aligners to straighten teeth without wires.",
+          "illus": "invisalign",
+          "category": "Cosmetic",
+          "desc": "Clear, removable aligners that gradually straighten teeth, without brackets or wires. Suitability is assessed first.",
+          "photo": "assets/images/treatments/clear-aligners.jpg"
+        }
+      ]
+    }
+  ],
+  "team": [
+    {
+      "name": "Dr Alex Bornsztejn",
+      "initials": "AB",
+      "role": "Principal Dentist",
+      "quals": "BHSc(Dent), MDent",
+      "slug": "alex-bornsztejn",
+      "photo": "assets/images/team/alex-bornsztejn.jpg",
+      "quals_long": "Bachelor of Health Science in Dentistry, Master of Dentistry",
+      "bio": [
+        "Alex wanted to be a dentist from early childhood. He grew up in Victoria, earned his dental degree from La Trobe University and completed his Masters in rural Victoria before moving to Queensland.",
+        "He has worked across Queensland, from Brisbane to Townsville, and is now proud to call Cairns home.",
+        "Alex enjoys all aspects of general dentistry and puts a high value on continuing education, regularly attending courses run by leaders in the field. His training has taken him overseas to learn techniques in dental implants and wisdom teeth surgery.",
+        "Outside dentistry, Alex loves time on the water fishing and with friends."
+      ],
+      "interests": [
+        "General dentistry",
+        "Dental implants",
+        "Wisdom teeth surgery"
+      ],
+      "dentist": true
+    },
+    {
+      "name": "Dr Louis Fernandez",
+      "initials": "LF",
+      "role": "Dentist",
+      "quals": "DMD",
+      "slug": "louis-fernandez",
+      "photo": "assets/images/team/louis-fernandez.jpg",
+      "quals_long": "Doctor of Dental Medicine",
+      "known_as": "Louie",
+      "bio": [
+        "Louis, known as Louie to colleagues and patients, grew up in a family of dentists who were passionate about oral health and patient care. That upbringing shapes how he practises today, with a strong focus on clinical excellence, patient comfort and mutual understanding between dentist and patient.",
+        "He has taught at university and worked in high-intensity hospital settings managing complex medical and surgical cases. Alongside his surgical interests, he enjoys all aspects of general dentistry and helping patients reach their smile goals, and takes pride in clear explanations and finding solutions that suit each patient’s needs and priorities.",
+        "Louie values learning and has pursued educational opportunities around the world to bring new techniques and technology into his practice."
+      ],
+      "quote": "I’ve seen a need for excellent, thoughtful and careful oral surgery in Cairns for those who find sedation either expensive or daunting. And I am excited to go on these journeys with my patients, be it wisdom teeth extractions or dental implants.",
+      "interests": [
+        "General dentistry",
+        "Oral surgery",
+        "Wisdom teeth",
+        "Dental implants"
+      ],
+      "dentist": true
+    },
+    {
+      "name": "Dr Hannah Dominique Gaza",
+      "initials": "HG",
+      "role": "Dentist",
+      "quals": "BDS",
+      "slug": "hannah-dominique-gaza",
+      "photo": "assets/images/team/hannah-dominique-gaza.jpg",
+      "quals_long": "Bachelor of Dental Surgery",
+      "bio": [],
+      "interests": [],
+      "dentist": true
+    },
+    {
+      "name": "Dr Casey Almond",
+      "initials": "CA",
+      "role": "Dentist",
+      "quals": "BDS",
+      "slug": "casey-almond",
+      "photo": "assets/images/team/casey-almond.jpg",
+      "quals_long": "Bachelor of Dental Surgery",
+      "bio": [],
+      "interests": [],
+      "dentist": true
+    },
+    {
+      "name": "Ashlee",
+      "initials": "A",
+      "role": "Practice Manager",
+      "quals": "",
+      "slug": "ashlee",
+      "photo": "",
+      "bio": [],
+      "interests": [],
+      "dentist": false
+    },
+    {
+      "name": "Carol",
+      "initials": "C",
+      "role": "Dental Assistant",
+      "quals": "",
+      "slug": "carol",
+      "photo": "assets/images/team/carol.jpg",
+      "bio": [],
+      "interests": [],
+      "dentist": false
+    }
+  ],
+  "facebook_url": "https://www.facebook.com/southcairnsdental"
+}

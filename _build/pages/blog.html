@@ -1,0 +1,40 @@
+<!--meta {
+  "title": "Blog | Dental health articles from South Cairns Dental",
+  "description": "Articles from South Cairns Dental in Edmonton, Cairns, about dental implants and other treatments, plus patient guides to every service we offer.",
+  "nav": "blog",
+  "crumbs": [["Blog", "blog.html"]]
+} -->
+<section class="phero">
+  <div class="wrap">
+    [[crumbs]]
+    <div class="split split--7-5">
+      <div>
+        <h1>From the practice</h1>
+        <p class="lead mb-0">Articles from South Cairns Dental about treatments and looking after your teeth, written for patients rather than dentists.</p>
+      </div>
+      <p class="phero__aside mb-0">Everything here is general information. Your dentist can tell you what applies to your own teeth. <a href="faq.html">Patient FAQs</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="articles-h">
+  <div class="wrap">
+    <h2 id="articles-h" class="visually-hidden">Articles</h2>
+    {{blog_list}}
+  </div>
+</section>
+
+<section class="sec sec--mist" aria-labelledby="guides-h">
+  <div class="wrap">
+    <div class="section-head section-head--row">
+      <div>
+        <h2 id="guides-h">Patient guides</h2>
+        <p class="muted mb-0">Each treatment page explains what is involved, what to consider, how to prepare and what recovery looks like.</p>
+      </div>
+      <a class="btn btn--ghost" href="services.html">Services overview</a>
+    </div>
+    {{directory}}
+  </div>
+</section>
+
+{{cta}}

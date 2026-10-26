@@ -1,0 +1,42 @@
+{
+ "short": "check-ups",
+ "understand_h": "Why regular check-ups matter",
+ "understand": "<p>Tooth decay and gum disease often develop without pain. By the time a tooth aches, the problem is usually larger and treatment more involved. A check-up gives your dentist the chance to spot early changes and deal with them simply.</p><p>A professional scale and clean removes calculus (hardened plaque) that a toothbrush can&rsquo;t shift. Left in place, it irritates the gums and makes gum disease more likely.</p>",
+ "when_h": "Book a check-up sooner if you notice",
+ "when": [
+  "Gums that bleed when you brush or floss",
+  "Sensitivity to hot, cold or sweet food",
+  "A chipped tooth or a filling that feels rough",
+  "Persistent bad breath or a bad taste",
+  "A sore spot in your mouth that hasn&rsquo;t healed after two weeks"
+ ],
+ "care": [
+  [
+   "Before your visit",
+   "Note any medicines you take and changes to your health, and any teeth that have been bothering you."
+  ],
+  [
+   "At the appointment",
+   "Tell your dentist if anything feels uncomfortable. They can pause or adjust what they&rsquo;re doing."
+  ],
+  [
+   "Afterwards",
+   "Keep brushing twice a day with fluoride toothpaste and cleaning between your teeth. Your dentist will suggest when to come back."
+  ]
+ ],
+ "cost": "A check-up and clean is a standard appointment, but the final cost depends on what is needed on the day, such as X-rays.",
+ "faqs": [
+  [
+   "Do I need X-rays every visit?",
+   "<p>No. Your dentist decides when X-rays are useful, based on your history and what they see. They show decay between teeth and problems below the gum line that can&rsquo;t be seen by eye.</p>"
+  ],
+  [
+   "Will the clean hurt?",
+   "<p>Most people find a scale and clean comfortable. If your gums are inflamed or your teeth are sensitive, it can feel a little uncomfortable. Tell your dentist and they can go more gently.</p>"
+  ],
+  [
+   "Why do you give me a printed plan?",
+   "<p>So you can see exactly what has been recommended and think it over in your own time. Nothing goes ahead until you&rsquo;re ready.</p>"
+  ]
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "short": "dentures",
+ "understand_h": "Types of dentures",
+ "understand": "<p><strong>Full dentures</strong> replace all the teeth in the upper or lower jaw. <strong>Partial dentures</strong> fill gaps where some natural teeth remain, often clipping onto them for support. <strong>Implant-retained dentures</strong> attach to dental implants for a more secure fit.</p><p>Getting dentures usually takes several appointments, so they can be measured, tried in and adjusted until they look and feel right.</p>",
+ "weigh": {
+  "benefits": [
+   "Replace several or all missing teeth",
+   "Help with chewing, speech and appearance",
+   "Can usually be adjusted or relined as your mouth changes"
+  ],
+  "consider": [
+   "It takes time to get used to new dentures",
+   "The gums and jaw change shape over time, so the fit changes too",
+   "Loose dentures can cause sore spots"
+  ],
+  "alternatives": [
+   "<a href=\"dental-implants.html\">Dental implants</a>",
+   "A <a href=\"crowns-and-bridge-work.html\">bridge</a> for one or two missing teeth"
+  ]
+ },
+ "care": [
+  [
+   "Every day",
+   "Clean your dentures with a soft brush and a cleaner recommended by your dentist. Toothpaste can be too abrasive."
+  ],
+  [
+   "Overnight",
+   "Your dentist may recommend taking dentures out at night to rest your gums. Keep them in water so they don&rsquo;t dry out."
+  ],
+  [
+   "Your mouth",
+   "Brush your gums, tongue and any natural teeth too."
+  ],
+  [
+   "Check-ups",
+   "Keep having regular check-ups, even with a full denture, so your dentist can check the fit and the health of your mouth."
+  ]
+ ],
+ "faqs": [
+  [
+   "My dentures feel loose. What can I do?",
+   "<p>Book a check. Your dentures may need adjusting, relining or replacing, or implant-retained dentures may be worth discussing.</p>"
+  ],
+  [
+   "How long until new dentures feel normal?",
+   "<p>Everyone is different. It can take a few weeks to get used to eating and speaking. Come back if sore spots develop, as adjustments can help.</p>"
+  ]
+ ]
+}

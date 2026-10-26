@@ -1,0 +1,34 @@
+{
+ "short": "whitening",
+ "understand_h": "What whitening can and can&rsquo;t do",
+ "understand": "<p>Professional whitening uses a bleaching gel to lighten the natural colour of tooth enamel. Results vary from person to person, depending on the cause of discolouration and your natural tooth shade.</p><p>Whitening doesn&rsquo;t change the colour of fillings, crowns or veneers, and some types of staining respond better than others. Your dentist will check your teeth first and give you realistic expectations.</p>",
+ "weigh": {
+  "benefits": [
+   "Can noticeably brighten natural teeth",
+   "Supervised by your dentist, who checks your teeth and gums first"
+  ],
+  "consider": [
+   "Temporary sensitivity is common",
+   "Results fade over time, especially with coffee, tea, red wine or smoking",
+   "Not suitable for everyone, for example with untreated decay or gum problems"
+  ],
+  "alternatives": [
+   "A professional clean to remove surface staining",
+   "<a href=\"cosmetic-veneers.html\">Veneers</a> for teeth that don&rsquo;t respond to whitening"
+  ]
+ },
+ "care": [
+  [
+   "Before",
+   "Your dentist may recommend treating decay or gum problems and having a clean first."
+  ],
+  [
+   "Afterwards",
+   "Your dentist may suggest avoiding strongly coloured food and drinks for a short time."
+  ],
+  [
+   "Sensitivity",
+   "If your teeth feel sensitive, tell your dentist. A toothpaste for sensitive teeth may help."
+  ]
+ ]
+}

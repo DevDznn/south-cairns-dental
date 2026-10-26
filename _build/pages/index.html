@@ -1,0 +1,288 @@
+<!--meta {
+  "title": "South Cairns Dental | Gentle, affordable dentist in Edmonton, Cairns",
+  "description": "Family-owned dental practice at 7 Stokes Street, Edmonton. Check-ups, children's dentistry, implants, Invisalign and emergency appointments. Call (07) 4055 4214.",
+  "nav": "home",
+  "schema": true,
+  "body_class": "page-home"
+} -->
+<!-- 2. Hero -->
+<section class="hero-dark hero-cc" aria-labelledby="hero-h">
+  <div class="wrap">
+    <div>
+      <h1 id="hero-h">Gentle, affordable dentistry <span class="hl">for South Cairns families.</span></h1>
+      <p class="lead">A modern, family-owned practice in Edmonton, caring for children and adults from Bentley Park, Mount Sheridan, Gordonvale and nearby suburbs. You&rsquo;ll see the same dentist each visit, and we&rsquo;ll explain your options in plain language before anything goes ahead.</p>
+      <div class="btn-row">{{book_online}}<a class="btn btn--ghost" href="tel:{{tel}}">{{icon_phone}}<span>Call {{phone}}</span></a></div>
+      <div class="hero-trust">
+        <span>{{icon:family}}<b>Family-owned</b> practice</span>
+        <span>{{icon:tooth}}<b>Same dentist</b> each visit</span>
+        <span>{{icon:car}}<b>Free</b> onsite parking</span>
+        <span>{{icon:heart}}<b>New patients</b> welcome</span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      {{img:home-hero|frame--corner}}
+      <aside class="bookcard" data-tilt aria-labelledby="bookcard-h">
+        <span class="open-pill"><span class="status-dot" data-hours-dot aria-hidden="true"></span><span data-hours-status="text">Mon to Thu 8 am to 5 pm, Fri 8 am to 4:30 pm</span></span>
+        <h2 id="bookcard-h">Book today</h2>
+        <dl>
+          <div><dt>Emergency appointments</dt><dd>Reserved daily</dd></div>
+          <div><dt>New patients</dt><dd>Welcome</dd></div>
+          <div><dt>After-hours and weekends</dt><dd>On request</dd></div>
+          <div><dt>Kids dentistry</dt><dd>Free if eligible</dd></div>
+        </dl>
+        {{call_btn}}
+        <p class="bookcard__alt"><a href="{{booking_url}}" rel="noopener">Or book online</a></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Information strip -->
+<section class="infostrip" aria-label="Contact at a glance">
+  <div class="wrap">
+    <div class="infostrip__item">{{icon:phone}}<div><strong>Need an appointment?</strong><a href="tel:{{tel}}">{{phone}}</a></div></div>
+    <div class="infostrip__item">{{icon:clock}}<div><strong>Opening hours</strong><span>Mon to Thu 8 to 5, Fri 8 to 4:30</span></div></div>
+    <div class="infostrip__item">{{icon:map}}<div><strong>Find us</strong><a href="{{maps_link}}" rel="noopener">7 Stokes Street, Edmonton</a></div></div>
+    <div class="infostrip__item infostrip__item--urgent">{{icon:alert}}<div><strong>In pain?</strong><a href="emergency-dentist.html">Emergency help</a></div></div>
+  </div>
+</section>
+
+<!-- 4. What brings you in -->
+<section class="sec" aria-labelledby="concierge-h">
+  <div class="wrap">
+    <div class="section-head"><h2 id="concierge-h">What brings you in today?</h2><p class="muted mb-0">Start with what you need, and we&rsquo;ll point you to the right place.</p></div>
+    <ul class="concierge">
+      <li class="is-urgent reveal" style="--i:0"><a href="emergency-dentist.html"><span class="concierge__icon">{{icon:alert}}</span><strong>I&rsquo;m in pain or broke a tooth</strong><span class="d">Toothache, swelling or a broken tooth? We reserve appointments every day for emergencies.</span><span class="more">Emergency help {{arrow}}</span></a></li>
+      <li class="reveal" style="--i:1"><a href="new-patients.html"><span class="concierge__icon">{{icon:clipboard}}</span><strong>I&rsquo;m new, or it&rsquo;s been a while</strong><span class="d">A thorough check-up and clean, then a printed plan you can take home and think over.</span><span class="more">Your first visit {{arrow}}</span></a></li>
+      <li class="reveal" style="--i:2"><a href="childrens-dentistry.html"><span class="concierge__icon">{{icon:family}}</span><strong>My child needs a check-up</strong><span class="d">Calm, positive visits for kids, with free dentistry for eligible children.</span><span class="more">Children&rsquo;s dentistry {{arrow}}</span></a></li>
+      <li class="reveal" style="--i:0"><a href="dental-implants.html"><span class="concierge__icon">{{icon:tooth}}</span><strong>I&rsquo;m missing a tooth</strong><span class="d">Implants, bridges and dentures, explained honestly so you can compare.</span><span class="more">Replacing teeth {{arrow}}</span></a></li>
+      <li class="reveal" style="--i:1"><a href="whitening.html"><span class="concierge__icon">{{icon:spark}}</span><strong>I&rsquo;d like a brighter, straighter smile</strong><span class="d">Whitening, porcelain veneers and Invisalign clear aligners.</span><span class="more">Cosmetic options {{arrow}}</span></a></li>
+      <li class="reveal" style="--i:2"><a href="faq.html#costs"><span class="concierge__icon">{{icon:wallet}}</span><strong>I want to know about costs</strong><span class="d">Fees explained before treatment, health fund questions and children&rsquo;s dental benefits.</span><span class="more">Costs and cover {{arrow}}</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4b. Introduction -->
+<section class="sec sec--mist" aria-labelledby="intro-h">
+  <div class="wrap editorial">
+    <div class="editorial__media reveal">
+      {{img:home-practice|frame--corner-tr}}
+      <div class="editorial__badge"><strong>Next to Edmonton Family Medical Centre</strong><span>Shop 6, 7 Stokes Street, with free parking right outside.</span></div>
+    </div>
+    <div>
+      <h2 id="intro-h">A local practice that gets to know you</h2>
+      <div class="prose">
+        <p>We&rsquo;re a family-owned practice on Stokes Street, close to Piccones IGA and the shops and health services of Edmonton.</p>
+        <p>We believe continuity matters. Seeing the same dentist from one visit to the next means your dentist knows your history, remembers what worries you, and notices changes early.</p>
+        <p>Whether you need a routine check-up, a filling, a new tooth or help in an emergency, our aim is the same: clear explanations, honest advice and care that goes at your pace.</p>
+      </div>
+      <dl class="stats">
+        <div><dt>dentists on our team</dt><dd data-count="4">4</dd></div>
+        <div><dt>treatments under one roof</dt><dd data-count="14">14</dd></div>
+        <div><dt>days a week, Monday to Friday</dt><dd data-count="5">5</dd></div>
+      </dl>
+      <div class="btn-row mt-6"><a class="btn" href="about.html">About South Cairns Dental</a><a class="textlink" href="new-patients.html">New patient information</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Services -->
+<section class="sec" id="services" aria-labelledby="services-h" style="background:var(--mist);background:linear-gradient(180deg,#fff 0%,var(--mist) 18%)">
+  <div class="wrap">
+    <div class="section-head section-head--row">
+      <div>
+        <h2 id="services-h">Dental care for the whole family</h2>
+        <p class="muted mb-0">From six-monthly check-ups to replacing missing teeth, our dentists provide general, preventive, restorative and cosmetic treatment at one practice. Choose a treatment to read what it involves, what to consider and what to expect.</p>
+      </div>
+      <a class="btn btn--ghost" href="services.html">View all services</a>
+    </div>
+    {{service_cards}}
+  </div>
+</section>
+
+<!-- 6. Why patients choose us -->
+<section class="sec sec--canopy" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="split split--5-7 split--top">
+      <div>
+        <h2 id="why-h">How we look after our patients</h2>
+        <p>Good dentistry is as much about listening as it is about treatment. These are the things we hold ourselves to at every appointment.</p>
+      </div>
+      <div class="features">
+        <div class="feature reveal" style="--i:0">{{icon:tooth}}<h3>The same dentist each time</h3><p>Continuity of care means your dentist knows your mouth, your history and what makes you comfortable.</p></div>
+        <div class="feature reveal" style="--i:1">{{icon:chat}}<h3>Options explained clearly</h3><p>Your dentist shows you what they see, with photos where helpful, and talks you through each option before you decide.</p></div>
+        <div class="feature reveal" style="--i:2">{{icon:clipboard}}<h3>A plan you can take home</h3><p>After your check-up you leave with a printed treatment plan, so you can think it over in your own time.</p></div>
+        <div class="feature reveal" style="--i:3">{{icon:family}}<h3>Care for every age</h3><p>Children, teenagers, adults and older patients are all welcome, including people who haven&rsquo;t been to a dentist in years.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Nervous patients -->
+<section class="sec sec--lime" aria-labelledby="nervous-h">
+  <div class="wrap comfort">
+    <div class="reveal">{{illus:scene-comfort|frame--corner|1 / 1}}</div>
+    <div>
+      <h2 id="nervous-h">Nervous about the dentist? You&rsquo;re in good company.</h2>
+      <p class="lead">Dental anxiety is very common, and it&rsquo;s nothing to be embarrassed about. Helping anxious patients feel more comfortable is part of everyday care here, and telling us how you feel is the most helpful first step.</p>
+      <ul class="comfort__list">
+        <li><span class="icon-wrap">{{icon:chat}}</span><div><strong>Tell us when you book</strong><span>Let reception know you&rsquo;re nervous, or about a bad experience in the past, so we can allow extra time.</span></div></li>
+        <li><span class="icon-wrap">{{icon:question}}</span><div><strong>Ask as many questions as you like</strong><span>Your dentist will explain what they plan to do, and what you might feel, before they start.</span></div></li>
+        <li><span class="icon-wrap">{{icon:pause}}</span><div><strong>Ask for a break</strong><span>Let your dentist know if you need to pause. Our aim is for you to feel comfortable and in control.</span></div></li>
+        <li><span class="icon-wrap">{{icon:music}}</span><div><strong>Music or a movie</strong><span>You&rsquo;re welcome to choose music or a movie to focus on during treatment.</span></div></li>
+      </ul>
+      <div class="btn-row">{{call_btn_forest}}<a class="textlink" href="new-patients.html">Your first visit, step by step</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Team -->
+<section class="sec" aria-labelledby="team-h">
+  <div class="wrap">
+    <div class="section-head section-head--row">
+      <div>
+        <h2 id="team-h">Meet your dentists</h2>
+        <p class="muted mb-0">Led by principal dentist Dr Alex Bornsztejn, our team includes four dentists, supported by practice manager Ashlee and dental assistant Carol.</p>
+      </div>
+      <a class="btn btn--ghost" href="team.html">Meet our dentists</a>
+    </div>
+    {{team_cards}}
+  </div>
+</section>
+
+<!-- 9. New patients -->
+<section class="sec sec--mist" aria-labelledby="np-h">
+  <div class="wrap">
+    <div class="section-head section-head--row">
+      <div><h2 id="np-h">Getting started as a new patient</h2><p class="muted mb-0">New patients of every age are welcome. Here&rsquo;s how a first visit usually goes; your dentist will tailor it to you.</p></div>
+      <a class="textlink" href="new-patients.html">Everything new patients need to know</a>
+    </div>
+    <ol class="journey">
+      <li class="reveal" style="--i:0"><h3>Book online, call or email</h3><p><a href="{{booking_url}}" rel="noopener">Book online</a>, phone <a href="tel:{{tel}}">{{phone}}</a> or email reception. If you&rsquo;re in pain, call so we can try to see you sooner.</p></li>
+      <li class="reveal" style="--i:1"><h3>Share your history and concerns</h3><p>Tell us about your general health, medicines, past dental care and anything that worries you.</p></li>
+      <li class="reveal" style="--i:2"><h3>A thorough check-up and clean</h3><p>Your dentist examines your teeth, gums and jaw, takes X-rays if needed, and explains what they find.</p></li>
+      <li class="reveal" style="--i:3"><h3>Your plan and costs, before anything else</h3><p>If treatment is recommended, you take home a printed plan and the fees are explained before you decide.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 10. Preventive and family care -->
+<section class="sec" aria-labelledby="prevent-h">
+  <div class="wrap">
+    <div class="split split--5-7 split--top">
+      <div>
+        <h2 id="prevent-h">Healthy teeth start at home</h2>
+        <p>Most tooth decay and gum disease can be prevented. Regular check-ups find problems early, when treatment is simpler, and a professional clean removes the hardened tartar that brushing can&rsquo;t.</p>
+        <p>How often you need a check-up depends on your own teeth, so your dentist will recommend an interval that suits you.</p>
+        <div class="btn-row mt-5"><a class="btn" href="check-ups-and-dental-cleans.html">Check-ups and cleans</a><a class="btn btn--ghost" href="childrens-dentistry.html">Children&rsquo;s dentistry</a></div>
+      </div>
+      <div class="guide">
+        <div class="guide__card reveal" style="--i:0"><h3>{{icon:tooth}}Everyday habits</h3><ul><li>Brush twice a day with a fluoride toothpaste.</li><li>Clean between your teeth every day with floss or interdental brushes.</li><li>After brushing, spit out the toothpaste but don&rsquo;t rinse.</li><li>Keep sugary food and drinks to a minimum, and choose water.</li></ul></div>
+        <div class="guide__card reveal" style="--i:1"><h3>{{icon:family}}Children&rsquo;s teeth</h3>
+          <table class="age-table"><caption class="visually-hidden">General toothpaste guidance by age</caption><tbody>
+            <tr><th scope="row">First teeth to 18 months</th><td>Clean teeth with a soft brush and water, unless your dental professional advises otherwise.</td></tr>
+            <tr><th scope="row">18 months to 6 years</th><td>A pea-sized amount of low-fluoride children&rsquo;s toothpaste.</td></tr>
+            <tr><th scope="row">6 years and older</th><td>A pea-sized amount of standard fluoride toothpaste.</td></tr>
+          </tbody></table>
+          <p class="small mb-0 mt-5">Book a first dental visit when the first teeth appear, or by their first birthday.</p></div>
+      </div>
+    </div>
+    <p class="source">General guidance based on Australian oral-health advice from the <a href="https://www.teeth.org.au/" rel="noopener">Australian Dental Association</a> and <a href="https://www.healthdirect.gov.au/" rel="noopener">healthdirect</a>. It is not a substitute for advice from your dentist.</p>
+  </div>
+</section>
+
+<!-- 11. Emergency -->
+<section class="sec sec--tight" aria-labelledby="er-h">
+  <div class="wrap">
+    <div class="er-band reveal">
+      <div>
+        <h2 id="er-h">Toothache, a broken tooth or swelling?</h2>
+        <p class="lead mb-0">We reserve appointments every day for dental emergencies. Call us as early in the day as you can, tell reception what has happened, and we&rsquo;ll do our best to fit you in.</p>
+        <ul aria-label="Common dental emergencies"><li>Painful teeth or gums</li><li>Broken teeth or fillings</li><li>Facial swelling</li><li>Knocks to the face or teeth</li><li>Broken or lost dentures</li></ul>
+      </div>
+      <div class="er-band__call">
+        <p class="er-call__label mb-0">Call South Cairns Dental</p>
+        <a class="er-call__number" href="tel:{{tel}}">{{phone}}</a>
+        <a class="btn btn--alert" href="tel:{{tel}}">{{icon_phone}}<span>Call now</span></a>
+        <a class="textlink" href="emergency-dentist.html">First aid while you wait</a>
+        <p class="small muted mb-0">Trouble breathing or swallowing, or swelling spreading to the eye or neck? Call 000.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. Payment and offers -->
+<section class="sec sec--forest" aria-labelledby="pay-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="pay-h">Fees, health funds and payment</h2>
+      <p class="mb-0">Every mouth is different, so we explain the costs of any recommended treatment before it begins.</p>
+    </div>
+    <div class="pay">
+      <div class="pay__item reveal" style="--i:0">{{icon:clipboard}}<h3>Costs explained first</h3><p>Your printed treatment plan lists what is recommended. Ask us any questions about fees before you go ahead.</p></div>
+      <div class="pay__item reveal" style="--i:1">{{icon:shield}}<h3>Private health insurance</h3><p>If you have extras cover, your fund may contribute towards some treatment. What you get back depends on your policy, so check with your fund.</p></div>
+      <div class="pay__item reveal" style="--i:2">{{icon:family}}<h3>Children&rsquo;s dental benefits</h3><p>Some families can claim the Australian Government&rsquo;s <a href="https://www.servicesaustralia.gov.au/child-dental-benefits-schedule" rel="noopener">Child Dental Benefits Schedule</a>. Eligibility rules apply. Ask reception how it works at our practice.</p></div>
+      <div class="pay__item reveal" style="--i:3">{{icon:wallet}}<h3>Payment plans and offers</h3><p>Interest-free payment plans through Zip, and a new patient check-up offer that is gap free with any health fund. <a href="special-offers.html">Special offers</a></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. FAQ + booking -->
+<section class="sec sec--mist" aria-labelledby="hfaq-h">
+  <div class="wrap split split--7-5 split--top">
+    <div>
+      <h2 id="hfaq-h">Questions patients ask us</h2>
+      <p class="muted">Can&rsquo;t see your question? <a href="faq.html">Read all patient FAQs</a> or call reception.</p>
+      <div class="faq">
+      <details><summary>How do I book an appointment?</summary><div class="faq__body"><p>Call us on {{phone}} during opening hours or <a href="{{booking_url}}" rel="noopener">book online</a>. You can also email <a href="mailto:{{email}}">{{email}}</a> and we&rsquo;ll get back to you.</p></div></details>
+      <details><summary>What should I bring to my first visit?</summary><div class="faq__body"><p>We suggest your health fund card if you have private health insurance, and a list of any medicines you take. Let us know about any health conditions, and any worries you have about treatment.</p></div></details>
+      <details><summary>How often should I have a check-up?</summary><div class="faq__body"><p>It varies from person to person. Your dentist will recommend an interval based on your teeth, gums and risk of decay.</p></div></details>
+      <details><summary>When should my child first see a dentist?</summary><div class="faq__body"><p>Australian guidance suggests a first visit when the first teeth come through, or by around 12 months of age. <a href="childrens-dentistry.html">Children&rsquo;s dentistry</a></p></div></details>
+      <details><summary>What should I do in a dental emergency?</summary><div class="faq__body"><p>Call us straight away. We reserve appointments every day for emergencies. If there is difficulty breathing or swallowing, or swelling spreading to the eye or neck, call 000. <a href="emergency-dentist.html">Emergency information</a></p></div></details>
+      <details><summary>Does Medicare cover dental treatment?</summary><div class="faq__body"><p>Medicare doesn&rsquo;t cover most dental care. Some children may be eligible for the Child Dental Benefits Schedule, which has its own rules. Private health insurance with extras cover may help with some costs.</p></div></details>
+      <details><summary>Can I ask about a treatment before committing?</summary><div class="faq__body"><p>Of course. Book a consultation and your dentist will explain whether a treatment suits you, the alternatives, and the likely costs.</p></div></details>
+    
+    </div>
+    <aside class="book-panel reveal" aria-labelledby="book-h">
+      <h2 id="book-h">Book your next visit</h2>
+      <p>The quickest way to book is to call our Edmonton reception team. Tell us if you&rsquo;re in pain and we&rsquo;ll try to see you sooner.</p>
+      <ul class="contact-list mt-5">
+        <li><span class="label">Phone</span><a href="tel:{{tel}}">{{phone}}</a></li>
+        <li><span class="label">Email</span><a href="mailto:{{email}}">{{email}}</a></li>
+        <li><span class="label">Today</span><span class="value" data-hours-status="text">Mon to Thu 8 am to 5 pm</span></li>
+      </ul>
+      <div class="mt-6 btn-stack">{{call_btn}}<a class="btn btn--ghost-light" href="{{booking_url}}" rel="noopener">Book online</a></div>
+    </aside>
+  </div>
+</section>
+
+<!-- 14. Location -->
+<section class="sec sec--canopy" aria-labelledby="visit-h">
+  <div class="wrap split split--5-7 split--top">
+    <div>
+      <h2 id="visit-h">Visit us in Edmonton</h2>
+      <p>We&rsquo;re on Stokes Street, next to Edmonton Family Medical Centre and close to Piccones IGA. It&rsquo;s an easy drive from Bentley Park, Mount Sheridan and Gordonvale, and parking is free and on site.</p>
+      <ul class="contact-list mt-6">
+        <li><span class="label">Phone</span><a href="tel:{{tel}}">{{phone}}</a></li>
+        <li><span class="label">Email</span><a href="mailto:{{email}}">{{email}}</a></li>
+        <li><span class="label">Address</span><span class="value">{{address_line1}}<br>{{address_locality}}</span></li>
+      </ul>
+      <div class="mt-7">{{hours_table}}</div>
+    </div>
+    <div>{{map}}<div class="btn-row mt-5"><a class="btn btn--lime" href="{{maps_link}}" rel="noopener">{{icon_pin}}Get directions</a><a class="btn btn--ghost-light" href="contact.html">Contact page</a></div></div>
+  </div>
+</section>
+
+<!-- 15. Final CTA -->
+<section class="sec" aria-labelledby="final-h">
+  <div class="wrap">
+    <div class="final-cta reveal">
+      <div>
+        <h2 id="final-h">We&rsquo;d love to look after your smile</h2>
+        <p class="lead">Whether it&rsquo;s been six months or six years since your last visit, give us a call. Our Edmonton team will find a time that suits you and your family.</p>
+        <div class="btn-row mt-5">{{call_btn_forest}}<a class="btn btn--ghost" href="mailto:{{email}}">{{icon_mail}}Email reception</a></div>
+      </div>
+      {{illus:check-ups|frame--corner-br}}
+    </div>
+  </div>
+</section>

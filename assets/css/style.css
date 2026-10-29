@@ -1084,6 +1084,7 @@ img[src$="root-canal-diagram.jpg"].is-photo { object-fit: contain; background: #
 .offer__prices strong { font-family: var(--f-display); font-stretch: 112%; font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem); line-height: 1.05; color: #fff; }
 .offer__prices > div + div strong { color: var(--forest); }
 .offer__prices span { font-size: var(--t-small); }
+.offer__prices:has(> :nth-child(4)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .offer__terms { color: var(--stone); }
 .offer__media .frame { max-width: 22rem; margin-inline: auto; box-shadow: var(--shadow); }
 
@@ -1324,7 +1325,7 @@ img[src$="root-canal-diagram.jpg"].is-photo { object-fit: contain; background: #
 @media (prefers-reduced-motion: reduce) { .faq--cards details, .faq--cards summary::after { transition: none; } }
 
 /* Support staff: same portrait size for everyone */
-.team--support { grid-template-columns: repeat(auto-fill, minmax(12rem, 15rem)); }
+.team--support { grid-template-columns: repeat(auto-fill, minmax(9.5rem, 13rem)); }
 .team--support .portrait > img { width: 100%; height: 100%; object-fit: cover; }
 a[href^="tel:"] { white-space: nowrap; }
 

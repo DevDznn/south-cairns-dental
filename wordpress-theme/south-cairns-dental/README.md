@@ -9,9 +9,9 @@ A custom WordPress theme for South Cairns Dental, converted from the practice's 
 ## Install
 
 1. **Plugins first.** In *Plugins › Add New*, install and activate **Elementor** and **ThinkRank**.
-2. **Theme.** In *Appearance › Themes › Add New › Upload Theme*, choose `south-cairns-dental.zip`, then **Activate**.
+2. **Theme.** In *Appearance › Themes › Add New › Upload Theme*, choose the latest `south-cairns-dental-v<version>.zip`, then **Activate**. To update an installed copy, upload the newer ZIP and choose *Replace active with uploaded*, then purge any page cache or CDN.
 3. **Import the website.** Go to *Appearance › South Cairns setup* and press **Import website content**. This creates:
-   - the homepage, About, Meet our dentists, New patients, Services, FAQ, Special offers, Contact and Privacy pages;
+   - the homepage, About, Meet our dentists, New patients, Services, FAQ, Special offers, Payments, Contact and Privacy pages;
    - the 14 treatment pages;
    - the two campaign landing pages (Full arch dental implants and Cosmetic dentistry), kept out of menus and search results;
    - the Blog page and the published article;
@@ -55,7 +55,7 @@ Sections can be reordered by dragging, duplicated or removed. You can also add E
 | SCD Team cards / SCD Dentist profiles | Dentist cards, support team, full profiles with biography, interests and quote |
 | SCD Questions (FAQ) / SCD FAQ by topic | Accordions; the FAQ page with topic navigation |
 | SCD Emergency band, SCD Callout band, SCD Booking band | Emergency call card; lime, pale or red message bands; the booking band and urgent strip |
-| SCD Text section, SCD Special offer, SCD Contact details and form, SCD Map | Text layouts, the new patient offer, contact details with hours and enquiry form, the map |
+| SCD Text section, SCD Special offer, SCD Contact details and form, SCD Map | Text layouts, the new patient offer (up to four prices), contact details with hours and enquiry form, the map |
 | SCD Flexible section | The campaign landing pages, and treatment-page sections with their own layout (introductions with an illustration, care and cost sections, the promo bands and risk notes). See below |
 
 ### Editing a Flexible section

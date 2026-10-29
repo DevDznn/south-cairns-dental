@@ -21,7 +21,7 @@ function scd_legacy_redirects() {
 		array(
 			'index.html'                            => '',
 			'about-us'                              => 'about',
-			'payment-plans'                         => 'faq#costs',
+			'payment-plans'                         => 'payments',
 			'thank-you'                             => 'contact',
 			'emergency-dental-care'                 => 'emergency-dentist',
 			'blog/why-choose-dental-implants'       => 'why-choose-dental-implants',

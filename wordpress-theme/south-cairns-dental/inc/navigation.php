@@ -240,7 +240,7 @@ function scd_menu_name( $location, $fallback ) {
 function scd_default_footer_tree( $location ) {
 	$pages = array(
 		'footer_about'    => array( 'about' => __( 'About South Cairns Dental', 'south-cairns-dental' ), 'team' => __( 'Meet our dentists', 'south-cairns-dental' ), 'new-patients' => __( 'New patients', 'south-cairns-dental' ) ),
-		'footer_patients' => array( 'faq' => __( 'Frequently asked questions', 'south-cairns-dental' ), 'special-offers' => __( 'Special offers', 'south-cairns-dental' ), 'blog' => __( 'Blog', 'south-cairns-dental' ), 'contact' => __( 'Contact us', 'south-cairns-dental' ), 'privacy' => __( 'Privacy policy', 'south-cairns-dental' ) ),
+		'footer_patients' => array( 'faq' => __( 'Frequently asked questions', 'south-cairns-dental' ), 'special-offers' => __( 'Special offers', 'south-cairns-dental' ), 'payments' => __( 'Payments', 'south-cairns-dental' ), 'blog' => __( 'Blog', 'south-cairns-dental' ), 'contact' => __( 'Contact us', 'south-cairns-dental' ), 'privacy' => __( 'Privacy policy', 'south-cairns-dental' ) ),
 		'footer_legal'    => array( 'privacy' => __( 'Privacy policy', 'south-cairns-dental' ) ),
 	);
 	$links = array();
@@ -336,6 +336,7 @@ function scd_default_primary_tree() {
 			array(
 				$mk( __( 'Frequently asked questions', 'south-cairns-dental' ), 'faq' ),
 				$mk( __( 'Special offers', 'south-cairns-dental' ), 'special-offers' ),
+				$mk( __( 'Payments', 'south-cairns-dental' ), 'payments' ),
 				$mk( __( 'Emergency dental care', 'south-cairns-dental' ), 'emergency-dentist' ),
 			)
 		),

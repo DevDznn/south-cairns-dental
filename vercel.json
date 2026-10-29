@@ -28,7 +28,7 @@
     },
     {
       "source": "/payment-plans",
-      "destination": "/faq.html#costs",
+      "destination": "/payments.html",
       "permanent": true
     },
     {

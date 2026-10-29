@@ -17,25 +17,25 @@
       "day": "Monday",
       "short": "Mon",
       "open": "08:00",
-      "close": "17:00"
+      "close": "17:30"
     },
     {
       "day": "Tuesday",
       "short": "Tue",
       "open": "08:00",
-      "close": "17:00"
+      "close": "17:30"
     },
     {
       "day": "Wednesday",
       "short": "Wed",
       "open": "08:00",
-      "close": "17:00"
+      "close": "18:30"
     },
     {
       "day": "Thursday",
       "short": "Thu",
       "open": "08:00",
-      "close": "17:00"
+      "close": "18:30"
     },
     {
       "day": "Friday",
@@ -46,8 +46,8 @@
     {
       "day": "Saturday",
       "short": "Sat",
-      "open": null,
-      "close": null
+      "open": "08:00",
+      "close": "14:30"
     },
     {
       "day": "Sunday",
@@ -188,7 +188,7 @@
           "photo": "assets/images/treatments/porcelain-veneers.jpg"
         },
         {
-          "name": "Invisalign",
+          "name": "Clear aligners",
           "file": "invisalign.html",
           "blurb": "Clear, removable aligners to straighten teeth without wires.",
           "illus": "invisalign",
@@ -201,24 +201,17 @@
   ],
   "team": [
     {
-      "name": "Dr Alex Bornsztejn",
-      "initials": "AB",
+      "name": "Dr Max Ryu",
+      "initials": "MR",
       "role": "Principal Dentist",
-      "quals": "BHSc(Dent), MDent",
-      "slug": "alex-bornsztejn",
-      "photo": "assets/images/team/alex-bornsztejn.jpg",
-      "quals_long": "Bachelor of Health Science in Dentistry, Master of Dentistry",
+      "quals": "",
+      "slug": "max-ryu",
+      "photo": "",
+      "quals_long": "",
       "bio": [
-        "Alex wanted to be a dentist from early childhood. He grew up in Victoria, earned his dental degree from La Trobe University and completed his Masters in rural Victoria before moving to Queensland.",
-        "He has worked across Queensland, from Brisbane to Townsville, and is now proud to call Cairns home.",
-        "Alex enjoys all aspects of general dentistry and puts a high value on continuing education, regularly attending courses run by leaders in the field. His training has taken him overseas to learn techniques in dental implants and wisdom teeth surgery.",
-        "Outside dentistry, Alex loves time on the water fishing and with friends."
+        "Max is the Principal Dentist at South Cairns Dental and provides full arch implant treatment alongside Dr Louis Fernandez."
       ],
-      "interests": [
-        "General dentistry",
-        "Dental implants",
-        "Wisdom teeth surgery"
-      ],
+      "interests": [],
       "dentist": true
     },
     {
@@ -286,6 +279,61 @@
       "quals": "",
       "slug": "carol",
       "photo": "assets/images/team/carol.jpg",
+      "bio": [],
+      "interests": [],
+      "dentist": false
+    },
+    {
+      "name": "Catherine Pigott",
+      "initials": "CP",
+      "role": "Support team",
+      "quals": "",
+      "slug": "catherine-pigott",
+      "photo": "",
+      "bio": [],
+      "interests": [],
+      "dentist": false
+    },
+    {
+      "name": "Ebony Jamieson",
+      "initials": "EJ",
+      "role": "Support team",
+      "quals": "",
+      "slug": "ebony-jamieson",
+      "photo": "",
+      "bio": [],
+      "interests": [],
+      "dentist": false
+    },
+    {
+      "name": "Natalie Rea",
+      "initials": "NR",
+      "role": "Support team",
+      "quals": "",
+      "slug": "natalie-rea",
+      "photo": "",
+      "bio": [],
+      "interests": [],
+      "dentist": false
+    },
+    {
+      "name": "Jasmine Spranklin",
+      "initials": "JS",
+      "role": "Support team",
+      "quals": "",
+      "slug": "jasmine-spranklin",
+      "photo": "",
+      "bio": [],
+      "interests": [],
+      "dentist": false
+    },
+    {
+      "name": "Freya Clark",
+      "initials": "FC",
+      "role": "Support team",
+      "quals": "",
+      "slug": "freya-clark",
+      "photo": "",
       "bio": [],
       "interests": [],
       "dentist": false

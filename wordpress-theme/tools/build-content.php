@@ -355,14 +355,14 @@ function widget( $type, array $settings, $seed ) {
 }
 
 /** One full-width, zero-padding container per section. */
-function container( array $widget, $seed ) {
+function container( array $widget, $seed, $classes = '' ) {
 	$zero = array( 'unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'isLinked' => true );
 	return array(
 		'id'       => eid( $seed . 'c' ),
 		'elType'   => 'container',
 		'settings' => array(
 			'content_width' => 'full',
-			'css_classes'   => 'scd-sec',
+			'css_classes'   => trim( 'scd-sec ' . $classes ),
 			'padding'       => $zero,
 			'margin'        => $zero,
 			'flex_gap'      => array( 'unit' => 'px', 'column' => '0', 'row' => '0', 'isLinked' => true, 'size' => 0 ),
@@ -1010,6 +1010,10 @@ function conv_offer( DOMElement $sec, $seed ) {
 				'price1_note' => inner( q( $prices[0], './span' ) ),
 				'price2'      => text( q( $prices[1], './strong' ) ),
 				'price2_note' => inner( q( $prices[1], './span' ) ),
+				'price3'      => isset( $prices[2] ) ? text( q( $prices[2], './strong' ) ) : '',
+				'price3_note' => isset( $prices[2] ) ? inner( q( $prices[2], './span' ) ) : '',
+				'price4'      => isset( $prices[3] ) ? text( q( $prices[3], './strong' ) ) : '',
+				'price4_note' => isset( $prices[3] ) ? inner( q( $prices[3], './span' ) ) : '',
 				'terms'       => inner( q( $o, './/p[' . c( 'offer__terms' ) . ']' ) ),
 			),
 			button( $as[0] ?? null, 'btn1' ),
@@ -1406,6 +1410,17 @@ function fix_anchors( $data ) {
 	return json_decode( $json, true );
 }
 
+/**
+ * Whether a section's design background is a CSS gradient (a background-image): the promo band,
+ * the new patient offer card, or an inline gradient (the "fade" background). Elementor's "Lazy load background images" removes
+ * every background-image inside lower containers until its script marks them loaded, which left
+ * these sections blank (the promo band white with white text). Their containers get e-no-lazyload,
+ * Elementor's own opt-out for that rule.
+ */
+function has_gradient_bg( DOMElement $el ) {
+	return has_class( $el, 'promo-band' ) || q( $el, './/div[' . c( 'offer' ) . ']' ) || false !== strpos( $el->getAttribute( 'style' ), 'linear-gradient' );
+}
+
 /** Convert a built page. */
 function convert_page( $file, $slug, $extra = array() ) {
 	$dom   = load_html( $file );
@@ -1420,7 +1435,7 @@ function convert_page( $file, $slug, $extra = array() ) {
 	foreach ( $els as $i => $el ) {
 		$w = ( ! empty( $flags['landing'] ) && has_class( $el, 'mbar' ) ) ? conv_flex( $el, $slug . $i ) : convert_section( $el, $slug . $i, $flags );
 		if ( $w ) {
-			$conts[] = container( $w, $slug . $i );
+			$conts[] = container( $w, $slug . $i, has_gradient_bg( $el ) ? 'e-no-lazyload' : '' );
 		}
 	}
 	$body = q( $dom, '//body' );
@@ -1457,6 +1472,7 @@ $order = array(
 	'services'       => array( 'Services', 'services' ),
 	'faq'            => array( 'Frequently asked questions', 'faq' ),
 	'special-offers' => array( 'Special offers', 'special-offers' ),
+	'payments'       => array( 'Payments', 'payments' ),
 	'contact'        => array( 'Contact us', 'contact' ),
 	'privacy'        => array( 'Privacy policy', 'privacy' ),
 );

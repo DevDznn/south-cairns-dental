@@ -3,17 +3,17 @@
   "home-hero": {
     "page": "index.html",
     "section": "Hero",
-    "subject": "Dr Alex Bornsztejn with a team member at the practice's green feature wall",
-    "status": "authentic",
-    "src": "assets/images/team/alex-with-team-member.jpg",
-    "w": 1100,
-    "h": 733,
-    "alt": "Principal dentist Dr Alex Bornsztejn and a South Cairns Dental team member smiling in front of the practice's green feature wall",
+    "subject": "A relaxed patient in the dental chair",
+    "status": "licensed-stock",
+    "src": "assets/images/treatments/relaxed-patient-in-chair.jpg",
+    "w": 1400,
+    "h": 934,
+    "alt": "A relaxed patient in the dental chair during a check-up",
     "ratio": "1 / 1",
     "pos": "50% 40%",
     "eager": true,
-    "source_url": "https://www.southcairnsdental.com.au/thumbnaillarge/maddyalexgood1.jpg",
-    "notes": "Homepage and About Us image on the official site. The team member is not named on the official site, so the alt text does not name her."
+    "source_url": "https://unsplash.com/photos/BiknMFl7iOw",
+    "notes": "Replaces the photo of Dr Alex Bornsztejn and a former team member (maddyalexgood1.jpg), removed at the practice's request. Replace with a current practice photo when one is supplied."
   },
   "home-practice": {
     "page": "index.html",
@@ -32,16 +32,16 @@
   "about-story": {
     "page": "about.html",
     "section": "Practice philosophy",
-    "subject": "Dr Alex Bornsztejn with a team member",
-    "status": "authentic",
-    "src": "assets/images/team/alex-with-team-member.jpg",
-    "w": 1100,
-    "h": 733,
-    "alt": "Dr Alex Bornsztejn and a team member at South Cairns Dental",
+    "subject": "A relaxed patient in the dental chair",
+    "status": "licensed-stock",
+    "src": "assets/images/treatments/relaxed-patient-in-chair.jpg",
+    "w": 1400,
+    "h": 934,
+    "alt": "A relaxed patient in the dental chair during a check-up",
     "ratio": "4 / 3",
     "pos": "50% 40%",
-    "source_url": "https://www.southcairnsdental.com.au/thumbnaillarge/maddyalexgood1.jpg",
-    "notes": "Same photograph as the homepage hero; it is the only group photo on the official site."
+    "source_url": "https://unsplash.com/photos/BiknMFl7iOw",
+    "notes": "Replaces the photo of Dr Alex Bornsztejn and a former team member (maddyalexgood1.jpg), removed at the practice's request. Replace with a current practice photo when one is supplied."
   },
   "newpatients": {
     "page": "new-patients.html",
@@ -63,14 +63,13 @@
     "section": "New patient offer",
     "subject": "The practice's new patient special offer flyer",
     "status": "authentic",
-    "src": "assets/images/offers/new-patient-offer.jpg",
+    "src": "assets/images/offers/new-patient-offer-photo.jpg",
     "w": 880,
-    "h": 1100,
-    "alt": "New patient special offer flyer. The full text is shown beside the image.",
-    "ratio": "4 / 5",
-    "fit": "contain",
+    "h": 466,
+    "alt": "A mother and daughter smiling, with the words New patient special offer",
+    "ratio": "880 / 466",
     "source_url": "https://www.southcairnsdental.com.au/thumbnaillarge/SP-2.jpg",
-    "notes": "Practice marketing artwork from the official Special Offers page. The family photo within the flyer is stock. The offer text is reproduced as HTML beside it."
+    "notes": "Photo and heading cropped from the practice's flyer. The flyer's printed prices (gap free with any health fund, $199) are out of date, so the current offer is shown as text."
   },
   "checkups": {
     "page": "check-ups-and-dental-cleans.html",

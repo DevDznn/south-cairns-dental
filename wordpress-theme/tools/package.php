@@ -1,7 +1,9 @@
 <?php
 /**
- * Build wordpress-theme/south-cairns-dental.zip with the theme folder at the root of the archive,
- * as WordPress expects when uploading a theme.
+ * Build wordpress-theme/south-cairns-dental-v<version>.zip with the theme folder at the root of the
+ * archive, as WordPress expects when uploading a theme. The version is the theme's style.css
+ * Version header, so raise it for each release. Earlier ZIPs are kept as backups: the script
+ * refuses to overwrite an existing version.
  *
  * Usage (from the repository root): php wordpress-theme/tools/package.php
  */
@@ -14,11 +16,16 @@ if ( PHP_SAPI !== 'cli' ) {
 
 $base = dirname( __DIR__ );
 $dir  = $base . '/south-cairns-dental';
-$zip  = $base . '/south-cairns-dental.zip';
 $skip = '#(^|/)(\.git|\.DS_Store|Thumbs\.db|node_modules|\.idea|\.vscode)(/|$)|\.log$|~$#';
 
+if ( ! preg_match( '/^Version:\s*(\S+)/m', file_get_contents( $dir . '/style.css' ), $m ) ) {
+	fwrite( STDERR, "No Version header in style.css\n" );
+	exit( 1 );
+}
+$zip = $base . '/south-cairns-dental-v' . $m[1] . '.zip';
 if ( file_exists( $zip ) ) {
-	unlink( $zip );
+	fwrite( STDERR, "$zip already exists. Raise the Version in style.css (and SCD_THEME_VERSION in functions.php) for a new release.\n" );
+	exit( 1 );
 }
 $z = new ZipArchive();
 if ( true !== $z->open( $zip, ZipArchive::CREATE ) ) {

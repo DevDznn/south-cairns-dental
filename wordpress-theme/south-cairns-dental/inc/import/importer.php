@@ -619,6 +619,7 @@ class SCD_Importer {
 		$pat = $this->item( $main, __( 'Patient information', 'south-cairns-dental' ), '#' );
 		$this->page_item( $main, $p['faq'] ?? 0, __( 'Frequently asked questions', 'south-cairns-dental' ), $pat );
 		$this->page_item( $main, $p['special-offers'] ?? 0, __( 'Special offers', 'south-cairns-dental' ), $pat );
+		$this->page_item( $main, $p['payments'] ?? 0, __( 'Payments', 'south-cairns-dental' ), $pat );
 		$this->page_item( $main, $p['emergency-dentist'] ?? 0, __( 'Emergency dental care', 'south-cairns-dental' ), $pat );
 		$this->page_item( $main, $p['blog'] ?? 0, __( 'Blog', 'south-cairns-dental' ) );
 		$this->page_item( $main, $p['contact'] ?? 0, __( 'Contact us', 'south-cairns-dental' ) );
@@ -643,6 +644,7 @@ class SCD_Importer {
 		$fp = $this->fresh_menu( __( 'Patients', 'south-cairns-dental' ) );
 		$this->page_item( $fp, $p['faq'] ?? 0, __( 'Frequently asked questions', 'south-cairns-dental' ) );
 		$this->page_item( $fp, $p['special-offers'] ?? 0, __( 'Special offers', 'south-cairns-dental' ) );
+		$this->page_item( $fp, $p['payments'] ?? 0, __( 'Payments', 'south-cairns-dental' ) );
 		$this->page_item( $fp, $p['blog'] ?? 0, __( 'Blog', 'south-cairns-dental' ) );
 		$this->page_item( $fp, $p['contact'] ?? 0, __( 'Contact us', 'south-cairns-dental' ) );
 		$this->page_item( $fp, $p['privacy'] ?? 0, __( 'Privacy policy', 'south-cairns-dental' ) );

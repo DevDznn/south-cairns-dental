@@ -1,6 +1,6 @@
 <?php
 /**
- * New patient offer: what's included, the two prices, terms, booking buttons and the flyer.
+ * New patient offer: what's included, up to four prices, terms, booking buttons and the image.
  *
  * @package South_Cairns_Dental
  */
@@ -43,6 +43,10 @@ class Offer extends Widget {
 		$this->add_control( 'price1_note', array( 'label' => __( 'First price note', 'south-cairns-dental' ), 'type' => Controls_Manager::TEXT, 'label_block' => true ) );
 		$this->add_control( 'price2', array( 'label' => __( 'Second price', 'south-cairns-dental' ), 'type' => Controls_Manager::TEXT ) );
 		$this->add_control( 'price2_note', array( 'label' => __( 'Second price note', 'south-cairns-dental' ), 'type' => Controls_Manager::TEXT, 'label_block' => true ) );
+		$this->add_control( 'price3', array( 'label' => __( 'Third price (optional)', 'south-cairns-dental' ), 'type' => Controls_Manager::TEXT ) );
+		$this->add_control( 'price3_note', array( 'label' => __( 'Third price note', 'south-cairns-dental' ), 'type' => Controls_Manager::TEXT, 'label_block' => true ) );
+		$this->add_control( 'price4', array( 'label' => __( 'Fourth price (optional)', 'south-cairns-dental' ), 'type' => Controls_Manager::TEXT ) );
+		$this->add_control( 'price4_note', array( 'label' => __( 'Fourth price note', 'south-cairns-dental' ), 'type' => Controls_Manager::TEXT, 'label_block' => true ) );
 		$this->add_control( 'terms', array( 'label' => __( 'Terms', 'south-cairns-dental' ), 'type' => Controls_Manager::TEXTAREA, 'rows' => 2 ) );
 		$this->button_controls( 'btn1', __( 'First button', 'south-cairns-dental' ), array( 'type' => 'book', 'label' => 'Book online', 'style' => 'forest' ) );
 		$this->button_controls( 'btn2', __( 'Second button', 'south-cairns-dental' ), array( 'type' => 'call', 'label' => 'Call {phone}', 'style' => 'ghost' ) );
@@ -64,8 +68,8 @@ class Offer extends Widget {
 			$lis .= '<li>' . scd_inline( $line ) . '</li>';
 		}
 		$prices = '';
-		foreach ( array( 'price1', 'price2' ) as $p ) {
-			if ( $s[ $p ] ) {
+		foreach ( array( 'price1', 'price2', 'price3', 'price4' ) as $p ) {
+			if ( ! empty( $s[ $p ] ) ) {
 				$prices .= '<div><strong>' . esc_html( $s[ $p ] ) . '</strong><span>' . scd_inline( $s[ $p . '_note' ] ) . '</span></div>';
 			}
 		}

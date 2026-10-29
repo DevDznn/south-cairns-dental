@@ -29,27 +29,34 @@ function scd_practice_fields() {
 		'maps_query'     => array( __( 'Google Maps search text', 'south-cairns-dental' ), '7 Stokes St, Edmonton QLD 4869', 'text', 'location' ),
 		'lat'            => array( __( 'Latitude (for directions)', 'south-cairns-dental' ), '-17.0195683', 'float', 'location' ),
 		'lng'            => array( __( 'Longitude (for directions)', 'south-cairns-dental' ), '145.7439008', 'float', 'location' ),
-		'hours_summary'  => array( __( 'Short opening hours (header bar)', 'south-cairns-dental' ), 'Mon to Thu 8 am to 5 pm, Fri 8 am to 4:30 pm', 'text', 'hours' ),
-		'hours_footer'   => array( __( 'Opening hours (footer)', 'south-cairns-dental' ), "Monday to Thursday 8:00 am to 5:00 pm\nFriday 8:00 am to 4:30 pm\nSaturday and Sunday closed", 'textarea', 'hours' ),
+		'hours_summary'  => array( __( 'Short opening hours (header bar)', 'south-cairns-dental' ), 'Mon to Sat from 8 am, closed Sunday', 'text', 'hours' ),
+		'hours_footer'   => array( __( 'Opening hours (footer)', 'south-cairns-dental' ), "Monday and Tuesday 8:00 am to 5:30 pm\nWednesday and Thursday 8:00 am to 6:30 pm\nFriday 8:00 am to 4:30 pm\nSaturday 8:00 am to 2:30 pm\nSunday closed", 'textarea', 'hours' ),
 		'footer_blurb'   => array( __( 'Footer description', 'south-cairns-dental' ), 'A modern, family-owned dental practice in Edmonton, caring for families from Bentley Park, Mount Sheridan, Gordonvale and across the southern suburbs of Cairns.', 'textarea', 'footer' ),
 		'footer_note'    => array( __( 'Footer note', 'south-cairns-dental' ), 'The information on this website doesn&rsquo;t replace advice from your dentist.', 'html', 'footer' ),
 		'footer_logo'    => array( __( 'Footer logo (for dark background)', 'south-cairns-dental' ), '', 'image', 'footer' ),
 	);
-	$days = array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' );
-	foreach ( $days as $day ) {
-		$weekend                                 = in_array( $day, array( 'Saturday', 'Sunday' ), true );
-		$close                                   = 'Friday' === $day ? '16:30' : '17:00';
+	// Default hours: day => [ opens, closes ], blank when closed.
+	$days = array(
+		'Monday'    => array( '08:00', '17:30' ),
+		'Tuesday'   => array( '08:00', '17:30' ),
+		'Wednesday' => array( '08:00', '18:30' ),
+		'Thursday'  => array( '08:00', '18:30' ),
+		'Friday'    => array( '08:00', '16:30' ),
+		'Saturday'  => array( '08:00', '14:30' ),
+		'Sunday'    => array( '', '' ),
+	);
+	foreach ( $days as $day => $times ) {
 		$fields[ 'open_' . strtolower( $day ) ]  = array(
 			/* translators: %s: day of the week */
 			sprintf( __( '%s opens (24-hour, e.g. 08:00; blank if closed)', 'south-cairns-dental' ), $day ),
-			$weekend ? '' : '08:00',
+			$times[0],
 			'time',
 			'hours',
 		);
 		$fields[ 'close_' . strtolower( $day ) ] = array(
 			/* translators: %s: day of the week */
 			sprintf( __( '%s closes (24-hour)', 'south-cairns-dental' ), $day ),
-			$weekend ? '' : $close,
+			$times[1],
 			'time',
 			'hours',
 		);

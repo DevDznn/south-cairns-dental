@@ -8,14 +8,20 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Asset version: the theme version, or the file time while developing.
+ * Asset version: the theme version plus the file's modification time.
+ *
+ * The file time changes whenever a new theme ZIP is installed (WordPress extracts fresh files), so
+ * browsers, page caches and CDNs fetch the new stylesheet instead of keeping the previous one. With
+ * the theme version alone, an updated theme could be shown with an older cached site.css, which
+ * leaves newer sections (such as the promo band) unstyled.
  *
  * @param string $rel Path relative to the theme.
  * @return string
  */
 function scd_asset_version( $rel ) {
-	if ( defined( 'WP_DEBUG' ) && WP_DEBUG && file_exists( SCD_THEME_DIR . '/' . $rel ) ) {
-		return SCD_THEME_VERSION . '.' . filemtime( SCD_THEME_DIR . '/' . $rel );
+	$file = SCD_THEME_DIR . '/' . $rel;
+	if ( file_exists( $file ) ) {
+		return SCD_THEME_VERSION . '.' . filemtime( $file );
 	}
 	return SCD_THEME_VERSION;
 }

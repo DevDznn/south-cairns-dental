@@ -1,15 +1,15 @@
 {
   "file": "invisalign.html",
-  "name": "Invisalign",
+  "name": "Clear aligners",
   "group": "Changing your smile",
-  "title": "Invisalign clear aligners in Edmonton | South Cairns Dental",
-  "description": "Straighten teeth with clear, removable Invisalign aligners at South Cairns Dental, Edmonton. Suitability assessed by a trained dentist. Call (07) 4055 4214.",
+  "title": "Clear aligners in Edmonton | South Cairns Dental",
+  "description": "Straighten teeth with clear, removable aligners at South Cairns Dental, Edmonton. Suitability assessed by a trained dentist. Call (07) 4055 4214.",
   "hero": {
-    "title": "Invisalign",
+    "title": "Clear aligners",
     "image": "invisalign",
-    "lead": "Invisalign uses a series of clear, removable trays. Each set moves your teeth a little, until they reach their planned position."
+    "lead": "Clear aligner treatment uses a series of clear, removable trays. Each set moves your teeth a little, until they reach their planned position."
   },
-  "short": "Invisalign",
+  "short": "clear aligners",
   "intro": {
     "heading": "How clear aligner treatment works",
     "html": "<p>After an assessment, your dentist takes scans or impressions and plans the movement of your teeth. A series of custom aligners is made, and you change to the next set as directed. You&rsquo;ll have regular reviews to check progress.</p><p>Aligners only work while they&rsquo;re in your mouth. They need to be worn for most of the day and night, taken out only to eat, drink anything other than water, and clean your teeth.</p>"
@@ -90,7 +90,7 @@
   },
   "faqs": [
     [
-      "Am I suitable for Invisalign?",
+      "Am I suitable for clear aligners?",
       "<p>Only an assessment can tell. Some people are better suited to fixed braces or an orthodontist, and your dentist will be upfront about it.</p>"
     ],
     [

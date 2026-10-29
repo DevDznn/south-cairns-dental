@@ -76,5 +76,12 @@
 @media screen and (min-width: 601px) { .admin-bar .site-header { top: 32px; } }
 @media screen and (min-width: 601px) and (max-width: 782px) { .admin-bar .site-header { top: 46px; } }
 
+/* Campaign landing pages: spacing that depends on the static page's markup. The FAQ widget's section
+   takes the landing section spacing (.lp-sec there), and the section after the trust strip keeps its
+   shorter top padding (.lp-trust + .lp-sec), which Elementor's containers would otherwise break. */
+.page-lp .elementor-widget-scd-faq .sec { padding-block: clamp(3rem, 1.8rem + 3.6vw, 5.25rem); }
+@media (min-width: 640px) { .page-lp .scd-sec:has(.lp-trust) + .scd-sec .lp-sec { padding-top: clamp(2.5rem, 1.5rem + 3vw, 4rem); } }
+@media (max-width: 639px) { .page-lp .elementor-widget-scd-faq .sec { padding-block: clamp(2.5rem, 9vw, 3.25rem); } }
+
 /* Editor preview: widgets show their content straight away */
 .elementor-editor-active .reveal { opacity: 1 !important; transform: none !important; }

@@ -13,13 +13,17 @@
   --margin-top: 0; --margin-bottom: 0;
 }
 .e-con.scd-sec > .elementor-widget { width: 100%; margin: 0; }
-/* Elementor removes underlines from every link in its content (.elementor a). Restore them on links
-   in running text, which the design system leaves underlined; card and button links stay as designed. */
-.elementor :is(p, span, dd, td, strong, em, b, .faq__body, .prose li, .weigh__col li, .info-card li, .ticks li, .crumbs li, .infostrip__item div) > a:not([class]),
-.elementor .textlink { text-decoration: underline; }
+/* Link underlines: see scd_elementor_link_base() in inc/assets.php, loaded before the design system. */
 /* Elementor zeroes every figure's margin inside widgets; restore the design system's figure margins */
 .elementor .elementor-widget[class*="elementor-widget-scd-"] .team--support .member .frame { margin-bottom: var(--s-4); }
 .elementor .elementor-widget[class*="elementor-widget-scd-"] .offer__media .frame { margin-inline: auto; }
+.elementor .elementor-widget[class*="elementor-widget-scd-"] figure.lp-side-img { margin: var(--s-6) 0 0; }
+.elementor .elementor-widget[class*="elementor-widget-scd-"] figure.lp-card__media { margin: 0 calc(-1 * var(--card-pad)) .6rem; }
+.elementor .elementor-widget[class*="elementor-widget-scd-"] figure.mt-0 { margin-top: 0; }
+.elementor .elementor-widget[class*="elementor-widget-scd-"] figure.mt-5 { margin-top: var(--s-5); }
+.elementor .elementor-widget[class*="elementor-widget-scd-"] figure.mt-6 { margin-top: var(--s-6); }
+.elementor .elementor-widget[class*="elementor-widget-scd-"] figure.mt-7 { margin-top: var(--s-7); }
+.elementor .elementor-widget[class*="elementor-widget-scd-"] figure.mb-0 { margin-bottom: 0; }
 .elementor-widget[class*="elementor-widget-scd-"] { width: 100%; }
 .elementor-widget[class*="elementor-widget-scd-"] > section { margin: 0; }
 /* Containers editors add between sections keep the site's width and rhythm */

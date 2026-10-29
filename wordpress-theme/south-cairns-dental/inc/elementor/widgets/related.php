@@ -59,14 +59,19 @@ class Related extends Widget {
 		);
 		$this->start_controls_section( 'content', array( 'label' => __( 'Treatments', 'south-cairns-dental' ) ) );
 		$r = new Repeater();
-		$r->add_control( 'page', array( 'label' => __( 'Treatment page', 'south-cairns-dental' ), 'type' => Controls_Manager::SELECT, 'options' => $this->page_options() ) );
+		$r->add_control( 'page', array( 'label' => __( 'Treatment page', 'south-cairns-dental' ), 'type' => Controls_Manager::SELECT, 'options' => array( '' => __( '(custom card)', 'south-cairns-dental' ) ) + $this->page_options() ) );
+		$r->add_control( 'c_title', array( 'label' => __( 'Title', 'south-cairns-dental' ), 'type' => Controls_Manager::TEXT, 'label_block' => true, 'condition' => array( 'page' => '' ) ) );
+		$r->add_control( 'c_text', array( 'label' => __( 'Text', 'south-cairns-dental' ), 'type' => Controls_Manager::TEXTAREA, 'rows' => 2, 'condition' => array( 'page' => '' ) ) );
+		$r->add_control( 'c_image', array( 'label' => __( 'Image', 'south-cairns-dental' ), 'type' => Controls_Manager::MEDIA, 'condition' => array( 'page' => '' ) ) );
+		$r->add_control( 'c_link', array( 'label' => __( 'Link', 'south-cairns-dental' ), 'type' => Controls_Manager::URL, 'condition' => array( 'page' => '' ) ) );
 		$this->add_control(
 			'pages',
 			array(
 				'label'       => __( 'Treatments', 'south-cairns-dental' ),
 				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $r->get_controls(),
-				'description' => __( 'Image: the page’s featured image. Text: the one-line summary in its Treatment details box.', 'south-cairns-dental' ),
+				'title_field' => '{{ c_title || page }}',
+				'description' => __( 'Choose a treatment page (image: its featured image; text: the one-line summary in its Treatment details box), or "custom card" to link any page, such as a campaign landing page.', 'south-cairns-dental' ),
 			)
 		);
 		$this->end_controls_section();
@@ -81,6 +86,16 @@ class Related extends Widget {
 		$s     = $this->get_settings_for_display();
 		$items = '';
 		foreach ( (array) $s['pages'] as $i => $row ) {
+			if ( empty( $row['page'] ) ) {
+				$url = $this->url( $row['c_link'] ?? array() );
+				if ( ! $url || empty( $row['c_title'] ) ) {
+					continue;
+				}
+				$img    = $this->img( $row['c_image'] ?? array(), array( 'decorative' => true, 'size' => 'scd-card', 'img_class' => 'is-photo' ) );
+				$items .= '<li class="related-card reveal" style="--i:' . (int) $i . '"><a href="' . esc_url( $url ) . '"><span class="related-card__media">' . $img . '</span>'
+					. '<span class="related-card__body"><strong>' . esc_html( $row['c_title'] ) . '</strong><span>' . scd_inline( $row['c_text'] ?? '' ) . '</span></span></a></li>';
+				continue;
+			}
 			$d = scd_service_data( (int) $row['page'] );
 			if ( ! $d || 'publish' !== get_post_status( $d['id'] ) ) {
 				continue;

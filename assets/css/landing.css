@@ -1,0 +1,143 @@
+/* ==========================================================================
+   South Cairns Dental — campaign landing pages (Meta ads)
+   Loaded only by full-arch-dental-implants.html and cosmetic-dentistry.html,
+   after style.css. They use the site header and footer; every rule here is
+   scoped to .page-lp or lp-* classes so the rest of the site is unaffected.
+   ========================================================================== */
+
+/* ---------- Section rhythm: a little tighter than inner pages ---------- */
+.page-lp .lp-sec { padding-block: clamp(3rem, 1.8rem + 3.6vw, 5.25rem); }
+
+/* ---------- Hero ---------- */
+.lp-hero { padding-block: clamp(2.25rem, 5vw, 5rem) calc(clamp(2.5rem, 6vw, 5.5rem) + 2.75rem); }
+.lp-hero__grid { display: grid; gap: clamp(1.75rem, 5vw, 4.5rem); grid-template-columns: minmax(0, 1fr); align-items: center; }
+@media (min-width: 960px) { .lp-hero__grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); } }
+.lp-hero__kicker { display: inline-flex; align-items: center; gap: .5rem; margin: 0 0 var(--s-4); padding: .3rem .85rem; border-radius: var(--radius-pill); font-size: var(--t-cap); font-weight: 700; }
+.page-lp .lp-hero h1 { font-size: clamp(2.2rem, 1.2rem + 3.6vw, 4rem); line-height: 1.04; letter-spacing: -.025em; font-stretch: 112%; max-width: 16ch; margin-bottom: var(--s-5); }
+.page-lp .lp-hero .lead { margin-bottom: var(--s-5); }
+.lp-hero__points { margin: 0 0 var(--s-6); }
+.lp-hero__status { margin: var(--s-5) 0 0; display: flex; align-items: center; font-size: var(--t-small); }
+.lp-hero__media .frame { --ratio: 4 / 3; }
+@media (min-width: 640px) and (max-width: 959px) { .lp-hero__media .frame { --ratio: 16 / 9; } }
+
+/* Dark variant (full arch) sits on the shared inner-page hero background */
+.lp-hero--dark .lp-hero__kicker { background: rgba(255,255,255,.1); color: var(--lime); }
+.lp-hero--dark .ticks li { color: #fff; }
+.page-lp .lp-hero--dark .lp-hero__status { color: #C9D8CE; }
+
+/* Light variant (cosmetic): bright and open, lime accents */
+.lp-hero--light {
+  background:
+    radial-gradient(900px 520px at 92% 0%, rgba(174, 201, 83, .32), transparent 60%),
+    linear-gradient(180deg, var(--lime-wash) 0%, #F7FAEF 100%);
+}
+.lp-hero--light .lp-hero__kicker { background: #fff; color: var(--forest); box-shadow: inset 0 0 0 1px var(--mist-2); }
+.lp-hero--light h1 { color: var(--canopy); }
+.lp-hero--light .lp-hero__status { color: var(--stone); }
+.lp-hero__media { position: relative; }
+.lp-hero__note {
+  position: absolute; left: -1rem; bottom: 1.5rem; max-width: 16rem;
+  background: var(--forest); color: #fff; padding: 1rem 1.2rem; border-radius: var(--r-md); box-shadow: var(--shadow);
+}
+.lp-hero__note strong { display: block; font-family: var(--f-display); font-stretch: 112%; font-size: 1.1rem; color: var(--lime); }
+.lp-hero__note span { font-size: var(--t-small); }
+
+@media (max-width: 639px) {
+  .page-lp .lp-hero .btn-row { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .page-lp .lp-hero .btn-row .btn { width: 100%; }
+  .lp-hero__media .frame { --ratio: 16 / 10; }
+  .lp-hero__media--hide-sm { display: none; } /* keeps the phone hero short; an implant illustration follows further down */
+  .lp-hero__note { display: none; } /* repeats the hero ticks; keeps the phone hero short */
+  .lp-hide-sm { display: none; }
+  .lp-hero__points { margin-bottom: var(--s-5); }
+}
+
+/* ---------- Trust strip: a card that overlaps the bottom of the hero ---------- */
+.lp-trust { --lp-trust-bg: #fff; position: relative; z-index: 2; margin-top: -2.75rem; background: linear-gradient(to bottom, transparent 2.75rem, var(--lp-trust-bg) 2.75rem); }
+.page-lp--full-arch .lp-trust { --lp-trust-bg: var(--mist); }
+.lp-trust ul { list-style: none; margin: 0; padding: 1.25rem clamp(1.25rem, 2.5vw, 2rem); display: grid; gap: var(--s-4) var(--s-6); grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr)); background: #fff; border-radius: var(--r-md); border: var(--card-border); box-shadow: 0 24px 50px -30px rgba(18, 48, 42, .55); }
+.lp-trust li { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: .8rem; align-items: center; font-size: var(--t-small); color: var(--stone); line-height: 1.4; }
+.lp-trust li strong { display: block; color: var(--forest); font-size: 1rem; }
+.lp-trust .icon-badge { width: 2.6rem; height: 2.6rem; border-radius: 12px; }
+.lp-trust .icon-badge .icon { width: 1.25rem; height: 1.25rem; }
+.lp-trust + .lp-sec { padding-top: clamp(2.5rem, 1.5rem + 3vw, 4rem); }
+@media (max-width: 639px) { .lp-trust ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); } .lp-trust li { grid-template-columns: minmax(0, 1fr); gap: .4rem; } }
+
+/* ---------- Cards beside a large visual ("Does this sound like you?") ---------- */
+.lp-split { display: grid; gap: clamp(2rem, 4vw, 4rem); grid-template-columns: minmax(0, 1fr); align-items: center; }
+@media (min-width: 960px) { .lp-split { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } }
+.lp-visual .frame { box-shadow: var(--shadow); }
+.lp-visual__note { margin: var(--s-4) 0 0; padding: 1rem 1.2rem; background: #fff; border-radius: var(--r-md); border-left: 4px solid var(--lime); font-size: var(--t-small); color: var(--stone); }
+.lp-visual__note strong { display: block; color: var(--forest); font-family: var(--f-display); font-stretch: 108%; font-size: 1.05rem; margin-bottom: .2rem; }
+
+.lp-match { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--card-gap); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+@media (min-width: 640px) { .lp-match--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.lp-match li { display: flex; flex-direction: column; gap: .6rem; padding: var(--card-pad); border-radius: var(--radius-card); background: #fff; border: var(--card-border); }
+.lp-match li strong { color: var(--forest); font-family: var(--f-display); font-stretch: 108%; font-weight: 600; font-size: 1.08rem; line-height: 1.3; }
+.lp-match li p { margin: 0; color: var(--stone); font-size: var(--t-small); }
+.lp-match .icon-badge { width: 2.6rem; height: 2.6rem; }
+@media (max-width: 639px) {
+  .lp-match { gap: .75rem; }
+  .lp-match li { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: .2rem .9rem; padding: 1rem 1.1rem; }
+  .lp-match .icon-badge { grid-row: 1 / span 2; }
+}
+.lp-inline-cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3) var(--s-5); margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+.lp-inline-cta p { margin: 0; color: var(--stone); max-width: 36rem; }
+
+/* ---------- Dark band for the treatment steps ---------- */
+.lp-dark .section-head__intro, .lp-dark .lp-inline-cta p { color: #C9D8CE; }
+.lp-dark .journey li, .lp-dark .process li { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14); box-shadow: none; }
+.lp-dark .journey h3, .lp-dark .process h3 { color: #fff; }
+.lp-dark .journey p, .lp-dark .process p { color: #C9D8CE; }
+@media (max-width: 639px) { .lp-dark .journey li { background: none; border-color: rgba(255,255,255,.14); } }
+
+/* ---------- Side images that fill the left column beside long content ---------- */
+.lp-side-img { margin: var(--s-6) 0 0; }
+@media (max-width: 899px) { .lp-side-img { display: none; } } /* stacked layouts: the content carries the section */
+
+/* ---------- Option cards with a photo or illustration on top (cosmetic) ---------- */
+.page-lp .lp-card { padding-top: 0; overflow: hidden; }
+.lp-card__media { margin: 0 calc(-1 * var(--card-pad)) .6rem; aspect-ratio: 16 / 10; overflow: hidden; background: var(--mist); }
+.lp-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease-out); }
+.lp-card:hover .lp-card__media img { transform: scale(1.04); }
+@media (prefers-reduced-motion: reduce) { .lp-card__media img { transition: none; } .lp-card:hover .lp-card__media img { transform: none; } }
+
+/* ---------- Dentist cards (full arch) ---------- */
+.page-lp .sec--canopy .lead, .page-lp .sec--forest .lead { color: #E6EFE8; }
+.lp-dentists { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-4); grid-template-columns: minmax(0, 1fr); max-width: 30rem; }
+.lp-dentist { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: var(--s-4); align-items: center; padding: 1rem; border-radius: var(--radius-card); background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); }
+.lp-dentist .frame { --ratio: 1 / 1; border-radius: var(--r-md) var(--r-md) var(--r-md) 36px; }
+.lp-dentist h3 { font-size: 1.15rem; margin: 0 0 .15rem; }
+.lp-dentist p { margin: 0; font-size: var(--t-small); color: #C9D8CE; }
+.lp-dentist .member__quals { color: var(--lime); }
+
+/* ---------- Enquire: booking band beside contact details ---------- */
+.lp-enquire { display: grid; gap: var(--card-gap); grid-template-columns: minmax(0, 1fr); align-items: stretch; }
+@media (min-width: 960px) { .lp-enquire { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } }
+.page-lp .lp-enquire .cta-band { grid-template-columns: minmax(0, 1fr); align-content: center; }
+.lp-visit { background: #fff; border: var(--card-border); border-radius: var(--radius-card); padding: var(--card-pad); display: flex; flex-direction: column; gap: var(--s-5); }
+.lp-visit h3 { margin: 0; font-size: var(--t-card); }
+.lp-visit .contact-list { gap: var(--s-4); }
+.lp-visit .contact-list a, .lp-visit .contact-list .value { font-size: 1.1rem; }
+.lp-visit .contact-list .value { font-family: var(--f-text); font-weight: 500; color: var(--ink); font-size: 1rem; }
+.lp-visit .btn-row { margin-top: auto; }
+@media (max-width: 639px) {
+  .page-lp .cta-band .btn-row { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .page-lp .cta-band .btn { width: 100%; }
+  .lp-visit .btn-row { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .lp-visit .btn { width: 100%; }
+}
+
+/* ---------- Risk note ---------- */
+.lp-risk { padding-block: var(--s-5); background: #fff; border-top: 1px solid var(--line); }
+.lp-risk p { margin: 0; max-width: 60rem; font-size: var(--t-small); color: var(--stone); }
+
+/* ---------- Phones: tighter rhythm, room for the sticky call/book bar ---------- */
+@media (max-width: 639px) {
+  .page-lp .lp-sec { padding-block: clamp(2.5rem, 9vw, 3.25rem); }
+  .page-lp .section-head { margin-bottom: var(--s-5); }
+  .page-lp .faq--cards summary { font-size: 1rem; }
+}
+@media (max-width: 760px) {
+  .page-lp .site-footer { padding-bottom: 6.5rem; }
+}

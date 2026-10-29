@@ -24,8 +24,16 @@ function scd_asset_version( $rel ) {
  * Front-end styles and scripts.
  */
 function scd_enqueue_assets() {
-	wp_enqueue_style( 'scd-site', SCD_THEME_URI . '/assets/css/site.css', array(), scd_asset_version( 'assets/css/site.css' ) );
-	wp_enqueue_style( 'scd-wp', SCD_THEME_URI . '/assets/css/wp.css', array( 'scd-site' ), scd_asset_version( 'assets/css/wp.css' ) );
+	// Elementor removes the underline from every link in its content (`.elementor a`). Put the
+	// browser default back before the design system loads, so the design system's own link styles
+	// then apply exactly as on the static site (underlined text links, plain card and button links).
+	wp_register_style( 'scd-elementor-base', false, array(), SCD_THEME_VERSION );
+	wp_add_inline_style( 'scd-elementor-base', '.elementor a{text-decoration:underline}.elementor .btn,.elementor .er-call__number,.elementor .blog-teaser{text-decoration:none}' );
+	wp_enqueue_style( 'scd-site', SCD_THEME_URI . '/assets/css/site.css', array( 'scd-elementor-base' ), scd_asset_version( 'assets/css/site.css' ) );
+	// Campaign landing page components (lp-*); small, and loaded everywhere so the components also
+	// work if they are reused on another page.
+	wp_enqueue_style( 'scd-landing', SCD_THEME_URI . '/assets/css/landing.css', array( 'scd-site' ), scd_asset_version( 'assets/css/landing.css' ) );
+	wp_enqueue_style( 'scd-wp', SCD_THEME_URI . '/assets/css/wp.css', array( 'scd-site', 'scd-landing' ), scd_asset_version( 'assets/css/wp.css' ) );
 
 	wp_enqueue_script(
 		'scd-main',

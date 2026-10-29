@@ -750,13 +750,15 @@ html { scroll-behavior: smooth; }
 }
 
 .nav__link, .nav__toggle { white-space: nowrap; }
-@media (min-width: 1021px) and (max-width: 1360px) {
+/* Desktop ranges start at 1020.02px, not 1021px: with display scaling or zoom the viewport can be
+   fractional (e.g. 1020.5px), which matched neither (max-width: 1020px) nor (min-width: 1021px). */
+@media (min-width: 1020.02px) and (max-width: 1360px) {
   .nav__link, .nav__toggle { padding-inline: .55rem; font-size: .93rem; }
   .header-cta .btn__long { display: none; }
   .utility__email { display: none; }
 }
-@media (min-width: 1021px) and (max-width: 1180px) { .brand img { width: 170px; } }
-@media (min-width: 1021px) and (max-width: 1099px) { .nav__link--home { display: none; } }
+@media (min-width: 1020.02px) and (max-width: 1180px) { .brand img { width: 170px; } }
+@media (min-width: 1020.02px) and (max-width: 1099px) { .nav__link--home { display: none; } }
 @media (max-width: 1020px) { .utility__email { display: none; } }
 .svc-item--thumb a { grid-template-columns: 6.5rem minmax(0, 1fr) auto; }
 .svc-item--thumb .svc-item__thumb { grid-row: 1 / span 2; width: 6.5rem; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px 12px 12px 28px; }
@@ -927,7 +929,7 @@ html { scroll-behavior: smooth; }
   .utility__group a[href^="tel:"] { display: none; }
   .utility__urgent { white-space: nowrap; }
 }
-@media (min-width: 1021px) and (max-width: 1280px) { .header-cta .btn__long { display: none; } }
+@media (min-width: 1020.02px) and (max-width: 1280px) { .header-cta .btn__long { display: none; } }
 @media (min-width: 1281px) { .header-cta .btn__long { display: inline; } }
 
 /* Dropdowns (About us, Patient information) */
@@ -1295,7 +1297,7 @@ img[src$="root-canal-diagram.jpg"].is-photo { object-fit: contain; background: #
    v6: compact dropdowns, homepage FAQ accordion, consistent team portraits
    ========================================================================== */
 /* Dropdowns: one line per link, compact and aligned to the menu button */
-@media (min-width: 1021px) {
+@media (min-width: 1020.02px) {
   .drop { width: auto; min-width: 15rem; padding: .4rem; left: 0; transform: translateY(-6px); border-radius: var(--r-md); }
   .drop.is-open { transform: none; }
   .drop a { display: block; padding: .6rem .85rem; font-weight: 600; font-size: .95rem; color: var(--forest); white-space: nowrap; }
@@ -1504,3 +1506,24 @@ a[href^="tel:"] { white-space: nowrap; }
   .sec--forest .carousel-nav__btn, .sec--canopy .carousel-nav__btn { background: transparent; border-color: rgba(255,255,255,.4); color: #fff; }
 }
 @media (max-width: 359px) { .is-carousel > * { flex-basis: 88%; } .team-cards.is-carousel > * { flex-basis: 66%; } }
+
+/* Campaign promo band: points a service page at its related campaign landing page
+   (Dental implants -> Full arch, Cosmetic veneers -> Cosmetic dentistry) */
+.promo-band {
+  position: relative; overflow: hidden; color: #DCE7DF; padding-block: clamp(2.75rem, 1.8rem + 3.4vw, 4.5rem);
+  background:
+    radial-gradient(800px 420px at 92% 0%, rgba(174, 201, 83, .24), transparent 60%),
+    linear-gradient(135deg, var(--canopy) 0%, var(--forest) 100%);
+}
+.promo-band__inner { display: grid; gap: clamp(1.75rem, 4vw, 4rem); grid-template-columns: minmax(0, 1fr); align-items: center; }
+@media (min-width: 900px) { .promo-band__inner { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+.promo-band__media { --ratio: 4 / 3; margin: 0; box-shadow: 0 30px 70px -24px rgba(0,0,0,.5); }
+.promo-band__kicker { display: inline-block; margin: 0 0 var(--s-4); padding: .3rem .8rem; border-radius: var(--radius-pill); background: rgba(255,255,255,.1); color: var(--lime); font-size: var(--t-cap); font-weight: 700; }
+.promo-band h2 { color: #fff; margin-bottom: .4em; }
+.promo-band p { max-width: var(--measure); }
+.promo-band .ticks { margin: var(--s-5) 0 var(--s-6); }
+.promo-band .ticks li { color: #fff; }
+.promo-band :focus-visible { outline-color: #fff; }
+@media (max-width: 899px) { .promo-band__media { --ratio: 16 / 9; max-width: 28rem; } }
+@media (max-width: 639px) { .promo-band__media { display: none; } } /* keeps the band short on phones */
+@media (max-width: 639px) { .promo-band .btn { width: 100%; white-space: normal; text-align: center; } }

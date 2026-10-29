@@ -715,8 +715,11 @@ html { scroll-behavior: smooth; }
 /* Treatment detail blocks */
 .weigh { display: grid; gap: var(--s-5); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
 .weigh__col { background: #fff; border-radius: var(--r-md); padding: 1.6rem; border: 1px solid var(--line); }
-.weigh__col h3 { display: flex; align-items: center; gap: .6rem; font-size: 1.15rem; }
-.weigh__col h3 .icon { color: var(--fern); }
+/* Icon badge: the lime-wash square used on service-page cards */
+.icon-badge { width: 3rem; height: 3rem; flex: none; border-radius: 14px; display: grid; place-items: center; background: var(--lime-wash); color: var(--forest); }
+.icon-badge .icon { width: 1.5rem; height: 1.5rem; }
+.weigh__col h3 { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; font-size: 1.15rem; }
+.weigh__col h3 .icon { box-sizing: content-box; padding: .75rem; border-radius: 14px; background: var(--lime-wash); color: var(--forest); }
 .weigh__col ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .45rem; font-size: var(--t-small); }
 .care-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
 .care-list li { display: grid; gap: .25rem var(--s-5); grid-template-columns: minmax(0, 1fr); padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
@@ -747,13 +750,15 @@ html { scroll-behavior: smooth; }
 }
 
 .nav__link, .nav__toggle { white-space: nowrap; }
-@media (min-width: 1021px) and (max-width: 1360px) {
+/* Desktop ranges start at 1020.02px, not 1021px: with display scaling or zoom the viewport can be
+   fractional (e.g. 1020.5px), which matched neither (max-width: 1020px) nor (min-width: 1021px). */
+@media (min-width: 1020.02px) and (max-width: 1360px) {
   .nav__link, .nav__toggle { padding-inline: .55rem; font-size: .93rem; }
   .header-cta .btn__long { display: none; }
   .utility__email { display: none; }
 }
-@media (min-width: 1021px) and (max-width: 1180px) { .brand img { width: 170px; } }
-@media (min-width: 1021px) and (max-width: 1099px) { .nav__link--home { display: none; } }
+@media (min-width: 1020.02px) and (max-width: 1180px) { .brand img { width: 170px; } }
+@media (min-width: 1020.02px) and (max-width: 1099px) { .nav__link--home { display: none; } }
 @media (max-width: 1020px) { .utility__email { display: none; } }
 .svc-item--thumb a { grid-template-columns: 6.5rem minmax(0, 1fr) auto; }
 .svc-item--thumb .svc-item__thumb { grid-row: 1 / span 2; width: 6.5rem; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px 12px 12px 28px; }
@@ -924,7 +929,7 @@ html { scroll-behavior: smooth; }
   .utility__group a[href^="tel:"] { display: none; }
   .utility__urgent { white-space: nowrap; }
 }
-@media (min-width: 1021px) and (max-width: 1280px) { .header-cta .btn__long { display: none; } }
+@media (min-width: 1020.02px) and (max-width: 1280px) { .header-cta .btn__long { display: none; } }
 @media (min-width: 1281px) { .header-cta .btn__long { display: inline; } }
 
 /* Dropdowns (About us, Patient information) */
@@ -1178,7 +1183,7 @@ img[src$="root-canal-diagram.jpg"].is-photo { object-fit: contain; background: #
 .duo__item, .weigh__col, .journey li, .ways li, .info-card { border: var(--card-border); background: #fff; box-shadow: var(--shadow-sm); }
 .concierge a, .nextlinks a, .post-card a, .svc-card a, .related-card a, .blog-teaser { border-radius: var(--radius-card); }
 .concierge a:hover, .nextlinks a:hover, .post-card a:hover, .svc-card a:hover, .related-card a:hover, .blog-teaser:hover { transform: var(--lift); box-shadow: var(--shadow-hover); }
-.duo__item h3, .weigh__col h3, .journey h3, .ways h3, .info-card h3, .svc-card strong, .related-card strong, .concierge strong { font-size: var(--t-card); line-height: 1.25; }
+.duo__item h3, .weigh__col h3, .journey h3, .ways h3, .info-card h3, .cost-card h3, .svc-card strong, .related-card strong, .concierge strong { font-size: var(--t-card); line-height: 1.25; }
 .duo, .weigh, .journey, .ways, .mention, .info-cards, .related-cards, .post-grid, .svc-grid, .concierge, .team-cards, .nextlinks, .pay, .features { gap: var(--card-gap); }
 .duo > *, .weigh > *, .ways > *, .info-cards > *, .related-cards > * { height: 100%; }
 .sec--mist .duo__item, .sec--mist .weigh__col, .sec--mist .info-card { box-shadow: none; }
@@ -1292,7 +1297,7 @@ img[src$="root-canal-diagram.jpg"].is-photo { object-fit: contain; background: #
    v6: compact dropdowns, homepage FAQ accordion, consistent team portraits
    ========================================================================== */
 /* Dropdowns: one line per link, compact and aligned to the menu button */
-@media (min-width: 1021px) {
+@media (min-width: 1020.02px) {
   .drop { width: auto; min-width: 15rem; padding: .4rem; left: 0; transform: translateY(-6px); border-radius: var(--r-md); }
   .drop.is-open { transform: none; }
   .drop a { display: block; padding: .6rem .85rem; font-weight: 600; font-size: .95rem; color: var(--forest); white-space: nowrap; }
@@ -1501,3 +1506,24 @@ a[href^="tel:"] { white-space: nowrap; }
   .sec--forest .carousel-nav__btn, .sec--canopy .carousel-nav__btn { background: transparent; border-color: rgba(255,255,255,.4); color: #fff; }
 }
 @media (max-width: 359px) { .is-carousel > * { flex-basis: 88%; } .team-cards.is-carousel > * { flex-basis: 66%; } }
+
+/* Campaign promo band: points a service page at its related campaign landing page
+   (Dental implants -> Full arch, Cosmetic veneers -> Cosmetic dentistry) */
+.promo-band {
+  position: relative; overflow: hidden; color: #DCE7DF; padding-block: clamp(2.75rem, 1.8rem + 3.4vw, 4.5rem);
+  background:
+    radial-gradient(800px 420px at 92% 0%, rgba(174, 201, 83, .24), transparent 60%),
+    linear-gradient(135deg, var(--canopy) 0%, var(--forest) 100%);
+}
+.promo-band__inner { display: grid; gap: clamp(1.75rem, 4vw, 4rem); grid-template-columns: minmax(0, 1fr); align-items: center; }
+@media (min-width: 900px) { .promo-band__inner { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+.promo-band__media { --ratio: 4 / 3; margin: 0; box-shadow: 0 30px 70px -24px rgba(0,0,0,.5); }
+.promo-band__kicker { display: inline-block; margin: 0 0 var(--s-4); padding: .3rem .8rem; border-radius: var(--radius-pill); background: rgba(255,255,255,.1); color: var(--lime); font-size: var(--t-cap); font-weight: 700; }
+.promo-band h2 { color: #fff; margin-bottom: .4em; }
+.promo-band p { max-width: var(--measure); }
+.promo-band .ticks { margin: var(--s-5) 0 var(--s-6); }
+.promo-band .ticks li { color: #fff; }
+.promo-band :focus-visible { outline-color: #fff; }
+@media (max-width: 899px) { .promo-band__media { --ratio: 16 / 9; max-width: 28rem; } }
+@media (max-width: 639px) { .promo-band__media { display: none; } } /* keeps the band short on phones */
+@media (max-width: 639px) { .promo-band .btn { width: 100%; white-space: normal; text-align: center; } }

@@ -153,7 +153,7 @@ function icon_name( $svg ) {
 		$map   = array();
 		$theme = file_get_contents( dirname( __DIR__ ) . '/south-cairns-dental/inc/template-tags.php' );
 		preg_match( "#function scd_icon_paths\(\) \{.*?return array\((.*?)\);#s", $theme, $m );
-		preg_match_all( "#'([a-z]+)'\s*=>\s*'(.*?)',#", $m[1], $all, PREG_SET_ORDER );
+		preg_match_all( "#'([a-z-]+)'\s*=>\s*'(.*?)',#", $m[1], $all, PREG_SET_ORDER );
 		foreach ( $all as $row ) {
 			$doc = new DOMDocument();
 			$doc->loadXML( '<svg xmlns="http://www.w3.org/2000/svg">' . $row[2] . '</svg>' );
@@ -325,7 +325,7 @@ function head( DOMElement $wrapish, $default_layout = 'stacked' ) {
 			}
 		}
 		$s['intro']       = paras_text( $ps );
-		$s['intro_style'] = ( $ps && has_class( $ps[0], 'muted' ) ) ? 'muted' : 'normal';
+		$s['intro_style'] = ! $ps ? 'narrow' : ( has_class( $ps[0], 'section-head__intro' ) ? 'narrow' : ( has_class( $ps[0], 'muted' ) ? 'muted' : 'normal' ) );
 		foreach ( qa( $div, './a[' . c( 'btn' ) . '] | ./div[' . c( 'btn-row' ) . ']/a' ) as $a ) {
 			$btns[] = $a;
 		}
@@ -333,7 +333,7 @@ function head( DOMElement $wrapish, $default_layout = 'stacked' ) {
 		$s['head_layout'] = 'hidden';
 		$s['heading']     = text( $h );
 	} elseif ( $h = q( $wrapish, './h2' ) ) {
-		$s['head_layout'] = 'stacked';
+		$s['head_layout'] = 'bare';
 		$s['heading']     = inner( $h );
 	}
 	$n = 1;
@@ -867,6 +867,9 @@ function conv_faq( DOMElement $sec, $seed ) {
 			),
 			button( q( $intro, './a' ), 'head_btn1' )
 		);
+		if ( $fig = q( $intro, './figure' ) ) {
+			$s = array_merge( $s, array( 'side_show' => 'yes' ), image( $fig, 'side' ) );
+		}
 	} elseif ( q( $wrap, './/div[' . c( 'cost-card' ) . ']' ) || ( has_class( $wrap, 'split--7-5' ) && q( $wrap, './div[1]/div[' . c( 'faq' ) . ']' ) ) ) {
 		$left = q( $wrap, './div[1]' );
 		$s    = array_merge( $s, array( 'head_layout' => 'split-7-5', 'heading' => inner( q( $left, './h2' ) ), 'intro' => '', 'faq_style' => 'lines' ) );
@@ -1036,7 +1039,22 @@ function conv_related( DOMElement $sec, $seed ) {
 	$s          = array_merge( section_settings( $sec ), head( q( $sec, './div' ) ) );
 	$s['pages'] = array();
 	foreach ( qa( $sec, './/ul[' . c( 'related-cards' ) . ']//a' ) as $i => $a ) {
-		$s['pages'][] = rep( array( 'page' => 'scd-pageid:' . preg_replace( '#\.html$#', '', $a->getAttribute( 'href' ) ) ), $seed . $i );
+		$slug = preg_replace( '#\.html$#', '', $a->getAttribute( 'href' ) );
+		if ( in_array( $slug, $GLOBALS['service_slugs'], true ) ) {
+			$s['pages'][] = rep( array( 'page' => 'scd-pageid:' . $slug ), $seed . $i );
+		} else {
+			// Not a treatment page (e.g. a campaign landing page): a custom card.
+			$s['pages'][] = rep(
+				array(
+					'page'    => '',
+					'c_title' => inner( q( $a, './/strong' ) ),
+					'c_text'  => inner( q( $a, './/span[' . c( 'related-card__body' ) . ']/span' ) ),
+					'c_image' => media_value( q( $a, './/img' ) ),
+					'c_link'  => link_value( $a->getAttribute( 'href' ) ),
+				),
+				$seed . $i
+			);
+		}
 	}
 	return widget( 'scd-related', $s, $seed );
 }
@@ -1080,8 +1098,216 @@ function conv_map( DOMElement $sec, $seed ) {
 	return widget( 'scd-map', array_merge( section_settings( $sec ), head( q( $sec, './div' ) ) ), $seed );
 }
 
+/* ---------------------------------------------------------------------
+ * Flexible section: any section as typed rows (group start/end + content)
+ * ------------------------------------------------------------------- */
+
+/** Is the element only inline content (text, links that aren't buttons, emphasis)? */
+function inline_only( DOMElement $el ) {
+	foreach ( $el->childNodes as $c ) {
+		if ( ! $c instanceof DOMElement ) {
+			continue;
+		}
+		if ( ! in_array( $c->nodeName, array( 'a', 'strong', 'b', 'em', 'i', 'br', 'span', 'abbr', 'sup' ), true ) ) {
+			return false;
+		}
+		if ( 'a' === $c->nodeName && has_class( $c, 'btn' ) ) {
+			return false;
+		}
+		if ( 'span' === $c->nodeName && ( has_class( $c, 'icon-badge' ) || has_class( $c, 'status-dot' ) || q( $c, './/*[local-name()="svg"]' ) ) ) {
+			return false;
+		}
+	}
+	return true;
+}
+
+/** Common row attributes: classes, inline style, id. */
+function row_attrs( DOMElement $el ) {
+	return array(
+		'cls'   => trim( preg_replace( '/\s+/', ' ', $el->getAttribute( 'class' ) ) ),
+		'style' => $el->getAttribute( 'style' ),
+		'el_id' => $el->getAttribute( 'id' ),
+	);
+}
+
+/** A button or link (<a>) → flexible row button fields. */
+function flex_button( DOMElement $a, $p ) {
+	global $BOOKING;
+	$href = $a->getAttribute( 'href' );
+	$type = $href === $BOOKING ? 'book' : ( 0 === strpos( $href, 'tel:' ) ? 'call' : ( 0 === strpos( $href, 'mailto:' ) && false === strpos( $href, '?' ) ? 'email' : 'custom' ) );
+	$svg  = (bool) q( $a, './/*[local-name()="svg"]' );
+	$out  = array(
+		$p . '_type'  => $type,
+		$p . '_label' => phone_token( text( $a ) ),
+		$p . '_cls'   => trim( preg_replace( '/\s+/', ' ', $a->getAttribute( 'class' ) ) ),
+		$p . '_icon'  => $svg ? ( 'email' === $type ? 'mail' : 'auto' ) : '',
+	);
+	if ( 'custom' === $type ) {
+		$out[ $p . '_url' ] = link_value( $href );
+	}
+	return $out;
+}
+
+/** A list item → one typed row, or null when it needs to be a group. */
+function flex_item( DOMElement $li ) {
+	$kids = array();
+	foreach ( $li->childNodes as $c ) {
+		if ( $c instanceof DOMElement ) {
+			$kids[] = $c;
+		}
+	}
+	$names = implode( ',', array_map( function ( $k ) { return $k->nodeName . ( has_class( $k, 'icon-badge' ) ? '.badge' : ( has_class( $k, 'icon-wrap' ) ? '.wrap' : '' ) ); }, $kids ) );
+	$row   = array_merge( array( 'type' => 'item' ), row_attrs( $li ) );
+	if ( has_class( $li, 'lp-dentist' ) ) {
+		$img = q( $li, './/img' );
+		$ps  = qa( $li, './div/p' );
+		return array_merge( $row, array( 'item_style' => 'person', 'media' => media_value( $img ), 'alt' => $img ? $img->getAttribute( 'alt' ) : '', 'title' => inner( q( $li, './/h3' ) ), 'text' => inner( $ps[0] ?? null ), 'extra' => inner( q( $li, './/p[' . c( 'member__quals' ) . ']' ) ) ) );
+	}
+	if ( 'span.wrap,div' === $names ) {
+		return array_merge( $row, array( 'item_style' => 'comfort', 'icon' => icon_name( q( $kids[0], './*' ) ), 'title' => inner( q( $kids[1], './strong' ) ), 'text' => inner( q( $kids[1], './span' ) ) ) );
+	}
+	if ( 'span.badge,span' === $names ) {
+		$strong = q( $kids[1], './strong' );
+		$text   = '';
+		foreach ( $kids[1]->childNodes as $c ) {
+			if ( $c !== $strong ) {
+				$text .= $li->ownerDocument->saveHTML( $c );
+			}
+		}
+		return array_merge( $row, array( 'item_style' => 'trust', 'icon' => icon_name( q( $kids[0], './*' ) ), 'title' => inner( $strong ), 'text' => tidy_html( $text ) ) );
+	}
+	if ( 'span.badge,strong,p' === $names ) {
+		return array_merge( $row, array( 'item_style' => 'match', 'icon' => icon_name( q( $kids[0], './*' ) ), 'title' => inner( $kids[1] ), 'text' => inner( $kids[2] ) ) );
+	}
+	if ( 'strong,span' === $names ) {
+		return array_merge( $row, array( 'item_style' => 'mention', 'title' => inner( $kids[0] ), 'text' => inner( $kids[1] ) ) );
+	}
+	if ( preg_match( '#^h3,p(,span)?$#', $names ) ) {
+		return array_merge( $row, array( 'item_style' => 'step', 'title' => inner( $kids[0] ), 'text' => inner( $kids[1] ), 'extra' => isset( $kids[2] ) ? inner( $kids[2] ) : '' ) );
+	}
+	if ( 'div' === $names && preg_match( '#^h3,p$#', implode( ',', array_map( function ( $k ) { return $k->nodeName; }, qa( $kids[0], './*' ) ) ) ) ) {
+		return array_merge( $row, array( 'item_style' => 'step-div', 'title' => inner( q( $kids[0], './h3' ) ), 'text' => inner( q( $kids[0], './p' ) ) ) );
+	}
+	if ( inline_only( $li ) ) {
+		return array_merge( $row, array( 'item_style' => 'li', 'text' => inner( $li ) ) );
+	}
+	return null;
+}
+
+/** Walk an element's children into flexible rows. */
+function flex_rows( DOMElement $node, array &$rows ) {
+	$children = array();
+	foreach ( $node->childNodes as $c ) {
+		if ( $c instanceof DOMElement ) {
+			$children[] = $c;
+		} elseif ( $c instanceof DOMText && '' !== trim( $c->textContent ) ) {
+			$rows[] = array( 'type' => 'text', 'text_tag' => 'span', 'text' => trim( $c->textContent ) );
+		}
+	}
+	for ( $i = 0; $i < count( $children ); $i++ ) {
+		$el  = $children[ $i ];
+		$tag = $el->nodeName;
+		if ( in_array( $tag, array( 'h1', 'h2', 'h3', 'h4' ), true ) ) {
+			$rows[] = array_merge( array( 'type' => 'heading', 'level' => $tag, 'text' => inner( $el ) ), row_attrs( $el ) );
+		} elseif ( 'p' === $tag && q( $el, './/*[@data-hours-status]' ) ) {
+			$rows[] = array_merge( array( 'type' => 'status' ), row_attrs( $el ) );
+		} elseif ( in_array( $tag, array( 'p', 'strong', 'span' ), true ) && ! has_class( $el, 'icon-badge' ) && inline_only( $el ) ) {
+			$rows[] = array_merge( array( 'type' => 'text', 'text_tag' => $tag, 'text' => phone_token( inner( $el ) ) ), row_attrs( $el ) );
+		} elseif ( 'span' === $tag && has_class( $el, 'icon-badge' ) ) {
+			$rows[] = array_merge( array( 'type' => 'icon', 'icon' => icon_name( q( $el, './*' ) ) ), row_attrs( $el ) );
+		} elseif ( 'svg' === $tag ) {
+			$rows[] = array( 'type' => 'icon', 'icon' => icon_name( $el ), 'cls' => '' );
+		} elseif ( 'figure' === $tag ) {
+			$img    = q( $el, './/img' );
+			$rows[] = array_merge( array( 'type' => 'image', 'media' => media_value( $img ), 'alt' => $img ? $img->getAttribute( 'alt' ) : '', 'eager' => ( $img && $img->hasAttribute( 'fetchpriority' ) ) ? 'yes' : '' ), row_attrs( $el ) );
+		} elseif ( 'div' === $tag && has_class( $el, 'btn-row' ) ) {
+			$as  = qa( $el, './a' );
+			$row = array_merge(
+				array( 'type' => 'buttons', 'row' => 'yes', 'sticky' => $el->hasAttribute( 'data-sticky-anchor' ) ? 'yes' : '' ),
+				row_attrs( $el ),
+				flex_button( $as[0], 'b1' ),
+				isset( $as[1] ) ? flex_button( $as[1], 'b2' ) : array( 'b2_type' => 'none' )
+			);
+			$row['cls'] = trim( preg_replace( '/(^| )btn-row( |$)/', ' ', $row['cls'] ) );
+			$rows[]     = $row;
+		} elseif ( 'a' === $tag ) {
+			$next   = $children[ $i + 1 ] ?? null;
+			$pair   = $next && 'a' === $next->nodeName;
+			$rows[] = array_merge( array( 'type' => 'buttons', 'row' => '', 'cls' => '' ), flex_button( $el, 'b1' ), $pair ? flex_button( $next, 'b2' ) : array( 'b2_type' => 'none' ) );
+			if ( $pair ) {
+				++$i;
+			}
+		} elseif ( 'details' === $tag ) {
+			$rows[] = array_merge( array( 'type' => 'item', 'item_style' => 'faq', 'title' => inner( q( $el, './summary' ) ), 'answer' => inner( q( $el, './/div[' . c( 'faq__body' ) . ']' ) ) ), row_attrs( $el ) );
+		} elseif ( 'div' === $tag && 'dl' === $node->nodeName ) {
+			$dt     = q( $el, './dt' );
+			$rows[] = array_merge( array( 'type' => 'item', 'item_style' => has_class( $dt, 'label' ) ? 'contact' : 'fact', 'title' => inner( $dt ), 'text' => phone_token( inner( q( $el, './dd' ) ) ) ), row_attrs( $el ) );
+		} elseif ( 'li' === $tag && ( $item = flex_item( $el ) ) ) {
+			$rows[] = $item;
+		} else {
+			$open = array_merge(
+				array(
+					'type'            => 'open',
+					'tag'             => in_array( $tag, array( 'div', 'ul', 'ol', 'dl', 'aside', 'nav', 'p', 'figure', 'article', 'span', 'li' ), true ) ? $tag : 'div',
+					'aria_label'      => $el->getAttribute( 'aria-label' ),
+					'aria_labelledby' => $el->getAttribute( 'aria-labelledby' ),
+					'sticky'          => $el->hasAttribute( 'data-sticky-anchor' ) ? 'yes' : '',
+				),
+				row_attrs( $el )
+			);
+			if ( 'li' === $tag ) {
+				fwrite( STDERR, "Note: generic <li> kept as a group: " . substr( $el->ownerDocument->saveHTML( $el ), 0, 120 ) . "\n" );
+			}
+			$rows[] = $open;
+			flex_rows( $el, $rows );
+			$rows[] = array( 'type' => 'close' );
+		}
+	}
+}
+
+/** Any section → flexible section widget. */
+function conv_flex( DOMElement $sec, $seed ) {
+	$rows = array();
+	flex_rows( $sec, $rows );
+	foreach ( $rows as $i => $row ) {
+		$rows[ $i ]['_id'] = eid( $seed . 'row' . $i );
+	}
+	return widget(
+		'scd-section',
+		array(
+			'sec_tag'        => $sec->nodeName,
+			'sec_cls'        => trim( preg_replace( '/\s+/', ' ', $sec->getAttribute( 'class' ) ) ),
+			'sec_anchor'     => $sec->getAttribute( 'id' ),
+			'sec_aria_label' => $sec->getAttribute( 'aria-label' ),
+			'sec_labelledby' => $sec->getAttribute( 'aria-labelledby' ),
+			'sec_bg'         => '',
+			'sec_size'       => '',
+			'rows'           => $rows,
+		),
+		$seed
+	);
+}
+
 /** Convert one <section> (or helper div) of <main>. */
 function convert_section( DOMElement $sec, $seed, &$flags ) {
+	// Campaign landing pages: every section is a flexible section, except the FAQ.
+	if ( ! empty( $flags['landing'] ) ) {
+		if ( q( $sec, './/div[' . c( 'home-faq' ) . ']' ) ) {
+			return conv_faq( $sec, $seed );
+		}
+		return conv_flex( $sec, $seed );
+	}
+	// Redesigned treatment-page sections and bands the other widgets don't reproduce exactly.
+	$id = $sec->getAttribute( 'id' );
+	if ( has_class( $sec, 'promo-band' ) || ( has_class( $sec, 'callout' ) && ! q( $sec, './/h2' ) ) ) {
+		return conv_flex( $sec, $seed );
+	}
+	if ( in_array( $id, array( 'care', 'cost' ), true ) && ! empty( $flags['service'] ) ) {
+		return conv_flex( $sec, $seed );
+	}
+	if ( 'intro' === $id && ! empty( $flags['service'] ) && ( q( $sec, './/div[' . c( 'comfort' ) . ']' ) || q( $sec, './/div[' . c( 'panel--corner' ) . ']' ) ) ) {
+		return conv_flex( $sec, $seed );
+	}
 	if ( 'div' === $sec->nodeName ) {
 		if ( has_class( $sec, 'er-sticky' ) ) {
 			$flags['sticky'] = true;
@@ -1162,8 +1388,8 @@ function convert_section( DOMElement $sec, $seed, &$flags ) {
 			$seed
 		);
 	}
-	fwrite( STDERR, "Unconverted section: " . substr( $sec->ownerDocument->saveHTML( $sec ), 0, 160 ) . "\n" );
-	return null;
+	fwrite( STDERR, 'Flexible section used for: ' . $sec->getAttribute( 'class' ) . '#' . $sec->getAttribute( 'id' ) . "\n" );
+	return conv_flex( $sec, $seed );
 }
 
 /** Fix static-site anchors: "#explain-h" (a heading ID) → "#explain" (the section anchor). */
@@ -1181,29 +1407,46 @@ function fix_anchors( $data ) {
 }
 
 /** Convert a built page. */
-function convert_page( $file, $slug ) {
+function convert_page( $file, $slug, $extra = array() ) {
 	$dom   = load_html( $file );
 	$main  = q( $dom, '//main' );
-	$flags = array( 'sticky' => (bool) q( $main, './div[' . c( 'er-sticky' ) . ']' ) );
+	$flags = array_merge( array( 'sticky' => (bool) q( $main, './div[' . c( 'er-sticky' ) . ']' ) ), $extra );
 	$conts = array();
-	foreach ( qa( $main, './*' ) as $i => $el ) {
-		$w = convert_section( $el, $slug . $i, $flags );
+	$els   = qa( $main, './*' );
+	// Landing pages: the phone action bar sits after the footer in the static page.
+	if ( ! empty( $flags['landing'] ) && ( $bar = q( $dom, '//body/div[' . c( 'mbar' ) . ']' ) ) ) {
+		$els[] = $bar;
+	}
+	foreach ( $els as $i => $el ) {
+		$w = ( ! empty( $flags['landing'] ) && has_class( $el, 'mbar' ) ) ? conv_flex( $el, $slug . $i ) : convert_section( $el, $slug . $i, $flags );
 		if ( $w ) {
 			$conts[] = container( $w, $slug . $i );
 		}
 	}
+	$body = q( $dom, '//body' );
+	$robots = q( $dom, '//meta[@name="robots"]' );
 	$title = text( q( $dom, '//title' ) );
 	$desc  = q( $dom, '//meta[@name="description"]' );
 	return array(
 		'elementor'       => fix_anchors( $conts ),
 		'seo_title'       => $title,
 		'seo_description' => $desc ? $desc->getAttribute( 'content' ) : '',
+		'robots'          => $robots ? $robots->getAttribute( 'content' ) : '',
+		'body_class'      => $body ? $body->getAttribute( 'class' ) : '',
 	);
 }
 
 /* ---------------------------------------------------------------------
  * Pages
  * ------------------------------------------------------------------- */
+
+// Treatment page slugs (related-treatment cards to other pages become custom cards).
+$GLOBALS['service_slugs'] = array( 'emergency-dentist' );
+foreach ( $P['service_groups'] as $g ) {
+	foreach ( $g['items'] as $item ) {
+		$GLOBALS['service_slugs'][] = preg_replace( '#\.html$#', '', $item['file'] );
+	}
+}
 
 $pages = array();
 $order = array(
@@ -1256,7 +1499,7 @@ $group_keys = array( 'Everyday care' => 'everyday', 'Repairing teeth' => 'repair
 foreach ( glob( $build . '/services/*.json' ) as $jf ) {
 	$j       = json_decode( file_get_contents( $jf ), true );
 	$slug    = basename( $jf, '.json' );
-	$data    = convert_page( $root . '/' . $j['file'], $slug );
+	$data    = convert_page( $root . '/' . $j['file'], $slug, array( 'service' => true ) );
 	$info    = $cat[ $slug ];
 	$pages[] = array_merge(
 		array(
@@ -1278,6 +1521,31 @@ foreach ( glob( $build . '/services/*.json' ) as $jf ) {
 		$data
 	);
 }
+// Campaign landing pages (Meta ads): their own pages, not treatments, never in menus or service lists.
+$landing = array(
+	'full-arch-dental-implants' => 'Full arch dental implants',
+	'cosmetic-dentistry'        => 'Cosmetic dentistry',
+);
+foreach ( $landing as $slug => $title ) {
+	$data = convert_page( $root . '/' . $slug . '.html', $slug, array( 'landing' => true ) );
+	preg_match( '#page-lp--([a-z0-9-]+)#', $data['body_class'], $m );
+	$hero    = load_html( $root . '/' . $slug . '.html' );
+	$himg    = q( $hero, '//main//section[1]//img' );
+	$pages[] = array_merge(
+		array(
+			'slug'       => $slug,
+			'title'      => $title,
+			'front'      => false,
+			'menu_order' => 0,
+			'excerpt'    => $data['seo_description'],
+			'service'    => null,
+			'landing'    => $m ? $m[1] : '',
+			'thumb'      => $himg ? asset( $himg->getAttribute( 'src' ) ) : null,
+		),
+		$data
+	);
+}
+
 usort(
 	$pages,
 	function ( $a, $b ) {

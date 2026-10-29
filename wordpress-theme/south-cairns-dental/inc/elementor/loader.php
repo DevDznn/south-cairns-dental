@@ -38,6 +38,7 @@ function scd_elementor_widgets() {
 		'offer'             => 'Offer',
 		'contact'           => 'Contact',
 		'map'               => 'Map',
+		'section'           => 'Section',
 	);
 }
 

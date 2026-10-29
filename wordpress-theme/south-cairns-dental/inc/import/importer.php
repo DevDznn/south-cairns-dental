@@ -74,7 +74,7 @@ function scd_setup_page() {
 			<li><?php echo $thinkrank ? '&#10003; ' : '&#10007; '; ?><strong>ThinkRank</strong> — <?php $thinkrank ? esc_html_e( 'active. SEO titles and descriptions from the old site are copied into each page’s ThinkRank fields (only where empty).', 'south-cairns-dental' ) : esc_html_e( 'recommended for SEO. If it is active when you import, each page’s SEO title and description are filled in for you.', 'south-cairns-dental' ); ?></li>
 		</ul>
 		<h2><?php esc_html_e( 'Import the website', 'south-cairns-dental' ); ?></h2>
-		<p><?php esc_html_e( 'Creates the homepage, 8 information pages, 14 treatment pages, the blog page and article, images in the Media Library, the main and footer menus and the logo. Pages are built with the South Cairns Dental Elementor widgets, so every heading, paragraph, image, button and card can be edited in Elementor.', 'south-cairns-dental' ); ?></p>
+		<p><?php esc_html_e( 'Creates the homepage, 8 information pages, 14 treatment pages, 2 campaign landing pages (full arch implants and cosmetic dentistry, kept out of menus and search results), the blog page and article, images in the Media Library, the main and footer menus and the logo. Pages are built with the South Cairns Dental Elementor widgets, so every heading, paragraph, image, button and card can be edited in Elementor.', 'south-cairns-dental' ); ?></p>
 		<form method="post">
 			<?php wp_nonce_field( 'scd_import' ); ?>
 			<p><label><input type="checkbox" name="scd_menus" value="1" checked> <?php esc_html_e( 'Create the main and footer menus and assign them', 'south-cairns-dental' ); ?></label></p>
@@ -313,6 +313,27 @@ class SCD_Importer {
 			}
 		}
 		$this->seo( $id, $page['seo_title'], $page['seo_description'] );
+
+		// Campaign landing pages: landing styles, and kept out of search results through
+		// ThinkRank's own robots setting (only where the page has no robots setting yet).
+		if ( ! empty( $page['landing'] ) ) {
+			update_post_meta( $id, '_scd_landing', '1' );
+			update_post_meta( $id, '_scd_landing_style', sanitize_key( $page['landing'] ) );
+			$robots = strtolower( (string) ( $page['robots'] ?? '' ) );
+			if ( false !== strpos( $robots, 'noindex' ) && '' === (string) get_post_meta( $id, '_thinkrank_robots_meta', true ) ) {
+				update_post_meta( $id, '_thinkrank_robots_meta_enabled', '1' );
+				update_post_meta(
+					$id,
+					'_thinkrank_robots_meta',
+					wp_json_encode(
+						array(
+							'noindex'  => true,
+							'nofollow' => false !== strpos( $robots, 'nofollow' ),
+						)
+					)
+				);
+			}
+		}
 
 		$elements = $this->resolve( $page['elementor'] );
 		$document = \Elementor\Plugin::$instance->documents->get( $id, false );

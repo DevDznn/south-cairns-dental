@@ -69,6 +69,14 @@ function scd_body_classes( $classes ) {
 	if ( is_front_page() ) {
 		$classes[] = 'page-home';
 	}
+	// Campaign landing pages (Page options box): page-lp and page-lp--{style} scope landing.css.
+	if ( is_page() && '1' === get_post_meta( get_queried_object_id(), '_scd_landing', true ) ) {
+		$classes[] = 'page-lp';
+		$style     = sanitize_html_class( (string) get_post_meta( get_queried_object_id(), '_scd_landing_style', true ) );
+		if ( $style ) {
+			$classes[] = 'page-lp--' . $style;
+		}
+	}
 	if ( is_page() && scd_is_service( get_queried_object_id() ) ) {
 		$classes[] = 'page-service';
 		if ( 'urgent' === get_post_meta( get_queried_object_id(), '_scd_service_tone', true ) ) {

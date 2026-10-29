@@ -110,6 +110,34 @@ function scd_fallback_schema() {
 add_action( 'wp_head', 'scd_fallback_schema', 30 );
 
 /**
+ * If ThinkRank is ever deactivated, keep honouring the robots setting stored in its fields
+ * (e.g. noindex on the campaign landing pages) through WordPress core's robots API, so those pages
+ * don't become indexable. While ThinkRank is active it outputs robots itself and this does nothing.
+ *
+ * @param array $robots Robots directives.
+ * @return array
+ */
+function scd_fallback_robots( $robots ) {
+	if ( scd_seo_plugin_active() || ! is_singular() ) {
+		return $robots;
+	}
+	$id = get_queried_object_id();
+	if ( ! get_post_meta( $id, '_thinkrank_robots_meta_enabled', true ) ) {
+		return $robots;
+	}
+	$meta = json_decode( (string) get_post_meta( $id, '_thinkrank_robots_meta', true ), true );
+	if ( is_array( $meta ) && ! empty( $meta['noindex'] ) ) {
+		$robots['noindex'] = true;
+		unset( $robots['max-image-preview'] );
+	}
+	if ( is_array( $meta ) && ! empty( $meta['nofollow'] ) ) {
+		$robots['nofollow'] = true;
+	}
+	return $robots;
+}
+add_filter( 'wp_robots', 'scd_fallback_robots' );
+
+/**
  * Admin notice: point to ThinkRank if no SEO plugin is active.
  */
 function scd_seo_notice() {

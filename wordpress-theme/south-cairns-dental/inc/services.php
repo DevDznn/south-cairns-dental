@@ -310,6 +310,84 @@ function scd_save_service_meta( $post_id ) {
 add_action( 'save_post_page', 'scd_save_service_meta' );
 
 /**
+ * Campaign landing pages (e.g. Meta ad pages for full arch implants and cosmetic dentistry).
+ * They use the landing page styles and are not treatments, so they never appear in the service
+ * lists or menus. Keep them out of search results with ThinkRank's robots setting on the page.
+ */
+function scd_landing_meta_box() {
+	add_meta_box( 'scd-landing', __( 'Campaign landing page', 'south-cairns-dental' ), 'scd_landing_meta_box_html', 'page', 'side' );
+}
+add_action( 'add_meta_boxes', 'scd_landing_meta_box' );
+
+/**
+ * Register the landing page meta.
+ */
+function scd_register_landing_meta() {
+	foreach ( array( '_scd_landing', '_scd_landing_style' ) as $key ) {
+		register_post_meta(
+			'page',
+			$key,
+			array(
+				'type'              => 'string',
+				'single'            => true,
+				'show_in_rest'      => true,
+				'sanitize_callback' => 'sanitize_key',
+				'auth_callback'     => function ( $allowed, $meta_key, $post_id ) {
+					return current_user_can( 'edit_post', $post_id );
+				},
+			)
+		);
+	}
+}
+add_action( 'init', 'scd_register_landing_meta' );
+
+/**
+ * Landing page box contents.
+ *
+ * @param WP_Post $post Page.
+ */
+function scd_landing_meta_box_html( $post ) {
+	wp_nonce_field( 'scd_landing_meta', 'scd_landing_nonce' );
+	printf(
+		'<p><label><input type="checkbox" name="scd_landing" value="1" %s> %s</label></p>',
+		checked( get_post_meta( $post->ID, '_scd_landing', true ), '1', false ),
+		esc_html__( 'Use the campaign landing page styles', 'south-cairns-dental' )
+	);
+	printf(
+		'<p><label for="scd-landing-style">%s</label><br><input type="text" class="widefat" id="scd-landing-style" name="scd_landing_style" value="%s" placeholder="full-arch"></p>',
+		esc_html__( 'Style name (adds page-lp--name)', 'south-cairns-dental' ),
+		esc_attr( get_post_meta( $post->ID, '_scd_landing_style', true ) )
+	);
+	echo '<p class="description">' . esc_html__( 'Landing pages are not treatments and are not listed in menus. To keep one out of search results, set noindex in the page’s ThinkRank settings.', 'south-cairns-dental' ) . '</p>';
+}
+
+/**
+ * Save the landing page box.
+ *
+ * @param int $post_id Page ID.
+ */
+function scd_save_landing_meta( $post_id ) {
+	if ( ! isset( $_POST['scd_landing_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['scd_landing_nonce'] ) ), 'scd_landing_meta' ) ) {
+		return;
+	}
+	if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! current_user_can( 'edit_page', $post_id ) ) {
+		return;
+	}
+	if ( empty( $_POST['scd_landing'] ) ) {
+		delete_post_meta( $post_id, '_scd_landing' );
+	} else {
+		update_post_meta( $post_id, '_scd_landing', '1' );
+	}
+	$style = isset( $_POST['scd_landing_style'] ) ? sanitize_key( wp_unslash( $_POST['scd_landing_style'] ) ) : '';
+	if ( $style ) {
+		update_post_meta( $post_id, '_scd_landing_style', $style );
+	} else {
+		delete_post_meta( $post_id, '_scd_landing_style' );
+	}
+}
+add_action( 'save_post_page', 'scd_save_landing_meta' );
+
+/**
  * Blog posts: "Article details" box (byline, closing note, related treatments).
  */
 function scd_article_meta_box() {

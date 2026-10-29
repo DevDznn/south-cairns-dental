@@ -13,6 +13,7 @@ A custom WordPress theme for South Cairns Dental, converted from the practice's 
 3. **Import the website.** Go to *Appearance › South Cairns setup* and press **Import website content**. This creates:
    - the homepage, About, Meet our dentists, New patients, Services, FAQ, Special offers, Contact and Privacy pages;
    - the 14 treatment pages;
+   - the two campaign landing pages (Full arch dental implants and Cosmetic dentistry), kept out of menus and search results;
    - the Blog page and the published article;
    - about 24 images in the Media Library (with alt text);
    - the main and footer menus, and the logo;
@@ -55,6 +56,22 @@ Sections can be reordered by dragging, duplicated or removed. You can also add E
 | SCD Questions (FAQ) / SCD FAQ by topic | Accordions; the FAQ page with topic navigation |
 | SCD Emergency band, SCD Callout band, SCD Booking band | Emergency call card; lime, pale or red message bands; the booking band and urgent strip |
 | SCD Text section, SCD Special offer, SCD Contact details and form, SCD Map | Text layouts, the new patient offer, contact details with hours and enquiry form, the map |
+| SCD Flexible section | The campaign landing pages, and treatment-page sections with their own layout (introductions with an illustration, care and cost sections, the promo bands and risk notes). See below |
+
+### Editing a Flexible section
+
+A Flexible section is a list of rows, each holding one piece of content:
+
+- **Content rows:** a heading, a paragraph, an image, an icon, buttons, the live opening status, or a list item. List items can be a tick, a title and text, an icon point, a trust point, a card, a fact, a contact row, a dentist, a step or a question.
+- **Group rows:** "Group start" and "Group end" rows hold the columns, panels, lists and cards that the content sits in. Their classes set the layout.
+
+How to edit:
+
+- **Change content:** edit the text, image or link in the row.
+- **Add an item:** duplicate a list-item row, then drag it into place. Keep it between the same group start and end rows.
+- **Groups:** you don't normally need to change group rows. Deleting one without its matching end row will change the layout.
+
+The section's background and spacing are under *Style › Section*, as for the other widgets.
 
 These widgets are custom because each section's exact markup (and the shared stylesheet that styles it) can't be reproduced with Elementor's basic widgets without changing the design. All of their content is held in widget settings; nothing on the page is fixed in the theme's code.
 
@@ -71,12 +88,24 @@ The **Treatment details** box in the page editor's sidebar (*Edit page*, not Ele
 
 The **Featured image** is the card photo. The page's **Order** sets its position in lists.
 
+Related-treatment cards can use a treatment page, or be a *custom card* (image, title, text, link) for any other page, such as a campaign landing page.
+
 To add a treatment:
 
 1. Duplicate an existing treatment page.
 2. Edit it in Elementor.
 3. Set its Treatment details.
 4. Add it to the Services menu.
+
+## Campaign landing pages
+
+**Full arch dental implants** (`/full-arch-dental-implants/`) and **Cosmetic dentistry** (`/cosmetic-dentistry/`) are landing pages for Meta advertising campaigns, not regular treatments.
+
+- **Not listed as services:** they are not in the menus, the services directory or lists, or the homepage service cards, because they aren't marked as treatments.
+- **How visitors reach them:** from the ad links, and from contextual links on the related treatment pages. Dental implants links to Full arch dental implants, and Cosmetic veneers links to Cosmetic dentistry. Each link appears in the text, a promo band and, for implants, a related-treatment card.
+- **The "Campaign landing page" box:** in the page editor sidebar, it switches on the landing page styles (`page-lp`, plus a style name such as `full-arch`).
+- **Search:** as on the static site, both pages are kept out of search results with **noindex, nofollow**, set in each page's **ThinkRank** robots settings by the importer. If ThinkRank is ever inactive, the theme keeps honouring that setting through WordPress's own robots tag.
+- **Editing:** the hero, trust strip and most sections are Flexible sections. The questions use the FAQ widget.
 
 ## Header, footer and menus
 
@@ -121,6 +150,7 @@ Image sources and licence notes are in the repository's `IMAGE-MANIFEST.md`. Som
 
 - `style.css`: theme header.
 - `assets/css/site.css`: the static site's design system, unchanged.
+- `assets/css/landing.css`: the static site's campaign landing page styles, unchanged.
 - `assets/css/wp.css`: WordPress and Elementor adaptations.
 - `assets/js/main.js`: site behaviour, re-initialised for widgets that Elementor re-renders.
 - `inc/`: practice settings, setup, navigation, treatment details, SEO, legacy redirects, and the Elementor widgets (`inc/elementor/`).

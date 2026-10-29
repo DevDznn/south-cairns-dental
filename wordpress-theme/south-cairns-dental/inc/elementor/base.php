@@ -156,7 +156,7 @@ abstract class Widget extends \Elementor\Widget_Base {
 				'heading' => '',
 				'intro'   => '',
 				'layout'  => 'stacked',
-				'layouts' => array( 'stacked', 'row', 'split-5-7', 'split-4-8', 'hidden' ),
+				'layouts' => array( 'stacked', 'row', 'split-5-7', 'split-4-8', 'hidden', 'bare' ),
 				'buttons' => true,
 			)
 		);
@@ -167,6 +167,7 @@ abstract class Widget extends \Elementor\Widget_Base {
 			'split-4-8' => __( 'Heading on the left (4/8 columns)', 'south-cairns-dental' ),
 			'split-7-5' => __( 'Heading on the left (7/5 columns)', 'south-cairns-dental' ),
 			'hidden'    => __( 'Heading for screen readers only', 'south-cairns-dental' ),
+			'bare'      => __( 'Heading directly above, no introduction', 'south-cairns-dental' ),
 		);
 		$this->start_controls_section( 'scd_head', array( 'label' => __( 'Section heading', 'south-cairns-dental' ) ) );
 		$this->add_control(
@@ -705,7 +706,7 @@ abstract class Widget extends \Elementor\Widget_Base {
 		}
 		if ( 0 === strpos( $layout, 'split-' ) ) {
 			$cols = substr( $layout, 6 );
-			$p    = $this->paras( $intro, $muted ? 'muted' : '' );
+			$p    = $this->paras( $intro, $dark ? '' : ( 'narrow' === $istyle ? 'section-head__intro' : ( 'muted' === $istyle ? 'muted' : '' ) ) );
 			if ( '' !== $btns ) {
 				$count = substr_count( $btns, 'class="btn' );
 				if ( $count > 1 ) {
@@ -721,9 +722,9 @@ abstract class Widget extends \Elementor\Widget_Base {
 		if ( '' === $heading && '' === trim( $intro ) && '' === $kicker ) {
 			return array( '', '<div class="wrap">', '</div>' );
 		}
-		// A heading on its own sits directly above the content, with the standard gap.
-		if ( '' === trim( $intro ) && '' === $kicker && '' === $btns ) {
-			return array( $h . '<div class="mt-6">', '<div class="wrap">', '</div></div>' );
+		// Heading directly above the content, with the standard gap (no section-head block).
+		if ( 'bare' === $layout ) {
+			return array( $kicker . $h . '<div class="mt-6">', '<div class="wrap">', '</div></div>' );
 		}
 		$p = $this->paras( $intro, $dark ? 'mb-0' : ( 'narrow' === $istyle ? 'section-head__intro' : ( 'muted' === $istyle ? 'muted mb-0' : 'mb-0' ) ) );
 		if ( '' !== $btns ) {

@@ -65,6 +65,11 @@ class Faq extends Widget {
 		$this->add_control( 'foot', array( 'label' => __( 'Note below', 'south-cairns-dental' ), 'type' => Controls_Manager::WYSIWYG ) );
 		$this->end_controls_section();
 
+		$this->start_controls_section( 'side_image_section', array( 'label' => __( 'Image under the heading', 'south-cairns-dental' ) ) );
+		$this->add_control( 'side_show', array( 'label' => __( 'Show an image under the heading (heading on the left layouts)', 'south-cairns-dental' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes' ) );
+		$this->image_controls( 'side', array( 'ratio' => '4 / 3', 'pos' => '50% 30%' ) );
+		$this->end_controls_section();
+
 		$this->start_controls_section( 'card_section', array( 'label' => __( 'Side card', 'south-cairns-dental' ) ) );
 		$this->add_control( 'card_show', array( 'label' => __( 'Show a side card (e.g. cost and payment)', 'south-cairns-dental' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes' ) );
 		$this->add_control( 'card_icon', array( 'label' => __( 'Icon', 'south-cairns-dental' ), 'type' => Controls_Manager::SELECT, 'options' => scd_icon_options(), 'default' => 'wallet', 'condition' => array( 'card_show' => 'yes' ) ) );
@@ -105,7 +110,12 @@ class Faq extends Widget {
 		// Homepage style: intro column with a button, cards beside it.
 		if ( 'split-4-8' === $layout && 'cards' === $s['faq_style'] ) {
 			$btns = $this->button( $s, 'head_btn1', 'mt-6' ) . $this->button( $s, 'head_btn2', 'mt-6' );
-			$body = '<div class="wrap split split--4-8 split--top home-faq"><div class="home-faq__intro">' . $h . $this->paras( $s['intro'], 'section-head__intro' ) . $btns . '</div>' . $faq . '</div>';
+			$img  = '';
+			if ( 'yes' === ( $s['side_show'] ?? '' ) ) {
+				$corner = $s['side_corner'] ?? 'corner';
+				$img    = $this->frame( $s, 'side', array( 'class' => trim( ( $corner ? 'frame--' . $corner : '' ) . ' lp-side-img' ) ) );
+			}
+			$body = '<div class="wrap split split--4-8 split--top home-faq"><div class="home-faq__intro">' . $h . $this->paras( $s['intro'], 'section-head__intro' ) . $btns . $img . '</div>' . $faq . '</div>';
 			echo $this->open_section( $s, '', $label ) . $body . $foot . '</section>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			return;
 		}
